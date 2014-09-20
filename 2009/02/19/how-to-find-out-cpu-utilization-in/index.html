@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Personal blog of Pranav Prakash">
+    <title>
+    
+        How to find out CPU utilization in Linux? &middot; Pranav Prakash
+    
+    </title>
+    <script src="/build/app.min.js"></script>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/grids-responsive.css">
+    <link rel="stylesheet" href="/build/style.min.css">
+</head>
+  <body>
+    <div id="layout" class="pure-g">
+      <div class="sidebar pure-u-1 pure-u-md-1-4">
+        <div class="header">
+          <img class="navimg" src="/assets/img/pranav.jpg" alt="Pranav"/>
+          <h1 class="brand-title">Pranav Prakash</h1>
+          <h2 class="brand-tagline">Software Developer, Photographer, Computer Addict &amp; Web Enthusiast</h2>
+          <nav class="nav">
+            <ul class="nav-list">
+              <li class="nav-item">
+                <a class="pure-button" href="/">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="pure-button" href="/about/">About</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <div class="content pure-u-1 pure-u-md-3-4">
+      <div>
+        <div class="posts">
+          <h1 class="content-subhead">Approx 4 minutes read</h1>
+<section class="post">
+  <header class="post-header">
+  <a href="/2009/02/19/how-to-find-out-cpu-utilization-in/">
+    <h2 class="post-title">How to find out CPU utilization in Linux?</h2>
+    </a>
+    <p class="post-meta">
+    on <a href="#" class="post-author">19 Feb 2009</a> under
+     <a href="/tags/Tips" class="post-category post-category-t">TIPS</a>   <a href="/tags/Linux" class="post-category post-category-l">LINUX</a>   <a href="/tags/CPU Utilization" class="post-category post-category-c">CPU UTILIZATION</a>  
+    </p>
+  </header>
+  <div class="post-description">
+    <p>
+    <p>Everyone knows that CPU utiization in windows can be found out from Windows Task Manager. But what about Linux? Well Linux has also got set of utilities to monitor CPU utilization. With these commands you can find out total CPU utilization, individual CPU utilization (for SMP machines), your system’s average CPU utilization since the last reboot, determine which process is eating up your CPU(s) etc.</p>
+
+<!--more-->
+
+<h2 id="good-old-top-command">Good old “top” command</h2>
+
+<p>The top command provides dynamic view of CPU utilization. It displays system information as well as list of tasks currently managed by kernel. Is also displays uptime, average load,  physcal and swap memory utilization. Syntax of top command is as follows:</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>top</code></pre></div>
+
+<div style="TEXT-ALIGN: center"><img src="http://1.bp.blogspot.com/__GfZLYkxICU/SZ1EdKuhqvI/AAAAAAAAKaQ/IOyFqTaYkPU/s400/top.jpeg" /></div>
+
+<p>To quit “top”, you have to press Q key of your keyboard.</p>
+
+<h2 id="using-mpstat-command">Using “mpstat” command</h2>
+
+<p>To use this command, you have to install a package called <strong>sysstat</strong>. For Ubuntu or Debian systems, you can install this package using apt-get.</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="lineno">1</span> <span class="nv">$ </span>apt-get install sysstat</code></pre></div>
+
+<p>To get CPU utilization information, type in following command:</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="lineno">1</span> <span class="nv">$ </span>mpstat</code></pre></div>
+
+<div style="TEXT-ALIGN: center"><img src="http://3.bp.blogspot.com/__GfZLYkxICU/SZ1HYqBN79I/AAAAAAAAKaY/ao4jzWcMSus/s400/mpstat.jpeg" /></div>
+
+<p>To monitor individual processor performance, issue following command:</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="lineno">1</span> <span class="nv">$ </span>mpstat -P ALL</code></pre></div>
+
+<div style="TEXT-ALIGN: center"><img src="http://1.bp.blogspot.com/__GfZLYkxICU/SZ1JWeK086I/AAAAAAAAKag/R4CJFb-PlnA/s400/mpstat+all.jpeg" /></div>
+
+<h2 id="the-sar-command">The “sar” command</h2>
+
+<p>To display CPU utilization using “sar”, use following command:</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="lineno">1</span> <span class="nv">$ </span>sar -u <span class="m">2</span> 5</code></pre></div>
+
+<p>This command will display CPU utilization 2 seconds apart, 5 times as shown below.</p>
+
+<div style="TEXT-ALIGN: center"><img src="http://4.bp.blogspot.com/__GfZLYkxICU/SZ1K8P-YVzI/AAAAAAAAKao/f2vTLV8Zkjk/s400/sar.jpeg" /></div>
+
+<h2 id="the-iostat-command">The “iostat” command</h2>
+
+<p>The iostat command reports Central Processing Unit (CPU) statistics and input/output statistics for devices and partitions. It can be use to find out your system’s average CPU utilization since the last reboot.</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="lineno">1</span> <span class="nv">$ </span>iostat</code></pre></div>
+
+<div style="TEXT-ALIGN: center"><img src="http://4.bp.blogspot.com/__GfZLYkxICU/SZ1LmKj8Z3I/AAAAAAAAKaw/EeBQkTTH7v8/s400/iostat.jpeg" /></div>
+
+<h2 id="gui-tools">GUI Tools</h2>
+
+<p>KDE desktop environment has a system monitor utility which shows CPU utilization as well as many more information. You can also kill a process using this utility as shown below:</p>
+
+<div style="TEXT-ALIGN: center"><img src="http://3.bp.blogspot.com/__GfZLYkxICU/SZ1M9w041ZI/AAAAAAAAKa4/G-bjtEnPAPA/s400/sysmonitor.jpeg" /></div>
+
+<p>It also gives CPU load information, physical and swap memory usage data in graphical format as shown below:</p>
+
+<div style="TEXT-ALIGN: center"><img src="http://1.bp.blogspot.com/__GfZLYkxICU/SZ1NZMUJ8DI/AAAAAAAAKbA/Uza7zAQCz8E/s400/sysmonitor+more.jpeg" /></div>
+
+<p>For learning more about above commands and their options, you can go through their man pages.</p>
+
+    </p>
+  </div>
+</section>
+
+<div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'pranavprakash'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+
+        </div>
+      </div>
+    </div>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-48826636-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  </body>
+</html>

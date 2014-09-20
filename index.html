@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Personal blog of Pranav Prakash">
+    <title>
+    
+        Pranav Prakash &middot; Blog
+    
+    </title>
+    <script src="/build/app.min.js"></script>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/grids-responsive.css">
+    <link rel="stylesheet" href="/build/style.min.css">
+</head>
+  <body>
+    <div id="layout" class="pure-g">
+      <div class="sidebar pure-u-1 pure-u-md-1-4">
+        <div class="header">
+          <img class="navimg" src="/assets/img/pranav.jpg" alt="Pranav"/>
+          <h1 class="brand-title">Pranav Prakash</h1>
+          <h2 class="brand-tagline">Software Developer, Photographer, Computer Addict &amp; Web Enthusiast</h2>
+          <nav class="nav">
+            <ul class="nav-list">
+              <li class="nav-item">
+                <a class="pure-button" href="/">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="pure-button" href="/about/">About</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <div class="content pure-u-1 pure-u-md-3-4">
+      <div>
+        <div class="posts">
+          
+  <h1 class="content-subhead">Latest Post</h1>
+  
+    <section class="post">
+      <header class="post-header">
+        <h2 class="post-title">
+        <a href="/2014/08/14/toggle-oracle-home-on-windows/">
+          Toggle ORACLE_HOME on Windows
+        </a>
+        </h2>
+        <p class="post-meta">
+        on <a href="#" class="post-author">14 Aug 2014</a> under
+         <a href="/tags/Windows" class="post-category post-category-w">WINDOWS</a>    <a href="/tags/Oracle" class="post-category post-category-o">ORACLE</a>   
+        </p>
+      </header>
+      <div class="post-description">
+        <p>
+          
+            <p>I work in an environment where I constantly need to switch between 32-bit and 64-bit version of Oracle client. Manually editing the environment variable ORACLE_HOME becomes really annoying after some time. Hence I created a small batch file to toggle the ORACLE_HOME:</p>
+
+<a href="/2014/08/14/toggle-oracle-home-on-windows/">Continue Reading »</a>
+          
+        </p>
+      </div>
+    </section>
+  
+  <h1 class="content-subhead">Recent Posts</h1>
+  
+  
+    
+    
+  
+
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title">
+          <a href="/2014/07/25/update-and-delete-with-table-alias-in-microsoft-sql-server/">
+            UPDATE and DELETE with table alias in Microsoft SQL Server
+          </a>
+          </h2>
+          <p class="post-meta">
+          on <a href="#" class="post-author">25 Jul 2014</a> under
+           <a href="/tags/MSS" class="post-category post-category-m">MSS</a>    <a href="/tags/SQL" class="post-category post-category-s">SQL</a>   
+          </p>
+        </header>
+        <div class="post-description">
+          <p>
+          
+            <p>Last week I came across following SQL statement:</p>
+
+<div class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="lineno">1</span> <span class="k">DELETE</span>
+<span class="lineno">2</span> <span class="k">FROM</span> <span class="n">FIRST_TABLE</span> <span class="n">A</span>
+<span class="lineno">3</span> <span class="k">WHERE</span> <span class="n">A</span><span class="p">.</span><span class="n">KEY1</span> <span class="o">=</span> <span class="s1">&#39;1&#39;</span>
+<span class="lineno">4</span>   <span class="k">AND</span> <span class="k">EXISTS</span>
+<span class="lineno">5</span>     <span class="p">(</span><span class="k">SELECT</span> <span class="s1">&#39;X&#39;</span>
+<span class="lineno">6</span>      <span class="k">FROM</span> <span class="n">SECOND_TABLE</span> <span class="n">B</span>
+<span class="lineno">7</span>      <span class="k">WHERE</span> <span class="n">B</span><span class="p">.</span><span class="n">KEY1</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">KEY1</span>
+<span class="lineno">8</span>        <span class="k">AND</span> <span class="n">B</span><span class="p">.</span><span class="n">KEY2</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">KEY2</span><span class="p">);</span></code></pre></div>
+
+<p>This SQL statement was running fine in Oracle but was failing in Microsoft SQL Server (MSS) with followiing error:</p>
+
+<a href="/2014/07/25/update-and-delete-with-table-alias-in-microsoft-sql-server/">Continue Reading »</a>
+          
+        </p>
+      </div>
+    </section>
+  
+
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title">
+          <a href="/2014/03/21/get-url-parameters-using-javascript/">
+            Get URL parameters using JavaScript
+          </a>
+          </h2>
+          <p class="post-meta">
+          on <a href="#" class="post-author">21 Mar 2014</a> under
+           <a href="/tags/JavaScript" class="post-category post-category-j">JAVASCRIPT</a>   
+          </p>
+        </header>
+        <div class="post-description">
+          <p>
+          
+            <p>Suppose you want to get the parameters of an URL like below in JavaScript</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="lineno">1</span> http://example.com?param1=value1<span class="err">&amp;</span>param2=value2</code></pre></div>
+
+<p>Below JavaScript code might come handy in this case</p>
+
+<a href="/2014/03/21/get-url-parameters-using-javascript/">Continue Reading »</a>
+          
+        </p>
+      </div>
+    </section>
+  
+
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title">
+          <a href="/2014/03/20/getting-started-with-libcurl/">
+            Getting started with LibCurl
+          </a>
+          </h2>
+          <p class="post-meta">
+          on <a href="#" class="post-author">20 Mar 2014</a> under
+           <a href="/tags/C" class="post-category post-category-c">C</a>    <a href="/tags/Open Source" class="post-category post-category-o">OPEN SOURCE</a>    <a href="/tags/Windows" class="post-category post-category-w">WINDOWS</a>   
+          </p>
+        </header>
+        <div class="post-description">
+          <p>
+          
+            <p><a href="http://curl.haxx.se/libcurl/">LibCurl</a> is an open-source client-side URL transfer utility supporting multiple protocols. LibCurl is supported by almost every conceivable common platform, making it one of the most versatile libraries of its kind.</p>
+
+<p>In this post, I will show you how to use LibCurl in C to make simple HTTP requests with its built-in cookie processor to programmatically log in to websites and download web pages.</p>
+
+<a href="/2014/03/20/getting-started-with-libcurl/">Continue Reading »</a>
+          
+        </p>
+      </div>
+    </section>
+  
+
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title">
+          <a href="/2009/09/12/100-great-freewareopen-source-tools-and/">
+            100 great Freeware/Open Source Tools and Applications for Windows
+          </a>
+          </h2>
+          <p class="post-meta">
+          on <a href="#" class="post-author">12 Sep 2009</a> under
+           <a href="/tags/Applications" class="post-category post-category-a">APPLICATIONS</a>    <a href="/tags/Open Source" class="post-category post-category-o">OPEN SOURCE</a>    <a href="/tags/Windows" class="post-category post-category-w">WINDOWS</a>    <a href="/tags/Freeware" class="post-category post-category-f">FREEWARE</a>   
+          </p>
+        </header>
+        <div class="post-description">
+          <p>
+          
+            <p>Many people are unaware of fact that there are many freeware and open source tools and applications out
+there on internet which they can use for their day to day work without shelling out extra bucks. I have compiled a list of 100
+such applications which you can use for free and they do work as good as their commercial counterpart (sometimes even better). So here we go:</p>
+
+<a href="/2009/09/12/100-great-freewareopen-source-tools-and/">Continue Reading »</a>
+          
+        </p>
+      </div>
+    </section>
+  
+
+
+<div class="footer">
+<div class="pure-menu pure-menu-horizontal pure-menu-open">
+  <ul>
+    
+      <li><a href="/page2">« Older</a></li>
+    
+    
+      <li>Newer »</li>
+    
+  </ul>
+  <p>
+  &copy; 2014. All rights reserved.
+  </p>
+</div>
+</div>
+        </div>
+      </div>
+    </div>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-48826636-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  </body>
+</html>

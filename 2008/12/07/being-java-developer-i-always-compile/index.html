@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Personal blog of Pranav Prakash">
+    <title>
+    
+        Switch between different JDK versions in Windows &middot; Pranav Prakash
+    
+    </title>
+    <script src="/build/app.min.js"></script>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/grids-responsive.css">
+    <link rel="stylesheet" href="/build/style.min.css">
+</head>
+  <body>
+    <div id="layout" class="pure-g">
+      <div class="sidebar pure-u-1 pure-u-md-1-4">
+        <div class="header">
+          <img class="navimg" src="/assets/img/pranav.jpg" alt="Pranav"/>
+          <h1 class="brand-title">Pranav Prakash</h1>
+          <h2 class="brand-tagline">Software Developer, Photographer, Computer Addict &amp; Web Enthusiast</h2>
+          <nav class="nav">
+            <ul class="nav-list">
+              <li class="nav-item">
+                <a class="pure-button" href="/">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="pure-button" href="/about/">About</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <div class="content pure-u-1 pure-u-md-3-4">
+      <div>
+        <div class="posts">
+          <h1 class="content-subhead">Approx 3 minutes read</h1>
+<section class="post">
+  <header class="post-header">
+  <a href="/2008/12/07/being-java-developer-i-always-compile/">
+    <h2 class="post-title">Switch between different JDK versions in Windows</h2>
+    </a>
+    <p class="post-meta">
+    on <a href="#" class="post-author">07 Dec 2008</a> under
+     <a href="/tags/Java" class="post-category post-category-j">JAVA</a>   <a href="/tags/Tips" class="post-category post-category-t">TIPS</a>   <a href="/tags/Windows" class="post-category post-category-w">WINDOWS</a>   <a href="/tags/JDK" class="post-category post-category-j">JDK</a>  
+    </p>
+  </header>
+  <div class="post-description">
+    <p>
+    <p>Being a Java developer, I always compile and test my code on different Java versions. But switching between them is a huge problem. So finally I found an easy method to do this. You have to create following batch files and place them in directory you open your command line in or in SYSTEM PATH. You can use you favorite text editor to create these files.</p>
+
+<!--more-->
+
+<p><strong>jdk14.bat</strong></p>
+
+<div class="highlight"><pre><code class="language-bat" data-lang="bat"><span class="lineno">1</span> <span class="p">@</span><span class="k">echo</span> <span class="k">off</span>
+<span class="lineno">2</span> <span class="k">echo</span> Setting JAVA_HOME
+<span class="lineno">3</span> <span class="k">set</span> <span class="nv">JAVA_HOME</span><span class="o">=</span>C:\j<span class="m">2</span>sdk<span class="m">1</span>.<span class="m">4</span>.<span class="m">2</span>_<span class="m">12</span>
+<span class="lineno">4</span> <span class="k">echo</span> setting PATH
+<span class="lineno">5</span> <span class="k">set</span> <span class="nv">PATH</span><span class="o">=</span>C:\j<span class="m">2</span>sdk<span class="m">1</span>.<span class="m">4</span>.<span class="m">2</span>_<span class="m">12</span>\bin;<span class="nv">%PATH%</span>
+<span class="lineno">6</span> <span class="k">echo</span> Display java version
+<span class="lineno">7</span> java -version</code></pre></div>
+
+<p><strong>jdk15.bat</strong></p>
+
+<div class="highlight"><pre><code class="language-bat" data-lang="bat"><span class="lineno">1</span> <span class="p">@</span><span class="k">echo</span> <span class="k">off</span>
+<span class="lineno">2</span> <span class="k">echo</span> Setting JAVA_HOME
+<span class="lineno">3</span> <span class="k">set</span> <span class="nv">JAVA_HOME</span><span class="o">=</span>C:\Program Files\Java\jdk<span class="m">1</span>.<span class="m">5</span>.<span class="m">0</span>_<span class="m">12</span>
+<span class="lineno">4</span> <span class="k">echo</span> setting PATH
+<span class="lineno">5</span> <span class="k">set</span> <span class="nv">PATH</span><span class="o">=</span>C:\Program Files\Java\jdk<span class="m">1</span>.<span class="m">5</span>.<span class="m">0</span>_<span class="m">12</span>\bin;<span class="nv">%PATH%</span>
+<span class="lineno">6</span> <span class="k">echo</span> Display java version
+<span class="lineno">7</span> java -version</code></pre></div>
+
+<p><strong>jdk16.bat</strong></p>
+
+<div class="highlight"><pre><code class="language-bat" data-lang="bat"><span class="lineno">1</span> <span class="p">@</span><span class="k">echo</span> <span class="k">off</span>
+<span class="lineno">2</span> <span class="k">echo</span> Setting JAVA_HOME
+<span class="lineno">3</span> <span class="k">set</span> <span class="nv">JAVA_HOME</span><span class="o">=</span>C:\Program Files\Java\jdk<span class="m">1</span>.<span class="m">6</span>.<span class="m">0</span>_<span class="m">11</span>
+<span class="lineno">4</span> <span class="k">echo</span> setting PATH
+<span class="lineno">5</span> <span class="k">set</span> <span class="nv">PATH</span><span class="o">=</span>C:\Program Files\Java\jdk<span class="m">1</span>.<span class="m">6</span>.<span class="m">0</span>_<span class="m">11</span>\bin;<span class="nv">%PATH%</span>
+<span class="lineno">6</span> <span class="k">echo</span> Display java version
+<span class="lineno">7</span> java -version</code></pre></div>
+
+<p>Make sure you assign the appropriate JAVA_HOME value in batch files, according to your Java installation. Whenever you want to switch between Java versions, just run the respective batch file and you are done.</p>
+
+<p><em>Note- <strong>JAVA_HOME</strong> and the path to <strong>java</strong> must <strong>always</strong> refer to the exact same version of the JDK. If you mix them up, unpredictable things will happen!</em></p>
+
+    </p>
+  </div>
+</section>
+
+<div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'pranavprakash'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+
+        </div>
+      </div>
+    </div>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-48826636-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  </body>
+</html>
