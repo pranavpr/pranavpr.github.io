@@ -4,7 +4,7 @@
  <title>Pranav Prakash</title>
  <link href="http://pranavprakash.net/atom.xml" rel="self"/>
  <link href="http://pranavprakash.net/"/>
- <updated>2014-09-21T23:42:25+05:30</updated>
+ <updated>2014-09-21T23:45:46+05:30</updated>
  <id>http://pranavprakash.net</id>
  <author>
    <name>Pranav Prakash</name>
@@ -21,13 +21,13 @@
 
 &lt;h2 id=&quot;setup--installation&quot;&gt;Setup / Installation&lt;/h2&gt;
 
-&lt;p&gt;Grunt &lt;code&gt;0.4.x&lt;/code&gt; requires Node.js version &lt;code&gt;&amp;gt;= 0.8.0&lt;/code&gt; and hence make sure you &lt;a href=&quot;http://nodejs.org/download/&quot;&gt;download&lt;/a&gt; and install the same. &lt;/p&gt;
+&lt;p&gt;Grunt &lt;code&gt;0.4.x&lt;/code&gt; requires Node.JS version &lt;code&gt;&amp;gt;= 0.8.0&lt;/code&gt; and hence make sure you &lt;a href=&quot;http://nodejs.org/download/&quot;&gt;download&lt;/a&gt; and install the same. &lt;/p&gt;
 
 &lt;!--more--&gt;
 
 &lt;h3 id=&quot;installing-the-grunt-cli&quot;&gt;Installing the Grunt CLI&lt;/h3&gt;
 
-&lt;p&gt;First we need to install Grunt CLI globally using npm (Node.js package manager) using following command:&lt;/p&gt;
+&lt;p&gt;First we need to install Grunt CLI globally using npm (Node.JS package manager) using following command:&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;lineno&quot;&gt;1&lt;/span&gt; npm install -g grunt-cli&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
