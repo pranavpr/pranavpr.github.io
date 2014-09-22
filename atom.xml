@@ -4,7 +4,7 @@
  <title>Pranav Prakash</title>
  <link href="http://pranavprakash.net/atom.xml" rel="self"/>
  <link href="http://pranavprakash.net/"/>
- <updated>2014-09-23T00:32:34+05:30</updated>
+ <updated>2014-09-23T00:33:57+05:30</updated>
  <id>http://pranavprakash.net</id>
  <author>
    <name>Pranav Prakash</name>
@@ -1169,13 +1169,13 @@ Please feel free to add those applications to this list.&lt;/p&gt;
    <id>http://pranavprakash.net/2009/05/07/how-to-send-message-to-users-logged-on</id>
    <content type="html">&lt;p&gt;One of the cool features of UNIX is that you don’t need to have any software installed to send message to users logged on to that machine. There is a handy command called &lt;code&gt;write&lt;/code&gt; which enables you to do this. Here is the syntax of this command:&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;lineno&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$write&lt;/span&gt; username tty&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;lineno&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;write username tty&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;!--more--&gt;
 
 &lt;p&gt;Now the question arises, how to know the tty of a particular user. The &lt;code&gt;who&lt;/code&gt; command of UNIX comes in to play here. Just shoot &lt;code&gt;who&lt;/code&gt; command on your terminal and see the magic. You will receive the list of all users logged on to that machine with their tty. Below is an example.&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;lineno&quot;&gt; 1&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$who&lt;/span&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;lineno&quot;&gt; 1&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;who
 &lt;span class=&quot;lineno&quot;&gt; 2&lt;/span&gt; root     :0           May  &lt;span class=&quot;m&quot;&gt;7&lt;/span&gt; 03:51
 &lt;span class=&quot;lineno&quot;&gt; 3&lt;/span&gt; root     pts/1        May  &lt;span class=&quot;m&quot;&gt;7&lt;/span&gt; 03:51 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;:0.0&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;lineno&quot;&gt; 4&lt;/span&gt; root     pts/2        May  &lt;span class=&quot;m&quot;&gt;7&lt;/span&gt; 03:51 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;:0.0&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
@@ -1196,7 +1196,7 @@ Please feel free to add those applications to this list.&lt;/p&gt;
 
 &lt;p&gt;If you want to send message to user8, issue following command at your terminal:&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;lineno&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$write&lt;/span&gt; user8 pts/13&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;lineno&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;write user8 pts/13&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Now write any message you want. To end the message, press &lt;code&gt;Ctrl+D&lt;/code&gt;. Your message would be sent.&lt;/p&gt;
 </content>
