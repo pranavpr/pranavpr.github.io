@@ -81,13 +81,13 @@
 
 <p>Go to start menu and in search or run box type regedit and press enter to open registry editor. Now browse to following registry key:</p>
 
-<div class="highlight"><pre><code class="language-bat" data-lang="bat"><span class="lineno">1</span> HKEY_CLASSES_ROOT\*\shell</code></pre></div>
+<p><code>HKEY_CLASSES_ROOT\*\shell</code></p>
 
 <div style="TEXT-ALIGN: center"><img src="/assets/img/blog/openwithnp.png" /></div>
 
 <p>Right-click on “shell” and choose to create a new key “Open with Notepad”. Create a new key below that one called “command”. Double-click on the (Default) value in the right-hand pane and enter in the following:</p>
 
-<div class="highlight"><pre><code class="language-bat" data-lang="bat"><span class="lineno">1</span> notepad.exe <span class="nv">%1</span></code></pre></div>
+<p><code>notepad.exe %1</code></p>
 
 <p>The change will take place instantaneously and you could see Open with Notepad option in right click context menu.</p>
 
@@ -97,7 +97,7 @@
 
     </p>
   </div>
-  <meta itemprop="wordCount" content="208">
+  <meta itemprop="wordCount" content="192">
   <meta itemprop="author" content="Pranav Prakash">
 </article>
 

@@ -4,7 +4,7 @@
  <title>Pranav Prakash</title>
  <link href="http://pranavprakash.net/atom.xml" rel="self"/>
  <link href="http://pranavprakash.net/"/>
- <updated>2014-09-23T00:06:29+05:30</updated>
+ <updated>2014-09-23T00:25:29+05:30</updated>
  <id>http://pranavprakash.net</id>
  <author>
    <name>Pranav Prakash</name>
@@ -129,7 +129,7 @@
    <link href="http://pranavprakash.net//2014/08/14/toggle-oracle-home-on-windows/"/>
    <updated>2014-08-14T17:13:38+05:30</updated>
    <id>http://pranavprakash.net/2014/08/14/toggle-oracle-home-on-windows</id>
-   <content type="html">&lt;p&gt;I work in an environment where I constantly need to switch between 32-bit and 64-bit version of Oracle client. Manually editing the environment variable ORACLE_HOME becomes really annoying after some time. Hence I created a small batch file to toggle the ORACLE_HOME:&lt;/p&gt;
+   <content type="html">&lt;p&gt;I work in an environment where I constantly need to switch between 32-bit and 64-bit version of Oracle client. Manually editing the environment variable &lt;code&gt;ORACLE_HOME&lt;/code&gt; becomes really annoying after some time. Hence I created a small batch file to toggle the &lt;code&gt;ORACLE_HOME&lt;/code&gt;:&lt;/p&gt;
 
 &lt;!--more--&gt;
 
@@ -170,7 +170,7 @@
 
 &lt;!--more--&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c&quot; data-lang=&quot;c&quot;&gt;&lt;span class=&quot;lineno&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Microsoft&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SQL&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Server&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Native&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Client&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;11.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SQL&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Server&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Incorrect&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;syntax&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;near&lt;/span&gt; &lt;span class=&quot;sc&quot;&gt;&amp;#39;A&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;[Microsoft][SQL Server Native Client 11.0][SQL Server]Incorrect syntax near 'A'.&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;I became perplexed but little Googling told me that syntax for using table alias for UPDATE and DELETE in MSS is different. The above SQL statement needs to be modified as below:&lt;/p&gt;
 
@@ -194,7 +194,7 @@
    <id>http://pranavprakash.net/2014/03/21/get-url-parameters-using-javascript</id>
    <content type="html">&lt;p&gt;Suppose you want to get the parameters of an URL like below in JavaScript&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;lineno&quot;&gt;1&lt;/span&gt; http://example.com?param1=value1&lt;span class=&quot;err&quot;&gt;&amp;amp;&lt;/span&gt;param2=value2&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;http://example.com?param1=value1&amp;amp;param2=value2&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;Below JavaScript code might come handy in this case&lt;/p&gt;
 
@@ -1284,13 +1284,13 @@ Please feel free to add those applications to this list.&lt;/p&gt;
 
 &lt;p&gt;Go to start menu and in search or run box type regedit and press enter to open registry editor. Now browse to following registry key:&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bat&quot; data-lang=&quot;bat&quot;&gt;&lt;span class=&quot;lineno&quot;&gt;1&lt;/span&gt; HKEY_CLASSES_ROOT\*\shell&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;HKEY_CLASSES_ROOT\*\shell&lt;/code&gt;&lt;/p&gt;
 
 &lt;div style=&quot;TEXT-ALIGN: center&quot;&gt;&lt;img src=&quot;/assets/img/blog/openwithnp.png&quot; /&gt;&lt;/div&gt;
 
 &lt;p&gt;Right-click on “shell” and choose to create a new key “Open with Notepad”. Create a new key below that one called “command”. Double-click on the (Default) value in the right-hand pane and enter in the following:&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bat&quot; data-lang=&quot;bat&quot;&gt;&lt;span class=&quot;lineno&quot;&gt;1&lt;/span&gt; notepad.exe &lt;span class=&quot;nv&quot;&gt;%1&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;notepad.exe %1&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;The change will take place instantaneously and you could see Open with Notepad option in right click context menu.&lt;/p&gt;
 
@@ -1305,7 +1305,7 @@ Please feel free to add those applications to this list.&lt;/p&gt;
    <link href="http://pranavprakash.net//2008/12/07/being-java-developer-i-always-compile/"/>
    <updated>2008-12-07T00:00:00+05:30</updated>
    <id>http://pranavprakash.net/2008/12/07/being-java-developer-i-always-compile</id>
-   <content type="html">&lt;p&gt;Being a Java developer, I always compile and test my code on different Java versions. But switching between them is a huge problem. So finally I found an easy method to do this. You have to create following batch files and place them in directory you open your command line in or in SYSTEM PATH. You can use you favorite text editor to create these files.&lt;/p&gt;
+   <content type="html">&lt;p&gt;Being a Java developer, I always compile and test my code on different Java versions. But switching between them is a huge problem. So finally I found an easy method to do this. You have to create following batch files and place them in directory you open your command line in or in &lt;code&gt;SYSTEM PATH&lt;/code&gt;. You can use you favorite text editor to create these files.&lt;/p&gt;
 
 &lt;!--more--&gt;
 
@@ -1339,9 +1339,9 @@ Please feel free to add those applications to this list.&lt;/p&gt;
 &lt;span class=&quot;lineno&quot;&gt;6&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;echo&lt;/span&gt; Display java version
 &lt;span class=&quot;lineno&quot;&gt;7&lt;/span&gt; java -version&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;Make sure you assign the appropriate JAVA_HOME value in batch files, according to your Java installation. Whenever you want to switch between Java versions, just run the respective batch file and you are done.&lt;/p&gt;
+&lt;p&gt;Make sure you assign the appropriate &lt;code&gt;JAVA_HOME&lt;/code&gt; value in batch files, according to your Java installation. Whenever you want to switch between Java versions, just run the respective batch file and you are done.&lt;/p&gt;
 
-&lt;p&gt;&lt;em&gt;Note- &lt;strong&gt;JAVA_HOME&lt;/strong&gt; and the path to &lt;strong&gt;java&lt;/strong&gt; must &lt;strong&gt;always&lt;/strong&gt; refer to the exact same version of the JDK. If you mix them up, unpredictable things will happen!&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Note- &lt;strong&gt;&lt;code&gt;JAVA_HOME&lt;/code&gt;&lt;/strong&gt; and the path to &lt;strong&gt;java&lt;/strong&gt; must &lt;strong&gt;always&lt;/strong&gt; refer to the exact same version of the JDK. If you mix them up, unpredictable things will happen!&lt;/em&gt;&lt;/p&gt;
 </content>
  </entry>
  
