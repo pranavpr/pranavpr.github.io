@@ -90,7 +90,7 @@
 
 <p><code>[Microsoft][SQL Server Native Client 11.0][SQL Server]Incorrect syntax near 'A'.</code></p>
 
-<p>I became perplexed but little Googling told me that syntax for using table alias for UPDATE and DELETE in MSS is different. The above SQL statement needs to be modified as below:</p>
+<p>I became perplexed but little Googling told me that syntax for using table alias for <code>UPDATE</code> and <code>DELETE</code> in MSS is different. The above SQL statement needs to be modified as below:</p>
 
 <div class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="lineno">1</span> <span class="k">DELETE</span> <span class="n">A</span>
 <span class="lineno">2</span> <span class="k">FROM</span> <span class="n">FIRST_TABLE</span> <span class="n">A</span>
@@ -101,7 +101,7 @@
 <span class="lineno">7</span>      <span class="k">WHERE</span> <span class="n">B</span><span class="p">.</span><span class="n">KEY1</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">KEY1</span>
 <span class="lineno">8</span>        <span class="k">AND</span> <span class="n">B</span><span class="p">.</span><span class="n">KEY2</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">KEY2</span><span class="p">);</span></code></pre></div>
 
-<p>Observe that the table alias was specified just after DELETE keyword. Similarly, for UPDATE statement, table alias should be specified jut after UPDATE keyword.</p>
+<p>Observe that the table alias was specified just after <code>DELETE</code> keyword. Similarly, for <code>UPDATE</code> statement, table alias should be specified jut after <code>UPDATE</code> keyword.</p>
 
     </p>
   </div>
