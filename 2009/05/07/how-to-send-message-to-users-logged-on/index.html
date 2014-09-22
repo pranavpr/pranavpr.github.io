@@ -73,13 +73,13 @@
   </header>
   <div class="post-description" itemprop="articleBody">
     <p>
-    <p>One of the cool features of UNIX is that you don’t need to have any software installed to send message to users logged on to that machine. There is a handy command called “write” which enables you to do this. Here is the syntax of this command:</p>
+    <p>One of the cool features of UNIX is that you don’t need to have any software installed to send message to users logged on to that machine. There is a handy command called <code>write</code> which enables you to do this. Here is the syntax of this command:</p>
 
 <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="lineno">1</span> <span class="nv">$write</span> username tty</code></pre></div>
 
 <!--more-->
 
-<p>Now the question arises, how to know the tty of a particular user. The “who” command of UNIX comes in to play here. Just shoot “who” command on your terminal and see the magic. You will receive the list of all users logged on to that machine with their tty. Below is an example.</p>
+<p>Now the question arises, how to know the tty of a particular user. The <code>who</code> command of UNIX comes in to play here. Just shoot <code>who</code> command on your terminal and see the magic. You will receive the list of all users logged on to that machine with their tty. Below is an example.</p>
 
 <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="lineno"> 1</span> <span class="nv">$who</span>
 <span class="lineno"> 2</span> root     :0           May  <span class="m">7</span> 03:51
@@ -104,7 +104,7 @@
 
 <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="lineno">1</span> <span class="nv">$write</span> user8 pts/13</code></pre></div>
 
-<p>Now write any message you want. To end the message, press Ctrl+D. Your message would be sent.</p>
+<p>Now write any message you want. To end the message, press <code>Ctrl+D</code>. Your message would be sent.</p>
 
     </p>
   </div>
