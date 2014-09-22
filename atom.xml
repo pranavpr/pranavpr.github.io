@@ -4,7 +4,7 @@
  <title>Pranav Prakash</title>
  <link href="http://pranavprakash.net/atom.xml" rel="self"/>
  <link href="http://pranavprakash.net/"/>
- <updated>2014-09-23T00:25:29+05:30</updated>
+ <updated>2014-09-23T00:29:52+05:30</updated>
  <id>http://pranavprakash.net</id>
  <author>
    <name>Pranav Prakash</name>
@@ -17,7 +17,7 @@
    <link href="http://pranavprakash.net//2014/09/21/automate-git-workflow-with-grunt/"/>
    <updated>2014-09-21T20:54:04+05:30</updated>
    <id>http://pranavprakash.net/2014/09/21/automate-git-workflow-with-grunt</id>
-   <content type="html">&lt;p&gt;&lt;a href=&quot;http://gruntjs.com/&quot;&gt;Grunt&lt;/a&gt; is a task runner powered by Node.JS. It can be used to automate day to day mundane tasks. Being a Node.JS module, you can define tasks in old good JavaScript. Grunt has plenty of plugins available for different type of tasks. In this post I’ll walk you through the process of automating GIT work-flow using &lt;a href=&quot;https://github.com/rubenv/grunt-git&quot;&gt;&lt;code&gt;grunt-git&lt;/code&gt;&lt;/a&gt;. So let’s get started.&lt;/p&gt;
+   <content type="html">&lt;p&gt;&lt;a href=&quot;http://gruntjs.com/&quot;&gt;Grunt&lt;/a&gt; is a task runner powered by Node.JS. It can be used to automate day to day mundane tasks. Being a Node.JS module, you can define tasks in good old JavaScript. Grunt has plenty of plugins available for different type of tasks. In this post I’ll walk you through the process of automating GIT work-flow using &lt;a href=&quot;https://github.com/rubenv/grunt-git&quot;&gt;&lt;code&gt;grunt-git&lt;/code&gt;&lt;/a&gt;. So let’s get started.&lt;/p&gt;
 
 &lt;h2 id=&quot;setup--installation&quot;&gt;Setup / Installation&lt;/h2&gt;
 
@@ -1213,17 +1213,17 @@ Please feel free to add those applications to this list.&lt;/p&gt;
 
 &lt;h2 id=&quot;good-old-top-command&quot;&gt;Good old “top” command&lt;/h2&gt;
 
-&lt;p&gt;The top command provides dynamic view of CPU utilization. It displays system information as well as list of tasks currently managed by kernel. Is also displays uptime, average load,  physcal and swap memory utilization. Syntax of top command is as follows:&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;top&lt;/code&gt; command provides dynamic view of CPU utilization. It displays system information as well as list of tasks currently managed by kernel. Is also displays uptime, average load,  physcal and swap memory utilization. Syntax of &lt;code&gt;top&lt;/code&gt; command is as follows:&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;top&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;div style=&quot;TEXT-ALIGN: center&quot;&gt;&lt;img src=&quot;http://1.bp.blogspot.com/__GfZLYkxICU/SZ1EdKuhqvI/AAAAAAAAKaQ/IOyFqTaYkPU/s400/top.jpeg&quot; /&gt;&lt;/div&gt;
 
-&lt;p&gt;To quit “top”, you have to press Q key of your keyboard.&lt;/p&gt;
+&lt;p&gt;To quit &lt;code&gt;top&lt;/code&gt;, you have to press &lt;code&gt;Q&lt;/code&gt; key of your keyboard.&lt;/p&gt;
 
 &lt;h2 id=&quot;using-mpstat-command&quot;&gt;Using “mpstat” command&lt;/h2&gt;
 
-&lt;p&gt;To use this command, you have to install a package called &lt;strong&gt;sysstat&lt;/strong&gt;. For Ubuntu or Debian systems, you can install this package using apt-get.&lt;/p&gt;
+&lt;p&gt;To use this command, you have to install a package called &lt;code&gt;sysstat&lt;/code&gt;. For Ubuntu or Debian systems, you can install this package using &lt;code&gt;apt-get&lt;/code&gt;.&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;lineno&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;apt-get install sysstat&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
@@ -1241,7 +1241,7 @@ Please feel free to add those applications to this list.&lt;/p&gt;
 
 &lt;h2 id=&quot;the-sar-command&quot;&gt;The “sar” command&lt;/h2&gt;
 
-&lt;p&gt;To display CPU utilization using “sar”, use following command:&lt;/p&gt;
+&lt;p&gt;To display CPU utilization using &lt;code&gt;sar&lt;/code&gt;, use following command:&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;lineno&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;sar -u &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt; 5&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
@@ -1251,7 +1251,7 @@ Please feel free to add those applications to this list.&lt;/p&gt;
 
 &lt;h2 id=&quot;the-iostat-command&quot;&gt;The “iostat” command&lt;/h2&gt;
 
-&lt;p&gt;The iostat command reports Central Processing Unit (CPU) statistics and input/output statistics for devices and partitions. It can be use to find out your system’s average CPU utilization since the last reboot.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;iostat&lt;/code&gt; command reports Central Processing Unit (CPU) statistics and input/output statistics for devices and partitions. It can be use to find out your system’s average CPU utilization since the last reboot.&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;lineno&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;iostat&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
