@@ -4,7 +4,7 @@
  <title>Pranav Prakash</title>
  <link href="http://pranavprakash.net/atom.xml" rel="self"/>
  <link href="http://pranavprakash.net/"/>
- <updated>2014-09-27T11:10:47+05:30</updated>
+ <updated>2014-09-27T11:16:23+05:30</updated>
  <id>http://pranavprakash.net</id>
  <author>
    <name>Pranav Prakash</name>
@@ -17,7 +17,7 @@
    <link href="http://pranavprakash.net//2014/09/27/using-libcurl-with-ssl/"/>
    <updated>2014-09-27T01:05:36+05:30</updated>
    <id>http://pranavprakash.net/2014/09/27/using-libcurl-with-ssl</id>
-   <content type="html">&lt;p&gt;LibCurl supports URL transfer over &lt;code&gt;HTTPS&lt;/code&gt; protocol. In this post we’ll use LibCurl to download a webpage over &lt;code&gt;HTTPS&lt;/code&gt; protocol. To get started, make sure that you have setup your system as outlined in one of my previous &lt;a href=&quot;/2014/03/20/getting-started-with-libcurl/&quot;&gt;posts&lt;/a&gt;.&lt;/p&gt;
+   <content type="html">&lt;p&gt;LibCurl supports URL transfer over &lt;code&gt;HTTPS&lt;/code&gt; protocol. In this post we’ll use LibCurl to download a webpage over &lt;code&gt;HTTPS&lt;/code&gt; protocol. To get started, make sure that you have setup your system as outlined in one of my previous &lt;a href=&quot;/2014/03/20/getting-started-with-libcurl/&quot;&gt;posts&lt;/a&gt;. Note that LibCurl comes with &lt;code&gt;SSL&lt;/code&gt; libraries included and hence you need not to install any extra packages.&lt;/p&gt;
 
 &lt;h2 id=&quot;getting-started&quot;&gt;Getting started&lt;/h2&gt;
 
