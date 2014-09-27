@@ -30,7 +30,7 @@
     </url>
     <url>
         <loc>http://pranavprakash.net/2014/03/20/getting-started-with-libcurl/</loc>
-        <lastmod>2014-09-24T22:36:54+05:30</lastmod>
+        <lastmod>2014-09-27T01:13:10+05:30</lastmod>
     </url>
     <url>
         <loc>http://pranavprakash.net/2014/03/21/get-url-parameters-using-javascript/</loc>
@@ -51,6 +51,10 @@
         <lastmod>2014-09-24T22:36:54+05:30</lastmod>
     </url>
     <url>
+        <loc>http://pranavprakash.net/2014/09/27/using-libcurl-with-ssl/</loc>
+        <lastmod>2014-09-27T11:10:34+05:30</lastmod>
+    </url>
+    <url>
         <loc>http://pranavprakash.net/404.html</loc>
         <lastmod>2014-09-24T22:36:54+05:30</lastmod>
     </url>
@@ -60,6 +64,6 @@
     </url>
     <url>
         <loc>http://pranavprakash.net/</loc>
-        <lastmod>2014-09-24T22:36:54+05:30</lastmod>
+        <lastmod>2014-09-27T11:10:34+05:30</lastmod>
     </url>
 </urlset>
