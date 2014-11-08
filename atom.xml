@@ -4,7 +4,7 @@
  <title>Pranav Prakash</title>
  <link href="http://pranavprakash.net/atom.xml" rel="self"/>
  <link href="http://pranavprakash.net/"/>
- <updated>2014-11-08T22:50:10+05:30</updated>
+ <updated>2014-11-08T22:51:55+05:30</updated>
  <id>http://pranavprakash.net</id>
  <author>
    <name>Pranav Prakash</name>
@@ -34,7 +34,7 @@
     &lt;p&gt;The free database tier on Heroku allows only 10,000 rows to be stored. There is no such limitation in OpenShift.&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;Heroku lacks persistent storage, it’s file system is read only and hence it doesn’t allow file upload from application, &lt;em&gt;e.g.&lt;/em&gt; user avatars. OpenShift provides 1GB of persistent storage with free tier which can be used to store the assets.&lt;/p&gt;
+    &lt;p&gt;Heroku lacks persistent storage, its file system is read only and hence it doesn’t allow file upload from application, &lt;em&gt;e.g.&lt;/em&gt; user avatars. OpenShift provides 1GB of persistent storage with free tier which can be used to store the assets.&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;OpenShift provides SSH access to control the application which is lacking in Heroku.&lt;/p&gt;
