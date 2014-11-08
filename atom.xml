@@ -4,7 +4,7 @@
  <title>Pranav Prakash</title>
  <link href="http://pranavprakash.net/atom.xml" rel="self"/>
  <link href="http://pranavprakash.net/"/>
- <updated>2014-11-08T22:51:55+05:30</updated>
+ <updated>2014-11-08T22:54:45+05:30</updated>
  <id>http://pranavprakash.net</id>
  <author>
    <name>Pranav Prakash</name>
@@ -78,7 +78,7 @@
 
 &lt;h3 id=&quot;modify-gemfile-and-gitignore&quot;&gt;Modify Gemfile and .gitignore&lt;/h3&gt;
 
-&lt;p&gt;OpenShift uses a old version of bundler and hence if ruby version is specified in Gemfile, as shown below, it breaks.&lt;/p&gt;
+&lt;p&gt;OpenShift uses an old version of bundler and hence if ruby version is specified in Gemfile, as shown below, it breaks.&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;lineno&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;https://rubygems.org&amp;#39;&lt;/span&gt;
 &lt;span class=&quot;lineno&quot;&gt;2&lt;/span&gt; 
