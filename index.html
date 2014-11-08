@@ -67,17 +67,58 @@
     <article class="post" itemscope itemtype="http://schema.org/BlogPosting" >
       <header class="post-header">
         <h2 itemprop="name headline" class="post-title">
-        <a href="/2014/10/25/navigation-menu-in-ruby-on-rails/" itemprop="url">
-          Navigation menu in Ruby on Rails
+        <a href="/2014/11/08/migrating-ruby-on-rails-app-from-heroku-to-openshift/" itemprop="url">
+          Migrating Ruby on Rails app from Heroku to OpenShift
         </a>
         </h2>
         <p class="post-meta">
-        <i class="fa fa-clock-o">&nbsp;</i><a itemprop="datePublished" content="25 Oct 2014" href="#" class="post-author">25 Oct 2014</a>&nbsp;<i class="fa fa-tags"></i>
-         <a itemprop="keywords" href="/tags/ruby-on-rails" class="post-category post-category-r">RUBY ON RAILS</a>   
+        <i class="fa fa-clock-o">&nbsp;</i><a itemprop="datePublished" content="08 Nov 2014" href="#" class="post-author">08 Nov 2014</a>&nbsp;<i class="fa fa-tags"></i>
+         <a itemprop="keywords" href="/tags/ruby-on-rails" class="post-category post-category-r">RUBY ON RAILS</a>    <a itemprop="keywords" href="/tags/heroku" class="post-category post-category-h">HEROKU</a>    <a itemprop="keywords" href="/tags/openshift" class="post-category post-category-o">OPENSHIFT</a>   
         </p>
       </header>
       <div itemprop="articleBody" class="post-description">
         <p>
+          
+            <p><a href="https://www.openshift.com">OpenShift</a> is Red Hat’s Platform-as-a-Service (PaaS) that allows developers to quickly develop, host, and scale applications in a cloud environment similar to <a href="http://heroku.com">Heroku</a>. OpenShift also supports deploying of application with simple git push just like Heroku. OpenShift supports a variety of technologies through use of cartridges, including Java (Wildfly, JBossEAP, Tomcat), PHP, Node.js, Python, Perl, MySQL, PostgreSQL, MongoDB, Jenkins, Cron, and JBoss xPaaS Services (Fuse, BPM Suite, BRMS, Data Virtualization, Aerogear, and more).</p>
+
+<h2 id="why-openshift">Why OpenShift?</h2>
+
+<p>The free version of OpenShift, OpenShift Online, has many advantages over free tier of Heroku:</p>
+
+<ul>
+  <li>If application is not accessed for an hour on Heroku, web dyno goes to sleep mode making the next request take up to 30 seconds to serve leading users to abandon the site visit. OpenShift’s idling time is 24 hours and, as of my personal experience, it takes around 10 seconds for next request to serve.</li>
+</ul>
+
+<a href="/2014/11/08/migrating-ruby-on-rails-app-from-heroku-to-openshift/">Continue Reading »</a>
+          
+        </p>
+      </div>
+      <meta itemprop="wordCount" content="1175">
+      <meta itemprop="author" content="Pranav Prakash">
+    </article>
+  
+  <h1 class="content-subhead">Recent Posts</h1>
+  
+  
+    
+    
+  
+
+    
+      <article class="post" itemscope itemtype="http://schema.org/BlogPosting" >
+        <header class="post-header">
+          <h2 itemprop="name headline" class="post-title">
+          <a href="/2014/10/25/navigation-menu-in-ruby-on-rails/" itemprop="url">
+            Navigation menu in Ruby on Rails
+          </a>
+          </h2>
+          <p class="post-meta">
+          <i class="fa fa-clock-o">&nbsp;</i><a itemprop="datePublished" content="25 Oct 2014" href="#" class="post-author">25 Oct 2014</a>&nbsp;<i class="fa fa-tags"></i>
+           <a itemprop="keywords" href="/tags/ruby-on-rails" class="post-category post-category-r">RUBY ON RAILS</a>   
+          </p>
+        </header>
+        <div itemprop="articleBody" class="post-description">
+          <p>
           
             <p>Recently while working on a Rails project, I came across following markup for navigation:</p>
 
@@ -108,12 +149,6 @@
       <meta itemprop="wordCount" content="482">
       <meta itemprop="author" content="Pranav Prakash">
     </article>
-  
-  <h1 class="content-subhead">Recent Posts</h1>
-  
-  
-    
-    
   
 
     
@@ -205,50 +240,12 @@
     </article>
   
 
-    
-      <article class="post" itemscope itemtype="http://schema.org/BlogPosting" >
-        <header class="post-header">
-          <h2 itemprop="name headline" class="post-title">
-          <a href="/2014/07/25/update-and-delete-with-table-alias-in-microsoft-sql-server/" itemprop="url">
-            UPDATE and DELETE with table alias in Microsoft SQL Server
-          </a>
-          </h2>
-          <p class="post-meta">
-          <i class="fa fa-clock-o">&nbsp;</i><a itemprop="datePublished" content="25 Jul 2014" href="#" class="post-author">25 Jul 2014</a>&nbsp;<i class="fa fa-tags"></i>
-           <a itemprop="keywords" href="/tags/mss" class="post-category post-category-m">MSS</a>    <a itemprop="keywords" href="/tags/sql" class="post-category post-category-s">SQL</a>   
-          </p>
-        </header>
-        <div itemprop="articleBody" class="post-description">
-          <p>
-          
-            <p>Last week I came across following SQL statement:</p>
-
-<div class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="lineno">1</span> <span class="k">DELETE</span>
-<span class="lineno">2</span> <span class="k">FROM</span> <span class="n">FIRST_TABLE</span> <span class="n">A</span>
-<span class="lineno">3</span> <span class="k">WHERE</span> <span class="n">A</span><span class="p">.</span><span class="n">KEY1</span> <span class="o">=</span> <span class="s1">&#39;1&#39;</span>
-<span class="lineno">4</span>   <span class="k">AND</span> <span class="k">EXISTS</span>
-<span class="lineno">5</span>     <span class="p">(</span><span class="k">SELECT</span> <span class="s1">&#39;X&#39;</span>
-<span class="lineno">6</span>      <span class="k">FROM</span> <span class="n">SECOND_TABLE</span> <span class="n">B</span>
-<span class="lineno">7</span>      <span class="k">WHERE</span> <span class="n">B</span><span class="p">.</span><span class="n">KEY1</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">KEY1</span>
-<span class="lineno">8</span>        <span class="k">AND</span> <span class="n">B</span><span class="p">.</span><span class="n">KEY2</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">KEY2</span><span class="p">);</span></code></pre></div>
-
-<p>This SQL statement was running fine in Oracle but was failing in Microsoft SQL Server (MSS) with followiing error:</p>
-
-<a href="/2014/07/25/update-and-delete-with-table-alias-in-microsoft-sql-server/">Continue Reading »</a>
-          
-        </p>
-      </div>
-      <meta itemprop="wordCount" content="249">
-      <meta itemprop="author" content="Pranav Prakash">
-    </article>
-  
-
 
 <div class="footer">
 <div class="pure-menu pure-menu-horizontal pure-menu-open">
   <ul>
     
-      <li><a href="/page2">« Older</a></li>
+      <li><a href="/page/2">« Older</a></li>
     
     
       <li>Newer »</li>

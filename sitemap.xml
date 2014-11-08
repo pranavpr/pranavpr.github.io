@@ -59,6 +59,12 @@
         <lastmod>2014-10-25T18:25:11+05:30</lastmod>
     </url>
     <url>
+        <loc>
+            http://pranavprakash.net/2014/11/08/migrating-ruby-on-rails-app-from-heroku-to-openshift/
+        </loc>
+        <lastmod>2014-11-08T22:49:24+05:30</lastmod>
+    </url>
+    <url>
         <loc>http://pranavprakash.net/404.html</loc>
         <lastmod>2014-09-24T22:36:54+05:30</lastmod>
     </url>
@@ -68,6 +74,6 @@
     </url>
     <url>
         <loc>http://pranavprakash.net/</loc>
-        <lastmod>2014-10-25T18:25:11+05:30</lastmod>
+        <lastmod>2014-11-08T22:49:24+05:30</lastmod>
     </url>
 </urlset>

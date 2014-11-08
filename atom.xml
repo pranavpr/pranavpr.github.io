@@ -4,13 +4,176 @@
  <title>Pranav Prakash</title>
  <link href="http://pranavprakash.net/atom.xml" rel="self"/>
  <link href="http://pranavprakash.net/"/>
- <updated>2014-10-25T18:37:20+05:30</updated>
+ <updated>2014-11-08T22:50:10+05:30</updated>
  <id>http://pranavprakash.net</id>
  <author>
    <name>Pranav Prakash</name>
    <email>pranav@pranavprakash.net</email>
  </author>
 
+ 
+ <entry>
+   <title>Migrating Ruby on Rails app from Heroku to OpenShift</title>
+   <link href="http://pranavprakash.net//2014/11/08/migrating-ruby-on-rails-app-from-heroku-to-openshift/"/>
+   <updated>2014-11-08T13:31:31+05:30</updated>
+   <id>http://pranavprakash.net/2014/11/08/migrating-ruby-on-rails-app-from-heroku-to-openshift</id>
+   <content type="html">&lt;p&gt;&lt;a href=&quot;https://www.openshift.com&quot;&gt;OpenShift&lt;/a&gt; is Red Hat’s Platform-as-a-Service (PaaS) that allows developers to quickly develop, host, and scale applications in a cloud environment similar to &lt;a href=&quot;http://heroku.com&quot;&gt;Heroku&lt;/a&gt;. OpenShift also supports deploying of application with simple git push just like Heroku. OpenShift supports a variety of technologies through use of cartridges, including Java (Wildfly, JBossEAP, Tomcat), PHP, Node.js, Python, Perl, MySQL, PostgreSQL, MongoDB, Jenkins, Cron, and JBoss xPaaS Services (Fuse, BPM Suite, BRMS, Data Virtualization, Aerogear, and more).&lt;/p&gt;
+
+&lt;h2 id=&quot;why-openshift&quot;&gt;Why OpenShift?&lt;/h2&gt;
+
+&lt;p&gt;The free version of OpenShift, OpenShift Online, has many advantages over free tier of Heroku:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;If application is not accessed for an hour on Heroku, web dyno goes to sleep mode making the next request take up to 30 seconds to serve leading users to abandon the site visit. OpenShift’s idling time is 24 hours and, as of my personal experience, it takes around 10 seconds for next request to serve.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!--more--&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;The free database tier on Heroku allows only 10,000 rows to be stored. There is no such limitation in OpenShift.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Heroku lacks persistent storage, it’s file system is read only and hence it doesn’t allow file upload from application, &lt;em&gt;e.g.&lt;/em&gt; user avatars. OpenShift provides 1GB of persistent storage with free tier which can be used to store the assets.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;OpenShift provides SSH access to control the application which is lacking in Heroku.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;OpenShift also provides port-forwarding feature which lets one connect to the database using locally installed client.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;OpenShift provides support for deployment hooks which can be used for running custom scripts before or after deployment.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;getting-started&quot;&gt;Getting Started&lt;/h2&gt;
+
+&lt;p&gt;Sign up for a free account of OpenShift at &lt;code&gt;https://www.openshift.com&lt;/code&gt; and set up the &lt;code&gt;rhc&lt;/code&gt; client tool as documented &lt;a href=&quot;https://developers.openshift.com/en/getting-started-client-tools.html&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;create-the-ruby-application&quot;&gt;Create the Ruby Application&lt;/h3&gt;
+
+&lt;p&gt;Create the Ruby application by logging in to web console or via &lt;code&gt;rhc&lt;/code&gt; client tool by issuing following command:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;lineno&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;rhc app create myapp ruby-2.0 postgresql-9.2&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Here myapp is the name of the application, and ruby-2.0 and postgresql-9.2 are the cartridges. Once the application is created, it will output the git repository path. Take a note of this path as this would be used to push the code to OpenShift.&lt;/p&gt;
+
+&lt;h3 id=&quot;setup-git-remote&quot;&gt;Setup git remote&lt;/h3&gt;
+
+&lt;p&gt;Navigate to the existing rails application directory and add the OpenShift remote as below:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;lineno&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git remote add openshift ssh://...@myapp-mynamespace.rhcloud.com/~/git/myapp.git/&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Now pull the remote changes by issuing following command:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;lineno&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git pull openshift master&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;It will result a conflict in &lt;code&gt;config.ru&lt;/code&gt;. Just abandon the content created by OpenShift. Below is the default &lt;code&gt;config.ru&lt;/code&gt; file for the reference which is generated by rails:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;lineno&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# This file is used by Rack-based servers to start the application.&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;2&lt;/span&gt; 
+&lt;span class=&quot;lineno&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;File&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;expand_path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;../config/environment&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;  &lt;span class=&quot;bp&quot;&gt;__FILE__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;4&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;run&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Rails&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;application&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;modify-gemfile-and-gitignore&quot;&gt;Modify Gemfile and .gitignore&lt;/h3&gt;
+
+&lt;p&gt;OpenShift uses a old version of bundler and hence if ruby version is specified in Gemfile, as shown below, it breaks.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;lineno&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;https://rubygems.org&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;2&lt;/span&gt; 
+&lt;span class=&quot;lineno&quot;&gt;3&lt;/span&gt; ruby &lt;span class=&quot;s1&quot;&gt;&amp;#39;2.0.0&amp;#39;&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# Causes problem in OpenShift&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;4&lt;/span&gt;  
+&lt;span class=&quot;lineno&quot;&gt;5&lt;/span&gt; gem &lt;span class=&quot;s1&quot;&gt;&amp;#39;rails&amp;#39;&lt;/span&gt;, &lt;span class=&quot;s1&quot;&gt;&amp;#39;4.0.8&amp;#39;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Also, as recommended by OpenShift, using their Ruby mirror &lt;code&gt;http://mirror.ops.rhcloud.com/mirror/ruby/&lt;/code&gt; can quicken the installation of gems.&lt;/p&gt;
+
+&lt;p&gt;And at last, if application was deployed on Heroku, it’s high chance that &lt;code&gt;database.yml&lt;/code&gt; was added to &lt;code&gt;.gitignore&lt;/code&gt; file as Heroku creates it’s own database.yml file during deployment. If it’s the case, remove the &lt;code&gt;database.yml&lt;/code&gt; line from the &lt;code&gt;.gitignore&lt;/code&gt; file.&lt;/p&gt;
+
+&lt;h3 id=&quot;database-configuration&quot;&gt;Database configuration&lt;/h3&gt;
+
+&lt;p&gt;Add following section in &lt;code&gt;database.yml&lt;/code&gt; file:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;&lt;span class=&quot;lineno&quot;&gt;1&lt;/span&gt; production:
+&lt;span class=&quot;lineno&quot;&gt;2&lt;/span&gt;   adapter: postgresql
+&lt;span class=&quot;lineno&quot;&gt;3&lt;/span&gt;   encoding: unicode
+&lt;span class=&quot;lineno&quot;&gt;4&lt;/span&gt;   pool: 5
+&lt;span class=&quot;lineno&quot;&gt;5&lt;/span&gt;   database: &amp;lt;%=ENV[&amp;#39;OPENSHIFT_APP_NAME&amp;#39;]%&amp;gt;
+&lt;span class=&quot;lineno&quot;&gt;6&lt;/span&gt;   host: &amp;lt;%=ENV[&amp;#39;$OPENSHIFT_POSTGRESQL_DB_HOST&amp;#39;]%&amp;gt;
+&lt;span class=&quot;lineno&quot;&gt;7&lt;/span&gt;   port: &amp;lt;%=ENV[&amp;#39;$OPENSHIFT_POSTGRESQL_DB_PORT&amp;#39;]%&amp;gt;
+&lt;span class=&quot;lineno&quot;&gt;8&lt;/span&gt;   username: &amp;lt;%=ENV[&amp;#39;OPENSHIFT_POSTGRESQL_DB_USERNAME&amp;#39;]%&amp;gt;
+&lt;span class=&quot;lineno&quot;&gt;9&lt;/span&gt;   password: &amp;lt;%=ENV[&amp;#39;OPENSHIFT_POSTGRESQL_DB_PASSWORD&amp;#39;]%&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;deployment-hook&quot;&gt;Deployment hook&lt;/h3&gt;
+
+&lt;p&gt;To run the database migrations, create a deployment hook by adding following lines to &lt;code&gt;.openshift/action_hooks/deploy&lt;/code&gt; file:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;lineno&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;2&lt;/span&gt; 
+&lt;span class=&quot;lineno&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;pushd&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;OPENSHIFT_REPO_DIR&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt; &amp;gt; /dev/null
+&lt;span class=&quot;lineno&quot;&gt;4&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Running migrations&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;5&lt;/span&gt; bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;rake db:migrate &lt;span class=&quot;nv&quot;&gt;RAILS_ENV&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;production&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;6&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;popd&lt;/span&gt; &amp;gt; /dev/null&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;In above script, &lt;code&gt;pushd&lt;/code&gt; will put the current working directory on the directory stack and switch to the directory path in the &lt;code&gt;${OPENSHIFT_REPO_DIR}&lt;/code&gt; environment variable and &lt;code&gt;popd&lt;/code&gt; will retrieve the directory from the stack and set it again as the current one. This is because bundle should be executed in the application’s directory, and then come back to the original directory, in order not to disrupt anything that may be executed afterwards.&lt;/p&gt;
+
+&lt;h3 id=&quot;publishing-the-application&quot;&gt;Publishing the application&lt;/h3&gt;
+
+&lt;p&gt;To publish the application on OpenShift, just issue the git push command as below:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;lineno&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git push openshift master&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;import-database-from-heroku&quot;&gt;Import database from Heroku&lt;/h3&gt;
+
+&lt;p&gt;Importing and exporting PostgresSQL databases on Heroku is well documented &lt;a href=&quot;https://devcenter.heroku.com/articles/heroku-postgres-import-export&quot;&gt;here&lt;/a&gt;. Firstly, we need to add pgbackup addon to our Heroku app:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;lineno&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;heroku addons:add pgbackups&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;To export the data from Heroku PostgresSQL database, create a new backup and use any number of download tools, such as curl or wget, to store the backup locally.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;lineno&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;heroku pgbackups:capture
+&lt;span class=&quot;lineno&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;curl -o latest.dump &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;heroku pgbackups:url&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;restore-database-on-openshift&quot;&gt;Restore database on OpenShift&lt;/h3&gt;
+
+&lt;p&gt;To restore the database on OpenShift, we need to know the value of &lt;code&gt;OPENSHIFT_POSTGRESQL_DB_USERNAME&lt;/code&gt; environment variable. Issue following commands to get this information:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;lineno&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;rhc ssh myapp
+&lt;span class=&quot;lineno&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;env&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; grep OPENSHIFT_POSTGRESQL_DB_USERNAME
+&lt;span class=&quot;lineno&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;exit&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Take a note of the output and start port forwarding as below:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;lineno&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;rhc port-forward myapp&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;It will give output similar to following:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;&lt;span class=&quot;lineno&quot;&gt; 1&lt;/span&gt; Checking available ports ... done
+&lt;span class=&quot;lineno&quot;&gt; 2&lt;/span&gt; Forwarding ports ...
+&lt;span class=&quot;lineno&quot;&gt; 3&lt;/span&gt; 
+&lt;span class=&quot;lineno&quot;&gt; 4&lt;/span&gt; To connect to a service running on OpenShift, use the Local address
+&lt;span class=&quot;lineno&quot;&gt; 5&lt;/span&gt; 
+&lt;span class=&quot;lineno&quot;&gt; 6&lt;/span&gt; Service    Local                OpenShift
+&lt;span class=&quot;lineno&quot;&gt; 7&lt;/span&gt; ---------- --------------- ---- ----------------
+&lt;span class=&quot;lineno&quot;&gt; 8&lt;/span&gt; httpd      127.0.0.1:8080   =&amp;gt;  x.x.x.x:8080
+&lt;span class=&quot;lineno&quot;&gt; 9&lt;/span&gt; postgresql 127.0.0.1:5432   =&amp;gt;  x.x.x.x:5432
+&lt;span class=&quot;lineno&quot;&gt;10&lt;/span&gt; ruby       127.0.0.1:32036  =&amp;gt;  x.x.x.x:32036
+&lt;span class=&quot;lineno&quot;&gt;11&lt;/span&gt; 
+&lt;span class=&quot;lineno&quot;&gt;12&lt;/span&gt; Press CTRL-C to terminate port forwarding&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Now issue following commang to restore the database:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;lineno&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;pg_restore –verbose –clean –no-acl –no-owner -h localhost -U OPENSHIFT_POSTGRESQL_DB_USERNAME -d myapp latest.dump&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Replace &lt;code&gt;OPENSHIFT_POSTGRESQL_DB_USERNAME&lt;/code&gt; with the output from command at the start of this section.&lt;/p&gt;
+
+&lt;p&gt;And that’s it. Now visit the application and make sure everything is working as expected.&lt;/p&gt;
+
+&lt;h2 id=&quot;epilogue&quot;&gt;Epilogue&lt;/h2&gt;
+
+&lt;p&gt;Heroku is a great platform for developing and deploying Rails application. I started looking for alternatives of Heroku because once I enabled &lt;code&gt;rails_admin&lt;/code&gt; gem in my application, Heroku was not able to serve the requests. I started getting intermittent application error. Once I migrated to OpenShift, these errors went away.&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Navigation menu in Ruby on Rails</title>
