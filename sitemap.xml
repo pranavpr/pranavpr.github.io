@@ -2,7 +2,6 @@
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
         <loc>http://pranavprakash.net/2008/12/06/hello-world/</loc>
-<<<<<<< HEAD
         <lastmod>2014-11-06T08:00:56+00:00</lastmod>
     </url>
     <url>
@@ -36,47 +35,11 @@
     <url>
         <loc>http://pranavprakash.net/2014/03/21/get-url-parameters-using-javascript/</loc>
         <lastmod>2014-11-06T08:00:56+00:00</lastmod>
-=======
-        <lastmod>2014-11-09T00:10:41+05:30</lastmod>
-    </url>
-    <url>
-        <loc>http://pranavprakash.net/2008/12/07/being-java-developer-i-always-compile/</loc>
-        <lastmod>2014-11-09T00:10:41+05:30</lastmod>
-    </url>
-    <url>
-        <loc>http://pranavprakash.net/2009/01/29/add-with-notepad-to-context-menu-for/</loc>
-        <lastmod>2014-11-09T00:10:41+05:30</lastmod>
-    </url>
-    <url>
-        <loc>http://pranavprakash.net/2009/02/19/how-to-find-out-cpu-utilization-in/</loc>
-        <lastmod>2014-11-09T00:10:41+05:30</lastmod>
-    </url>
-    <url>
-        <loc>http://pranavprakash.net/2009/05/07/how-to-send-message-to-users-logged-on/</loc>
-        <lastmod>2014-11-09T00:10:41+05:30</lastmod>
-    </url>
-    <url>
-        <loc>http://pranavprakash.net/2009/06/29/how-to-create-custom-ie8-accelerator/</loc>
-        <lastmod>2014-11-09T00:10:41+05:30</lastmod>
-    </url>
-    <url>
-        <loc>http://pranavprakash.net/2009/09/12/100-great-freewareopen-source-tools-and/</loc>
-        <lastmod>2014-11-09T00:10:41+05:30</lastmod>
-    </url>
-    <url>
-        <loc>http://pranavprakash.net/2014/03/20/getting-started-with-libcurl/</loc>
-        <lastmod>2014-11-09T00:10:41+05:30</lastmod>
-    </url>
-    <url>
-        <loc>http://pranavprakash.net/2014/03/21/get-url-parameters-using-javascript/</loc>
-        <lastmod>2014-11-09T00:10:41+05:30</lastmod>
->>>>>>> 89b37bc7a72d90bdebd4a6ba0ae32ae777310521
     </url>
     <url>
         <loc>
             http://pranavprakash.net/2014/07/25/update-and-delete-with-table-alias-in-microsoft-sql-server/
         </loc>
-<<<<<<< HEAD
         <lastmod>2014-11-06T08:00:56+00:00</lastmod>
     </url>
     <url>
@@ -94,31 +57,11 @@
     <url>
         <loc>http://pranavprakash.net/2014/10/25/navigation-menu-in-ruby-on-rails/</loc>
         <lastmod>2014-11-06T08:00:56+00:00</lastmod>
-=======
-        <lastmod>2014-11-09T00:10:41+05:30</lastmod>
-    </url>
-    <url>
-        <loc>http://pranavprakash.net/2014/08/14/toggle-oracle-home-on-windows/</loc>
-        <lastmod>2014-11-09T00:10:41+05:30</lastmod>
-    </url>
-    <url>
-        <loc>http://pranavprakash.net/2014/09/21/automate-git-workflow-with-grunt/</loc>
-        <lastmod>2014-11-09T00:10:41+05:30</lastmod>
-    </url>
-    <url>
-        <loc>http://pranavprakash.net/2014/09/27/using-libcurl-with-ssl/</loc>
-        <lastmod>2014-11-09T00:10:41+05:30</lastmod>
-    </url>
-    <url>
-        <loc>http://pranavprakash.net/2014/10/25/navigation-menu-in-ruby-on-rails/</loc>
-        <lastmod>2014-11-09T00:10:41+05:30</lastmod>
->>>>>>> 89b37bc7a72d90bdebd4a6ba0ae32ae777310521
     </url>
     <url>
         <loc>
             http://pranavprakash.net/2014/11/08/migrating-ruby-on-rails-app-from-heroku-to-openshift/
         </loc>
-<<<<<<< HEAD
         <lastmod>2015-01-10T06:51:09+00:00</lastmod>
     </url>
     <url>
@@ -136,20 +79,5 @@
     <url>
         <loc>http://pranavprakash.net/</loc>
         <lastmod>2015-01-10T07:53:45+00:00</lastmod>
-=======
-        <lastmod>2014-11-09T00:10:41+05:30</lastmod>
-    </url>
-    <url>
-        <loc>http://pranavprakash.net/404.html</loc>
-        <lastmod>2014-11-09T00:10:41+05:30</lastmod>
-    </url>
-    <url>
-        <loc>http://pranavprakash.net/about/</loc>
-        <lastmod>2014-11-09T00:10:41+05:30</lastmod>
-    </url>
-    <url>
-        <loc>http://pranavprakash.net/</loc>
-        <lastmod>2014-11-09T00:10:41+05:30</lastmod>
->>>>>>> 89b37bc7a72d90bdebd4a6ba0ae32ae777310521
     </url>
 </urlset>

@@ -4,11 +4,7 @@
  <title>Pranav Prakash</title>
  <link href="http://pranavprakash.net/atom.xml" rel="self"/>
  <link href="http://pranavprakash.net/"/>
-<<<<<<< HEAD
- <updated>2015-01-10T07:55:00+00:00</updated>
-=======
- <updated>2014-11-09T00:23:32+05:30</updated>
->>>>>>> 89b37bc7a72d90bdebd4a6ba0ae32ae777310521
+ <updated>2015-01-10T08:03:40+00:00</updated>
  <id>http://pranavprakash.net</id>
  <author>
    <name>Pranav Prakash</name>
@@ -17,7 +13,6 @@
 
  
  <entry>
-<<<<<<< HEAD
    <title>Active Admin and Paperclip done right</title>
    <link href="http://pranavprakash.net//2014/12/28/active-admin-and-paperclip-done-right/"/>
    <updated>2014-12-28T06:39:07+00:00</updated>
@@ -86,11 +81,6 @@
    <title>Migrating Ruby on Rails app from Heroku to OpenShift</title>
    <link href="http://pranavprakash.net//2014/11/08/migrating-ruby-on-rails-app-from-heroku-to-openshift/"/>
    <updated>2014-11-08T13:31:31+00:00</updated>
-=======
-   <title>Migrating Ruby on Rails app from Heroku to OpenShift</title>
-   <link href="http://pranavprakash.net//2014/11/08/migrating-ruby-on-rails-app-from-heroku-to-openshift/"/>
-   <updated>2014-11-08T13:31:31+05:30</updated>
->>>>>>> 89b37bc7a72d90bdebd4a6ba0ae32ae777310521
    <id>http://pranavprakash.net/2014/11/08/migrating-ruby-on-rails-app-from-heroku-to-openshift</id>
    <content type="html">&lt;p&gt;&lt;a href=&quot;https://www.openshift.com&quot;&gt;OpenShift&lt;/a&gt; is Red Hat’s Platform-as-a-Service (PaaS) that allows developers to quickly develop, host, and scale applications in a cloud environment similar to &lt;a href=&quot;http://heroku.com&quot;&gt;Heroku&lt;/a&gt;. OpenShift also supports deploying of application with simple git push just like Heroku. OpenShift supports a variety of technologies through use of cartridges, including Java (Wildfly, JBossEAP, Tomcat), PHP, Node.js, Python, Perl, MySQL, PostgreSQL, MongoDB, Jenkins, Cron, and JBoss xPaaS Services (Fuse, BPM Suite, BRMS, Data Virtualization, Aerogear, and more).&lt;/p&gt;
 
