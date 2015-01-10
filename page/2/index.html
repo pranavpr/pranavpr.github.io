@@ -67,8 +67,49 @@
   <article class="post" itemscope itemtype="http://schema.org/BlogPosting" >
     <header class="post-header">
       <h2 itemprop="name headline" class="post-title">
+<<<<<<< HEAD:page/2/index.html
       <a href="/2014/08/14/toggle-oracle-home-on-windows/" itemprop="url">
         Toggle ORACLE_HOME on Windows
+=======
+      <a href="/2014/07/25/update-and-delete-with-table-alias-in-microsoft-sql-server/" itemprop="url">
+        UPDATE and DELETE with table alias in Microsoft SQL Server
+      </a>
+      </h2>
+      <p class="post-meta">
+      <i class="fa fa-clock-o">&nbsp;</i><a itemprop="datePublished" content="25 Jul 2014" href="#" class="post-author">25 Jul 2014</a>&nbsp;<i class="fa fa-tags"></i>
+       <a itemprop="keywords" href="/tags/mss" class="post-category post-category-m">MSS</a>    <a itemprop="keywords" href="/tags/sql" class="post-category post-category-s">SQL</a>   
+      </p>
+    </header>
+    <div itemprop="articleBody" class="post-description">
+      <p>
+        
+          <p>Last week I came across following SQL statement:</p>
+
+<div class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="lineno">1</span> <span class="k">DELETE</span>
+<span class="lineno">2</span> <span class="k">FROM</span> <span class="n">FIRST_TABLE</span> <span class="n">A</span>
+<span class="lineno">3</span> <span class="k">WHERE</span> <span class="n">A</span><span class="p">.</span><span class="n">KEY1</span> <span class="o">=</span> <span class="s1">&#39;1&#39;</span>
+<span class="lineno">4</span>   <span class="k">AND</span> <span class="k">EXISTS</span>
+<span class="lineno">5</span>     <span class="p">(</span><span class="k">SELECT</span> <span class="s1">&#39;X&#39;</span>
+<span class="lineno">6</span>      <span class="k">FROM</span> <span class="n">SECOND_TABLE</span> <span class="n">B</span>
+<span class="lineno">7</span>      <span class="k">WHERE</span> <span class="n">B</span><span class="p">.</span><span class="n">KEY1</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">KEY1</span>
+<span class="lineno">8</span>        <span class="k">AND</span> <span class="n">B</span><span class="p">.</span><span class="n">KEY2</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">KEY2</span><span class="p">);</span></code></pre></div>
+
+<p>This SQL statement was running fine in Oracle but was failing in Microsoft SQL Server (MSS) with followiing error:</p>
+
+<a href="/2014/07/25/update-and-delete-with-table-alias-in-microsoft-sql-server/">Continue Reading »</a>
+        
+      </p>
+    </div>
+    <meta itemprop="wordCount" content="249">
+    <meta itemprop="author" content="Pranav Prakash">
+  </article>
+
+  <article class="post" itemscope itemtype="http://schema.org/BlogPosting" >
+    <header class="post-header">
+      <h2 itemprop="name headline" class="post-title">
+      <a href="/2014/03/21/get-url-parameters-using-javascript/" itemprop="url">
+        Get URL parameters using JavaScript
+>>>>>>> 89b37bc7a72d90bdebd4a6ba0ae32ae777310521:page/2/index.html
       </a>
       </h2>
       <p class="post-meta">
@@ -181,6 +222,7 @@
     <meta itemprop="author" content="Pranav Prakash">
   </article>
 
+<<<<<<< HEAD:page/2/index.html
   <article class="post" itemscope itemtype="http://schema.org/BlogPosting" >
     <header class="post-header">
       <h2 itemprop="name headline" class="post-title">
@@ -208,6 +250,8 @@ such applications which you can use for free and they do work as good as their c
     <meta itemprop="author" content="Pranav Prakash">
   </article>
 
+=======
+>>>>>>> 89b37bc7a72d90bdebd4a6ba0ae32ae777310521:page/2/index.html
 
 <div class="footer">
 <div class="pure-menu pure-menu-horizontal pure-menu-open">
