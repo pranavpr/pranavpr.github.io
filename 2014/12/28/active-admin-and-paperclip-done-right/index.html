@@ -75,7 +75,7 @@
     <p>
     <p><a href="https://github.com/activeadmin/activeadmin">Active Admin</a> is an administration framework for Ruby on Rails applications which helps in creating beautiful administration panels. <a href="https://github.com/thoughtbot/paperclip">Paperclip</a> is a file attachment library for Active Record which makes management of files to models really easy.</p>
 
-<p>Recently while crating administration page for a model, in which Paperclip was being used for managing attachments, I oberved that Active Admin was not handling it properly. For example, the view page was showing as below:</p>
+<p>Recently while creating administration page for a model, in which Paperclip was being used for managing attachments, I oberved that Active Admin was not handling it properly. For example, the view page was showing as below:</p>
 
 <div style="text-align: center"><img src="/assets/img/blog/view.png" /></div>
 
@@ -85,11 +85,11 @@
 
 <div style="text-align: center"><img src="/assets/img/blog/edit.png" /></div>
 
-<p>There was no way one could upload the images with above interfce. Hence I scoured internet and found some nifty hacks. Let’s go through each of them:</p>
+<p>There was no way one could upload the images with above interface. Hence I scoured internet and found some nifty hacks. Let’s go through each of them:</p>
 
 <h2 id="view-page">View Page</h2>
 
-<p>Instead of showing attached image properties, I wanted to show the image itself. Also for other attached files tyes (like pdf and doc), I wanted to give an URL. Below code achieved the same:</p>
+<p>Instead of showing attached image properties, I wanted to show the image itself. Also for other attached files types (like pdf and doc), I wanted to give an URL. Below code achieved the same:</p>
 
 <div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="lineno"> 1</span> <span class="no">ActiveAdmin</span><span class="o">.</span><span class="n">register</span> <span class="no">Item</span> <span class="k">do</span>
 <span class="lineno"> 2</span>   <span class="n">show</span> <span class="k">do</span> <span class="o">|</span><span class="n">recipe</span><span class="o">|</span>
@@ -111,7 +111,7 @@
 
 <h2 id="new-and-edit-page">New and Edit Page</h2>
 
-<p>I wanted to show an upload button to upload files. Also I wanted to show current file attached on Edit page so users can verify the attached content before modifying it. The code below acieved the same:</p>
+<p>I wanted to show an upload button to upload files. Also I wanted to show current file attached on Edit page so users can verify the attached content before modifying it. The code below achieved the same:</p>
 
 <div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="lineno">1</span> <span class="no">ActiveAdmin</span><span class="o">.</span><span class="n">register</span> <span class="no">Item</span> <span class="k">do</span>
 <span class="lineno">2</span>   <span class="n">form</span> <span class="ss">:html</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">:enctype</span> <span class="o">=&gt;</span> <span class="s2">&quot;multipart/form-data&quot;</span> <span class="p">}</span> <span class="k">do</span> <span class="o">|</span><span class="n">f</span><span class="o">|</span>

@@ -4,7 +4,7 @@
  <title>Pranav Prakash</title>
  <link href="http://pranavprakash.net/atom.xml" rel="self"/>
  <link href="http://pranavprakash.net/"/>
- <updated>2015-01-10T08:03:40+00:00</updated>
+ <updated>2015-01-11T05:21:02+00:00</updated>
  <id>http://pranavprakash.net</id>
  <author>
    <name>Pranav Prakash</name>
@@ -19,7 +19,7 @@
    <id>http://pranavprakash.net/2014/12/28/active-admin-and-paperclip-done-right</id>
    <content type="html">&lt;p&gt;&lt;a href=&quot;https://github.com/activeadmin/activeadmin&quot;&gt;Active Admin&lt;/a&gt; is an administration framework for Ruby on Rails applications which helps in creating beautiful administration panels. &lt;a href=&quot;https://github.com/thoughtbot/paperclip&quot;&gt;Paperclip&lt;/a&gt; is a file attachment library for Active Record which makes management of files to models really easy.&lt;/p&gt;
 
-&lt;p&gt;Recently while crating administration page for a model, in which Paperclip was being used for managing attachments, I oberved that Active Admin was not handling it properly. For example, the view page was showing as below:&lt;/p&gt;
+&lt;p&gt;Recently while creating administration page for a model, in which Paperclip was being used for managing attachments, I oberved that Active Admin was not handling it properly. For example, the view page was showing as below:&lt;/p&gt;
 
 &lt;div style=&quot;text-align: center&quot;&gt;&lt;img src=&quot;/assets/img/blog/view.png&quot; /&gt;&lt;/div&gt;
 
@@ -29,11 +29,11 @@
 
 &lt;div style=&quot;text-align: center&quot;&gt;&lt;img src=&quot;/assets/img/blog/edit.png&quot; /&gt;&lt;/div&gt;
 
-&lt;p&gt;There was no way one could upload the images with above interfce. Hence I scoured internet and found some nifty hacks. Let’s go through each of them:&lt;/p&gt;
+&lt;p&gt;There was no way one could upload the images with above interface. Hence I scoured internet and found some nifty hacks. Let’s go through each of them:&lt;/p&gt;
 
 &lt;h2 id=&quot;view-page&quot;&gt;View Page&lt;/h2&gt;
 
-&lt;p&gt;Instead of showing attached image properties, I wanted to show the image itself. Also for other attached files tyes (like pdf and doc), I wanted to give an URL. Below code achieved the same:&lt;/p&gt;
+&lt;p&gt;Instead of showing attached image properties, I wanted to show the image itself. Also for other attached files types (like pdf and doc), I wanted to give an URL. Below code achieved the same:&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;lineno&quot;&gt; 1&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveAdmin&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;register&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Item&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
 &lt;span class=&quot;lineno&quot;&gt; 2&lt;/span&gt;   &lt;span class=&quot;n&quot;&gt;show&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;recipe&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
@@ -55,7 +55,7 @@
 
 &lt;h2 id=&quot;new-and-edit-page&quot;&gt;New and Edit Page&lt;/h2&gt;
 
-&lt;p&gt;I wanted to show an upload button to upload files. Also I wanted to show current file attached on Edit page so users can verify the attached content before modifying it. The code below acieved the same:&lt;/p&gt;
+&lt;p&gt;I wanted to show an upload button to upload files. Also I wanted to show current file attached on Edit page so users can verify the attached content before modifying it. The code below achieved the same:&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;lineno&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveAdmin&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;register&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Item&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
 &lt;span class=&quot;lineno&quot;&gt;2&lt;/span&gt;   &lt;span class=&quot;n&quot;&gt;form&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:html&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:enctype&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;multipart/form-data&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
