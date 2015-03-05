@@ -4,13 +4,84 @@
  <title>Pranav Prakash</title>
  <link href="http://pranavprakash.net/atom.xml" rel="self"/>
  <link href="http://pranavprakash.net/"/>
- <updated>2015-01-11T05:21:02+00:00</updated>
+ <updated>2015-03-05T09:53:42+00:00</updated>
  <id>http://pranavprakash.net</id>
  <author>
    <name>Pranav Prakash</name>
    <email>pranav@pranavprakash.net</email>
  </author>
 
+ 
+ <entry>
+   <title>Sending asynchronous emails using Sidekiq on OpenShift</title>
+   <link href="http://pranavprakash.net//2015/02/09/sending-asynchronous-emails-using-sidekiq-on-openshift/"/>
+   <updated>2015-02-09T07:38:09+00:00</updated>
+   <id>http://pranavprakash.net/2015/02/09/sending-asynchronous-emails-using-sidekiq-on-openshift</id>
+   <content type="html">&lt;p&gt;If you need to send transactional emails from your Rails application, you should always send them asynchronously using a background job. If you send transactional emails synchronously, the user will see a loading page for the time rails connect to SMTP server and delivers your email which is about 2-3 seconds. This will result in a very bad user experience and it’s advisable to send emails using a background job.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://sidekiq.org/&quot;&gt;Sidekiq&lt;/a&gt; advertises it self as simple, efficient background processing engine for Ruby. Sidekiq has dependency on &lt;a href=&quot;http://redis.io/&quot;&gt;Redis&lt;/a&gt; version &lt;code&gt;2.4&lt;/code&gt; or greater. Hence to setup Sidekiq on OpenShift, we have to setup Redis first. So let’s get started.&lt;/p&gt;
+
+&lt;h2 id=&quot;setting-up-redis&quot;&gt;Setting up Redis&lt;/h2&gt;
+
+&lt;p&gt;Redis cartridge for Openshift is available &lt;a href=&quot;https://github.com/smarterclayton/openshift-redis-cart&quot;&gt;here&lt;/a&gt;. To add this cartridge to existing Openshift application, issue following command:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;lineno&quot;&gt;1&lt;/span&gt; rhc add-cartridge http://cartreflect-claytondev.rhcloud.com/reflect?github&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;smarterclayton/openshift-redis-cart&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;If this command fails, inspect the log files generated at &lt;code&gt;$OPENSHIFT_REDIS_DIR/logs/redis.log&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;setting-up-sidekiq&quot;&gt;Setting up Sidekiq&lt;/h2&gt;
+
+&lt;p&gt;The Sidekiq community &lt;a href=&quot;https://github.com/openshift-cartridges/openshift-origin-cartridge-sidekiq&quot;&gt;cartridge&lt;/a&gt; hasn’t been updated in a while and it doesn’t work with current OpenShift. Hence I forked the &lt;a href=&quot;https://github.com/pranavpr/openshift-origin-cartridge-sidekiq&quot;&gt;repository&lt;/a&gt; and fixed the issues. I also bumped the Sidekiq version to &lt;code&gt;3.3.1&lt;/code&gt; which was latest at that time. You can see the code changes &lt;a href=&quot;https://github.com/pranavpr/openshift-origin-cartridge-sidekiq/commit/5e820395e0f53970696d4357ab68d7de5b090d2c&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;To add Sidekiq cartridge to application, issue following command:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;lineno&quot;&gt;1&lt;/span&gt; rhc add-cartridge http://cartreflect-claytondev.rhcloud.com/github/pranavpr/openshift-origin-cartridge-sidekiq --app myapp&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Once the installation completes, you can access the monitoring interface at &lt;code&gt;https://YOUR_APP-NAMESPACE.rhcloud.com/sidekiq&lt;/code&gt;. Sidekiq will print the full URL with authentication after successful install.&lt;/p&gt;
+
+&lt;h2 id=&quot;updating-gemfile&quot;&gt;Updating Gemfile&lt;/h2&gt;
+
+&lt;p&gt;Add following line to your &lt;code&gt;Gemfile&lt;/code&gt; to add Sidekiq to your Rails application:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;lineno&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;sidekiq&amp;#39;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Then do a &lt;code&gt;bundle install&lt;/code&gt; to finish installation of &lt;code&gt;sidekiq&lt;/code&gt; gem.&lt;/p&gt;
+
+&lt;h2 id=&quot;send-asynchronous-emails-using-sidekiq&quot;&gt;Send asynchronous emails using Sidekiq&lt;/h2&gt;
+
+&lt;p&gt;Delayed extensions of Sidekiq allows sending emails asynchronously with Action Mailer out of the box. It provides three methods &lt;em&gt;viz.&lt;/em&gt; &lt;code&gt;delay&lt;/code&gt;, &lt;code&gt;delay_for(interval)&lt;/code&gt; and &lt;code&gt;delay_until(time)&lt;/code&gt;, to send email asynchronously.&lt;/p&gt;
+
+&lt;p&gt;Use &lt;code&gt;delay&lt;/code&gt; to deliver emails asynchronously, &lt;code&gt;delay_for(interval)&lt;/code&gt; or &lt;code&gt;delay_until(time)&lt;/code&gt; to deliver the email at some point in the future.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;lineno&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;UserMailer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;delay&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;welcome_email&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;vi&quot;&gt;@user&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;UserMailer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;delay_for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;days&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;find_more_friends_email&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;vi&quot;&gt;@user&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;UserMailer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;delay_until&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;days&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;from_now&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;find_more_friends_email&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;vi&quot;&gt;@user&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;devise-emails&quot;&gt;Devise emails&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;devise-async&lt;/code&gt; &lt;a href=&quot;https://github.com/mhfs/devise-async&quot;&gt;gem&lt;/a&gt; provides the ability to send Devise emails using Sidekiq. Add following line to the &lt;code&gt;Gemfile&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;lineno&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;devise-async&amp;#39;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;And then execute &lt;code&gt;bundle install&lt;/code&gt; to finish installation of &lt;code&gt;devise-async&lt;/code&gt; gem.&lt;/p&gt;
+
+&lt;p&gt;Now add &lt;code&gt;:async&lt;/code&gt; to the devise call in your model:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;lineno&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;User&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;2&lt;/span&gt;   &lt;span class=&quot;n&quot;&gt;devise&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:database_authenticatable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:async&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:confirmable&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# etc ...&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Finally set your queuing backend to Sidekiq by creating &lt;code&gt;config/initializers/devise_async.rb&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;lineno&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Devise&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Async&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;backend&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:sidekiq&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;epilogue&quot;&gt;Epilogue&lt;/h2&gt;
+
+&lt;p&gt;I issued a &lt;a href=&quot;https://github.com/openshift-cartridges/openshift-origin-cartridge-sidekiq/pull/4&quot;&gt;pull&lt;/a&gt; request to merge my changes to community cartridge and it got accepted. So you can also use the community &lt;a href=&quot;https://github.com/openshift-cartridges/openshift-origin-cartridge-sidekiq&quot;&gt;cartridge&lt;/a&gt; to add Sidekiq to your OpenShift application.&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Active Admin and Paperclip done right</title>

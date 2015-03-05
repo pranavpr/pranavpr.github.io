@@ -69,6 +69,12 @@
         <lastmod>2015-01-11T05:20:18+00:00</lastmod>
     </url>
     <url>
+        <loc>
+            http://pranavprakash.net/2015/02/09/sending-asynchronous-emails-using-sidekiq-on-openshift/
+        </loc>
+        <lastmod>2015-03-05T09:52:39+00:00</lastmod>
+    </url>
+    <url>
         <loc>http://pranavprakash.net/404.html</loc>
         <lastmod>2014-11-06T08:00:56+00:00</lastmod>
     </url>
@@ -78,6 +84,6 @@
     </url>
     <url>
         <loc>http://pranavprakash.net/</loc>
-        <lastmod>2015-01-11T05:20:18+00:00</lastmod>
+        <lastmod>2015-03-05T09:52:39+00:00</lastmod>
     </url>
 </urlset>

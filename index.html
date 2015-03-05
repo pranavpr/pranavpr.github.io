@@ -67,17 +67,58 @@
     <article class="post" itemscope itemtype="http://schema.org/BlogPosting" >
       <header class="post-header">
         <h2 itemprop="name headline" class="post-title">
-        <a href="/2014/12/28/active-admin-and-paperclip-done-right/" itemprop="url">
-          Active Admin and Paperclip done right
+        <a href="/2015/02/09/sending-asynchronous-emails-using-sidekiq-on-openshift/" itemprop="url">
+          Sending asynchronous emails using Sidekiq on OpenShift
         </a>
         </h2>
         <p class="post-meta">
-        <i class="fa fa-clock-o">&nbsp;</i><a itemprop="datePublished" content="28 Dec 2014" href="#" class="post-author">28 Dec 2014</a>&nbsp;<i class="fa fa-tags"></i>
-         <a itemprop="keywords" href="/tags/ruby-on-rails" class="post-category post-category-r">RUBY ON RAILS</a>    <a itemprop="keywords" href="/tags/active-admin" class="post-category post-category-a">ACTIVE ADMIN</a>    <a itemprop="keywords" href="/tags/paperclip" class="post-category post-category-p">PAPERCLIP</a>   
+        <i class="fa fa-clock-o">&nbsp;</i><a itemprop="datePublished" content="09 Feb 2015" href="#" class="post-author">09 Feb 2015</a>&nbsp;<i class="fa fa-tags"></i>
+         <a itemprop="keywords" href="/tags/sidekiq" class="post-category post-category-s">SIDEKIQ</a>    <a itemprop="keywords" href="/tags/email" class="post-category post-category-e">EMAIL</a>    <a itemprop="keywords" href="/tags/ruby-on-rails" class="post-category post-category-r">RUBY ON RAILS</a>    <a itemprop="keywords" href="/tags/devise" class="post-category post-category-d">DEVISE</a>    <a itemprop="keywords" href="/tags/openshift" class="post-category post-category-o">OPENSHIFT</a>   
         </p>
       </header>
       <div itemprop="articleBody" class="post-description">
         <p>
+          
+            <p>If you need to send transactional emails from your Rails application, you should always send them asynchronously using a background job. If you send transactional emails synchronously, the user will see a loading page for the time rails connect to SMTP server and delivers your email which is about 2-3 seconds. This will result in a very bad user experience and it’s advisable to send emails using a background job.</p>
+
+<p><a href="http://sidekiq.org/">Sidekiq</a> advertises it self as simple, efficient background processing engine for Ruby. Sidekiq has dependency on <a href="http://redis.io/">Redis</a> version <code>2.4</code> or greater. Hence to setup Sidekiq on OpenShift, we have to setup Redis first. So let’s get started.</p>
+
+<h2 id="setting-up-redis">Setting up Redis</h2>
+
+<p>Redis cartridge for Openshift is available <a href="https://github.com/smarterclayton/openshift-redis-cart">here</a>. To add this cartridge to existing Openshift application, issue following command:</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="lineno">1</span> rhc add-cartridge http://cartreflect-claytondev.rhcloud.com/reflect?github<span class="o">=</span>smarterclayton/openshift-redis-cart</code></pre></div>
+
+<a href="/2015/02/09/sending-asynchronous-emails-using-sidekiq-on-openshift/">Continue Reading »</a>
+          
+        </p>
+      </div>
+      <meta itemprop="wordCount" content="538">
+      <meta itemprop="author" content="Pranav Prakash">
+    </article>
+  
+  <h1 class="content-subhead">Recent Posts</h1>
+  
+  
+    
+    
+  
+
+    
+      <article class="post" itemscope itemtype="http://schema.org/BlogPosting" >
+        <header class="post-header">
+          <h2 itemprop="name headline" class="post-title">
+          <a href="/2014/12/28/active-admin-and-paperclip-done-right/" itemprop="url">
+            Active Admin and Paperclip done right
+          </a>
+          </h2>
+          <p class="post-meta">
+          <i class="fa fa-clock-o">&nbsp;</i><a itemprop="datePublished" content="28 Dec 2014" href="#" class="post-author">28 Dec 2014</a>&nbsp;<i class="fa fa-tags"></i>
+           <a itemprop="keywords" href="/tags/ruby-on-rails" class="post-category post-category-r">RUBY ON RAILS</a>    <a itemprop="keywords" href="/tags/active-admin" class="post-category post-category-a">ACTIVE ADMIN</a>    <a itemprop="keywords" href="/tags/paperclip" class="post-category post-category-p">PAPERCLIP</a>   
+          </p>
+        </header>
+        <div itemprop="articleBody" class="post-description">
+          <p>
           
             <p><a href="https://github.com/activeadmin/activeadmin">Active Admin</a> is an administration framework for Ruby on Rails applications which helps in creating beautiful administration panels. <a href="https://github.com/thoughtbot/paperclip">Paperclip</a> is a file attachment library for Active Record which makes management of files to models really easy.</p>
 
@@ -92,12 +133,6 @@
       <meta itemprop="wordCount" content="573">
       <meta itemprop="author" content="Pranav Prakash">
     </article>
-  
-  <h1 class="content-subhead">Recent Posts</h1>
-  
-  
-    
-    
   
 
     
@@ -209,37 +244,6 @@
         </p>
       </div>
       <meta itemprop="wordCount" content="1049">
-      <meta itemprop="author" content="Pranav Prakash">
-    </article>
-  
-
-    
-      <article class="post" itemscope itemtype="http://schema.org/BlogPosting" >
-        <header class="post-header">
-          <h2 itemprop="name headline" class="post-title">
-          <a href="/2014/09/21/automate-git-workflow-with-grunt/" itemprop="url">
-            Automate GIT work-flow with Grunt
-          </a>
-          </h2>
-          <p class="post-meta">
-          <i class="fa fa-clock-o">&nbsp;</i><a itemprop="datePublished" content="21 Sep 2014" href="#" class="post-author">21 Sep 2014</a>&nbsp;<i class="fa fa-tags"></i>
-           <a itemprop="keywords" href="/tags/git" class="post-category post-category-g">GIT</a>    <a itemprop="keywords" href="/tags/nodejs" class="post-category post-category-n">NODEJS</a>    <a itemprop="keywords" href="/tags/grunt" class="post-category post-category-g">GRUNT</a>   
-          </p>
-        </header>
-        <div itemprop="articleBody" class="post-description">
-          <p>
-          
-            <p><a href="http://gruntjs.com/">Grunt</a> is a task runner powered by Node.JS. It can be used to automate day to day mundane tasks. Being a Node.JS module, you can define tasks in good old JavaScript. Grunt has plenty of plugins available for different type of tasks. In this post I’ll walk you through the process of automating GIT work-flow using <a href="https://github.com/rubenv/grunt-git"><code>grunt-git</code></a>. So let’s get started.</p>
-
-<h2 id="setup--installation">Setup / Installation</h2>
-
-<p>Grunt <code>0.4.x</code> requires Node.JS version <code>&gt;= 0.8.0</code> and hence make sure you <a href="http://nodejs.org/download/">download</a> and install the same. </p>
-
-<a href="/2014/09/21/automate-git-workflow-with-grunt/">Continue Reading »</a>
-          
-        </p>
-      </div>
-      <meta itemprop="wordCount" content="721">
       <meta itemprop="author" content="Pranav Prakash">
     </article>
   
