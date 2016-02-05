@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
  <title>Pranav Prakash</title>
- <link href="http://pranavprakash.net/atom.xml" rel="self"/>
- <link href="http://pranavprakash.net/"/>
- <updated>2016-02-05T20:19:17+05:30</updated>
- <id>http://pranavprakash.net</id>
+ <link href="https://pranavprakash.net/atom.xml" rel="self"/>
+ <link href="https://pranavprakash.net/"/>
+ <updated>2016-02-05T20:22:28+05:30</updated>
+ <id>https://pranavprakash.net</id>
  <author>
    <name>Pranav Prakash</name>
    <email>pranav@pranavprakash.net</email>
@@ -14,9 +14,9 @@
  
  <entry>
    <title>Kill idle connections to Redis</title>
-   <link href="http://pranavprakash.net//2016/02/05/kill-idle-connections-to-redis/"/>
+   <link href="https://pranavprakash.net//2016/02/05/kill-idle-connections-to-redis/"/>
    <updated>2016-02-05T17:40:18+05:30</updated>
-   <id>http://pranavprakash.net/2016/02/05/kill-idle-connections-to-redis</id>
+   <id>https://pranavprakash.net/2016/02/05/kill-idle-connections-to-redis</id>
    <content type="html">&lt;p&gt;I was using a Amazon Elasticache &lt;code&gt;cache.t2.medium&lt;/code&gt; Redis instance as a cache store for one of the Rails application. Over the time I observed that connections to Redis instance are increasing day by day and once it hit ~1500, the Rails application started throwing connection timeout exceptions:&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;lineno&quot;&gt;1&lt;/span&gt; Error connecting to Redis on redis-host:6379 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Redis::TimeoutError&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -66,9 +66,9 @@
  
  <entry>
    <title>Sending asynchronous emails using Sidekiq on OpenShift</title>
-   <link href="http://pranavprakash.net//2015/02/09/sending-asynchronous-emails-using-sidekiq-on-openshift/"/>
+   <link href="https://pranavprakash.net//2015/02/09/sending-asynchronous-emails-using-sidekiq-on-openshift/"/>
    <updated>2015-02-09T07:38:09+05:30</updated>
-   <id>http://pranavprakash.net/2015/02/09/sending-asynchronous-emails-using-sidekiq-on-openshift</id>
+   <id>https://pranavprakash.net/2015/02/09/sending-asynchronous-emails-using-sidekiq-on-openshift</id>
    <content type="html">&lt;p&gt;If you need to send transactional emails from your Rails application, you should always send them asynchronously using a background job. If you send transactional emails synchronously, the user will see a loading page for the time rails connect to SMTP server and delivers your email which is about 2-3 seconds. This will result in a very bad user experience and it’s advisable to send emails using a background job.&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&quot;http://sidekiq.org/&quot;&gt;Sidekiq&lt;/a&gt; advertises it self as simple, efficient background processing engine for Ruby. Sidekiq has dependency on &lt;a href=&quot;http://redis.io/&quot;&gt;Redis&lt;/a&gt; version &lt;code&gt;2.4&lt;/code&gt; or greater. Hence to setup Sidekiq on OpenShift, we have to setup Redis first. So let’s get started.&lt;/p&gt;
@@ -137,9 +137,9 @@
  
  <entry>
    <title>Active Admin and Paperclip done right</title>
-   <link href="http://pranavprakash.net//2014/12/28/active-admin-and-paperclip-done-right/"/>
+   <link href="https://pranavprakash.net//2014/12/28/active-admin-and-paperclip-done-right/"/>
    <updated>2014-12-28T06:39:07+05:30</updated>
-   <id>http://pranavprakash.net/2014/12/28/active-admin-and-paperclip-done-right</id>
+   <id>https://pranavprakash.net/2014/12/28/active-admin-and-paperclip-done-right</id>
    <content type="html">&lt;p&gt;&lt;a href=&quot;https://github.com/activeadmin/activeadmin&quot;&gt;Active Admin&lt;/a&gt; is an administration framework for Ruby on Rails applications which helps in creating beautiful administration panels. &lt;a href=&quot;https://github.com/thoughtbot/paperclip&quot;&gt;Paperclip&lt;/a&gt; is a file attachment library for Active Record which makes management of files to models really easy.&lt;/p&gt;
 
 &lt;p&gt;Recently while creating administration page for a model, in which Paperclip was being used for managing attachments, I oberved that Active Admin was not handling it properly. For example, the view page was showing as below:&lt;/p&gt;
@@ -202,9 +202,9 @@
  
  <entry>
    <title>Migrating Ruby on Rails app from Heroku to OpenShift</title>
-   <link href="http://pranavprakash.net//2014/11/08/migrating-ruby-on-rails-app-from-heroku-to-openshift/"/>
+   <link href="https://pranavprakash.net//2014/11/08/migrating-ruby-on-rails-app-from-heroku-to-openshift/"/>
    <updated>2014-11-08T13:31:31+05:30</updated>
-   <id>http://pranavprakash.net/2014/11/08/migrating-ruby-on-rails-app-from-heroku-to-openshift</id>
+   <id>https://pranavprakash.net/2014/11/08/migrating-ruby-on-rails-app-from-heroku-to-openshift</id>
    <content type="html">&lt;p&gt;&lt;a href=&quot;https://www.openshift.com&quot;&gt;OpenShift&lt;/a&gt; is Red Hat’s Platform-as-a-Service (PaaS) that allows developers to quickly develop, host, and scale applications in a cloud environment similar to &lt;a href=&quot;http://heroku.com&quot;&gt;Heroku&lt;/a&gt;. OpenShift also supports deploying of application with simple git push just like Heroku. OpenShift supports a variety of technologies through use of cartridges, including Java (Wildfly, JBossEAP, Tomcat), PHP, Node.js, Python, Perl, MySQL, PostgreSQL, MongoDB, Jenkins, Cron, and JBoss xPaaS Services (Fuse, BPM Suite, BRMS, Data Virtualization, Aerogear, and more).&lt;/p&gt;
 
 &lt;h2 id=&quot;why-openshift&quot;&gt;Why OpenShift?&lt;/h2&gt;
@@ -365,9 +365,9 @@
  
  <entry>
    <title>Navigation menu in Ruby on Rails</title>
-   <link href="http://pranavprakash.net//2014/10/25/navigation-menu-in-ruby-on-rails/"/>
+   <link href="https://pranavprakash.net//2014/10/25/navigation-menu-in-ruby-on-rails/"/>
    <updated>2014-10-25T17:20:01+05:30</updated>
-   <id>http://pranavprakash.net/2014/10/25/navigation-menu-in-ruby-on-rails</id>
+   <id>https://pranavprakash.net/2014/10/25/navigation-menu-in-ruby-on-rails</id>
    <content type="html">&lt;p&gt;Recently while working on a Rails project, I came across following markup for navigation:&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;lineno&quot;&gt; 1&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;lt;ul&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;sidebar-menu&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
@@ -432,9 +432,9 @@
  
  <entry>
    <title>Using LibCurl with SSL</title>
-   <link href="http://pranavprakash.net//2014/09/27/using-libcurl-with-ssl/"/>
+   <link href="https://pranavprakash.net//2014/09/27/using-libcurl-with-ssl/"/>
    <updated>2014-09-27T01:05:36+05:30</updated>
-   <id>http://pranavprakash.net/2014/09/27/using-libcurl-with-ssl</id>
+   <id>https://pranavprakash.net/2014/09/27/using-libcurl-with-ssl</id>
    <content type="html">&lt;p&gt;LibCurl supports URL transfer over &lt;code&gt;HTTPS&lt;/code&gt; protocol. In this post we’ll use LibCurl to download a webpage over &lt;code&gt;HTTPS&lt;/code&gt; protocol. To get started, make sure that you have setup your system as outlined in one of my previous &lt;a href=&quot;/2014/03/20/getting-started-with-libcurl/&quot;&gt;posts&lt;/a&gt;. Note that LibCurl comes with &lt;code&gt;SSL&lt;/code&gt; libraries included and hence you need not to install any extra packages.&lt;/p&gt;
 
 &lt;h2 id=&quot;getting-started&quot;&gt;Getting started&lt;/h2&gt;
@@ -553,9 +553,9 @@
  
  <entry>
    <title>Automate GIT work-flow with Grunt</title>
-   <link href="http://pranavprakash.net//2014/09/21/automate-git-workflow-with-grunt/"/>
+   <link href="https://pranavprakash.net//2014/09/21/automate-git-workflow-with-grunt/"/>
    <updated>2014-09-21T20:54:04+05:30</updated>
-   <id>http://pranavprakash.net/2014/09/21/automate-git-workflow-with-grunt</id>
+   <id>https://pranavprakash.net/2014/09/21/automate-git-workflow-with-grunt</id>
    <content type="html">&lt;p&gt;&lt;a href=&quot;http://gruntjs.com/&quot;&gt;Grunt&lt;/a&gt; is a task runner powered by Node.JS. It can be used to automate day to day mundane tasks. Being a Node.JS module, you can define tasks in good old JavaScript. Grunt has plenty of plugins available for different type of tasks. In this post I’ll walk you through the process of automating GIT work-flow using &lt;a href=&quot;https://github.com/rubenv/grunt-git&quot;&gt;&lt;code&gt;grunt-git&lt;/code&gt;&lt;/a&gt;. So let’s get started.&lt;/p&gt;
 
 &lt;h2 id=&quot;setup--installation&quot;&gt;Setup / Installation&lt;/h2&gt;
@@ -665,9 +665,9 @@
  
  <entry>
    <title>Toggle ORACLE_HOME on Windows</title>
-   <link href="http://pranavprakash.net//2014/08/14/toggle-oracle-home-on-windows/"/>
+   <link href="https://pranavprakash.net//2014/08/14/toggle-oracle-home-on-windows/"/>
    <updated>2014-08-14T17:13:38+05:30</updated>
-   <id>http://pranavprakash.net/2014/08/14/toggle-oracle-home-on-windows</id>
+   <id>https://pranavprakash.net/2014/08/14/toggle-oracle-home-on-windows</id>
    <content type="html">&lt;p&gt;I work in an environment where I constantly need to switch between 32-bit and 64-bit version of Oracle client. Manually editing the environment variable &lt;code&gt;ORACLE_HOME&lt;/code&gt; becomes really annoying after some time. Hence I created a small batch file to toggle the &lt;code&gt;ORACLE_HOME&lt;/code&gt;:&lt;/p&gt;
 
 &lt;!--more--&gt;
@@ -691,9 +691,9 @@
  
  <entry>
    <title>UPDATE and DELETE with table alias in Microsoft SQL Server</title>
-   <link href="http://pranavprakash.net//2014/07/25/update-and-delete-with-table-alias-in-microsoft-sql-server/"/>
+   <link href="https://pranavprakash.net//2014/07/25/update-and-delete-with-table-alias-in-microsoft-sql-server/"/>
    <updated>2014-07-25T19:14:04+05:30</updated>
-   <id>http://pranavprakash.net/2014/07/25/update-and-delete-with-table-alias-in-microsoft-sql-server</id>
+   <id>https://pranavprakash.net/2014/07/25/update-and-delete-with-table-alias-in-microsoft-sql-server</id>
    <content type="html">&lt;p&gt;Last week I came across following SQL statement:&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sql&quot; data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;lineno&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;DELETE&lt;/span&gt;
@@ -728,9 +728,9 @@
  
  <entry>
    <title>Get URL parameters using JavaScript</title>
-   <link href="http://pranavprakash.net//2014/03/21/get-url-parameters-using-javascript/"/>
+   <link href="https://pranavprakash.net//2014/03/21/get-url-parameters-using-javascript/"/>
    <updated>2014-03-21T18:05:20+05:30</updated>
-   <id>http://pranavprakash.net/2014/03/21/get-url-parameters-using-javascript</id>
+   <id>https://pranavprakash.net/2014/03/21/get-url-parameters-using-javascript</id>
    <content type="html">&lt;p&gt;Suppose you want to get the parameters of an URL like below in JavaScript&lt;/p&gt;
 
 &lt;p&gt;&lt;code&gt;http://example.com?param1=value1&amp;amp;param2=value2&lt;/code&gt;&lt;/p&gt;
@@ -759,9 +759,9 @@
  
  <entry>
    <title>Getting started with LibCurl</title>
-   <link href="http://pranavprakash.net//2014/03/20/getting-started-with-libcurl/"/>
+   <link href="https://pranavprakash.net//2014/03/20/getting-started-with-libcurl/"/>
    <updated>2014-03-20T21:36:51+05:30</updated>
-   <id>http://pranavprakash.net/2014/03/20/getting-started-with-libcurl</id>
+   <id>https://pranavprakash.net/2014/03/20/getting-started-with-libcurl</id>
    <content type="html">&lt;p&gt;&lt;a href=&quot;http://curl.haxx.se/libcurl/&quot;&gt;LibCurl&lt;/a&gt; is an open-source client-side URL transfer utility supporting multiple protocols. LibCurl is supported by almost every conceivable common platform, making it one of the most versatile libraries of its kind.&lt;/p&gt;
 
 &lt;p&gt;In this post, I will show you how to use LibCurl in C to make simple HTTP requests with its built-in cookie processor to programmatically log in to websites and download web pages.&lt;/p&gt;
@@ -876,9 +876,9 @@
  
  <entry>
    <title>100 great Freeware/Open Source Tools and Applications for Windows</title>
-   <link href="http://pranavprakash.net//2009/09/12/100-great-freewareopen-source-tools-and/"/>
+   <link href="https://pranavprakash.net//2009/09/12/100-great-freewareopen-source-tools-and/"/>
    <updated>2009-09-12T00:00:00+05:30</updated>
-   <id>http://pranavprakash.net/2009/09/12/100-great-freewareopen-source-tools-and</id>
+   <id>https://pranavprakash.net/2009/09/12/100-great-freewareopen-source-tools-and</id>
    <content type="html">&lt;p&gt;Many people are unaware of fact that there are many freeware and open source tools and applications out
 there on internet which they can use for their day to day work without shelling out extra bucks. I have compiled a list of 100
 such applications which you can use for free and they do work as good as their commercial counterpart (sometimes even better). So here we go:&lt;/p&gt;
@@ -1639,9 +1639,9 @@ Please feel free to add those applications to this list.&lt;/p&gt;
  
  <entry>
    <title>How to create a custom IE8 Accelerator</title>
-   <link href="http://pranavprakash.net//2009/06/29/how-to-create-custom-ie8-accelerator/"/>
+   <link href="https://pranavprakash.net//2009/06/29/how-to-create-custom-ie8-accelerator/"/>
    <updated>2009-06-29T00:00:00+05:30</updated>
-   <id>http://pranavprakash.net/2009/06/29/how-to-create-custom-ie8-accelerator</id>
+   <id>https://pranavprakash.net/2009/06/29/how-to-create-custom-ie8-accelerator</id>
    <content type="html">&lt;p&gt;Microsoft has introduced a new feature in Internet Explorer 8 called “Accelerators”. These accelerators help you quickly perform your everyday browsing tasks without navigating to other websites to get things done. Simply highlight text from any webpage, and then click on the blue Accelerator icon that appears above your selection to perform the respective task.&lt;/p&gt;
 
 &lt;!--more--&gt;
@@ -1703,9 +1703,9 @@ Please feel free to add those applications to this list.&lt;/p&gt;
  
  <entry>
    <title>How to send message to users logged on to a UNIX terminal?</title>
-   <link href="http://pranavprakash.net//2009/05/07/how-to-send-message-to-users-logged-on/"/>
+   <link href="https://pranavprakash.net//2009/05/07/how-to-send-message-to-users-logged-on/"/>
    <updated>2009-05-07T00:00:00+05:30</updated>
-   <id>http://pranavprakash.net/2009/05/07/how-to-send-message-to-users-logged-on</id>
+   <id>https://pranavprakash.net/2009/05/07/how-to-send-message-to-users-logged-on</id>
    <content type="html">&lt;p&gt;One of the cool features of UNIX is that you don’t need to have any software installed to send message to users logged on to that machine. There is a handy command called &lt;code&gt;write&lt;/code&gt; which enables you to do this. Here is the syntax of this command:&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;lineno&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;write username tty&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -1743,9 +1743,9 @@ Please feel free to add those applications to this list.&lt;/p&gt;
  
  <entry>
    <title>How to find out CPU utilization in Linux?</title>
-   <link href="http://pranavprakash.net//2009/02/19/how-to-find-out-cpu-utilization-in/"/>
+   <link href="https://pranavprakash.net//2009/02/19/how-to-find-out-cpu-utilization-in/"/>
    <updated>2009-02-19T00:00:00+05:30</updated>
-   <id>http://pranavprakash.net/2009/02/19/how-to-find-out-cpu-utilization-in</id>
+   <id>https://pranavprakash.net/2009/02/19/how-to-find-out-cpu-utilization-in</id>
    <content type="html">&lt;p&gt;Everyone knows that CPU utiization in windows can be found out from Windows Task Manager. But what about Linux? Well Linux has also got set of utilities to monitor CPU utilization. With these commands you can find out total CPU utilization, individual CPU utilization (for SMP machines), your system’s average CPU utilization since the last reboot, determine which process is eating up your CPU(s) etc.&lt;/p&gt;
 
 &lt;!--more--&gt;
@@ -1812,9 +1812,9 @@ Please feel free to add those applications to this list.&lt;/p&gt;
  
  <entry>
    <title>Add 'Open with Notepad' to the Context Menu for All Files</title>
-   <link href="http://pranavprakash.net//2009/01/29/add-with-notepad-to-context-menu-for/"/>
+   <link href="https://pranavprakash.net//2009/01/29/add-with-notepad-to-context-menu-for/"/>
    <updated>2009-01-29T00:00:00+05:30</updated>
-   <id>http://pranavprakash.net/2009/01/29/add-with-notepad-to-context-menu-for</id>
+   <id>https://pranavprakash.net/2009/01/29/add-with-notepad-to-context-menu-for</id>
    <content type="html">&lt;p&gt;I often use Notepad to open plain text files. If the extension of file is of unknown type then I have to browse a list of applications to open that file which is quite painful. Here is a small registry tweak which adds “Open with Notepad” to right click context menu for all file types.&lt;/p&gt;
 
 &lt;!--more--&gt;
@@ -1841,9 +1841,9 @@ Please feel free to add those applications to this list.&lt;/p&gt;
  
  <entry>
    <title>Switch between different JDK versions in Windows</title>
-   <link href="http://pranavprakash.net//2008/12/07/being-java-developer-i-always-compile/"/>
+   <link href="https://pranavprakash.net//2008/12/07/being-java-developer-i-always-compile/"/>
    <updated>2008-12-07T00:00:00+05:30</updated>
-   <id>http://pranavprakash.net/2008/12/07/being-java-developer-i-always-compile</id>
+   <id>https://pranavprakash.net/2008/12/07/being-java-developer-i-always-compile</id>
    <content type="html">&lt;p&gt;Being a Java developer, I always compile and test my code on different Java versions. But switching between them is a huge problem. So finally I found an easy method to do this. You have to create following batch files and place them in directory you open your command line in or in &lt;code&gt;SYSTEM PATH&lt;/code&gt;. You can use you favorite text editor to create these files.&lt;/p&gt;
 
 &lt;!--more--&gt;
@@ -1886,9 +1886,9 @@ Please feel free to add those applications to this list.&lt;/p&gt;
  
  <entry>
    <title>Hello World!</title>
-   <link href="http://pranavprakash.net//2008/12/06/hello-world/"/>
+   <link href="https://pranavprakash.net//2008/12/06/hello-world/"/>
    <updated>2008-12-06T00:00:00+05:30</updated>
-   <id>http://pranavprakash.net/2008/12/06/hello-world</id>
+   <id>https://pranavprakash.net/2008/12/06/hello-world</id>
    <content type="html">&lt;p&gt;Hello World! Welcome to my new blog. I am Pranav Prakash, currently working as Associate Applications Engineer at Oracle India Pvt. Ltd. in Peoplesoft Enterprise Tools division. I have completed my B. Tech. in Electrical Engineering from IIT Kharagpur in May 2008. Since then I’m working for Oracle. Up till now, my stay at Oracle has been very much knowledge enriching. I would be posting tips, tricks and work-arounds which I have learned from my experiences in this blog.&lt;/p&gt;
 </content>
  </entry>

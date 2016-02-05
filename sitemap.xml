@@ -1,93 +1,93 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
-        <loc>http://pranavprakash.net/2008/12/06/hello-world/</loc>
+        <loc>https://pranavprakash.net/2008/12/06/hello-world/</loc>
         <lastmod>2016-02-05T20:03:23+05:30</lastmod>
     </url>
     <url>
-        <loc>http://pranavprakash.net/2008/12/07/being-java-developer-i-always-compile/</loc>
+        <loc>https://pranavprakash.net/2008/12/07/being-java-developer-i-always-compile/</loc>
         <lastmod>2016-02-05T20:03:23+05:30</lastmod>
     </url>
     <url>
-        <loc>http://pranavprakash.net/2009/01/29/add-with-notepad-to-context-menu-for/</loc>
+        <loc>https://pranavprakash.net/2009/01/29/add-with-notepad-to-context-menu-for/</loc>
         <lastmod>2016-02-05T20:03:23+05:30</lastmod>
     </url>
     <url>
-        <loc>http://pranavprakash.net/2009/02/19/how-to-find-out-cpu-utilization-in/</loc>
+        <loc>https://pranavprakash.net/2009/02/19/how-to-find-out-cpu-utilization-in/</loc>
         <lastmod>2016-02-05T20:03:23+05:30</lastmod>
     </url>
     <url>
-        <loc>http://pranavprakash.net/2009/05/07/how-to-send-message-to-users-logged-on/</loc>
+        <loc>https://pranavprakash.net/2009/05/07/how-to-send-message-to-users-logged-on/</loc>
         <lastmod>2016-02-05T20:03:23+05:30</lastmod>
     </url>
     <url>
-        <loc>http://pranavprakash.net/2009/06/29/how-to-create-custom-ie8-accelerator/</loc>
+        <loc>https://pranavprakash.net/2009/06/29/how-to-create-custom-ie8-accelerator/</loc>
         <lastmod>2016-02-05T20:03:23+05:30</lastmod>
     </url>
     <url>
-        <loc>http://pranavprakash.net/2009/09/12/100-great-freewareopen-source-tools-and/</loc>
+        <loc>https://pranavprakash.net/2009/09/12/100-great-freewareopen-source-tools-and/</loc>
         <lastmod>2016-02-05T20:03:23+05:30</lastmod>
     </url>
     <url>
-        <loc>http://pranavprakash.net/2014/03/20/getting-started-with-libcurl/</loc>
+        <loc>https://pranavprakash.net/2014/03/20/getting-started-with-libcurl/</loc>
         <lastmod>2016-02-05T20:03:23+05:30</lastmod>
     </url>
     <url>
-        <loc>http://pranavprakash.net/2014/03/21/get-url-parameters-using-javascript/</loc>
-        <lastmod>2016-02-05T20:03:23+05:30</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://pranavprakash.net/2014/07/25/update-and-delete-with-table-alias-in-microsoft-sql-server/
-        </loc>
-        <lastmod>2016-02-05T20:03:23+05:30</lastmod>
-    </url>
-    <url>
-        <loc>http://pranavprakash.net/2014/08/14/toggle-oracle-home-on-windows/</loc>
-        <lastmod>2016-02-05T20:03:23+05:30</lastmod>
-    </url>
-    <url>
-        <loc>http://pranavprakash.net/2014/09/21/automate-git-workflow-with-grunt/</loc>
-        <lastmod>2016-02-05T20:03:23+05:30</lastmod>
-    </url>
-    <url>
-        <loc>http://pranavprakash.net/2014/09/27/using-libcurl-with-ssl/</loc>
-        <lastmod>2016-02-05T20:03:23+05:30</lastmod>
-    </url>
-    <url>
-        <loc>http://pranavprakash.net/2014/10/25/navigation-menu-in-ruby-on-rails/</loc>
+        <loc>https://pranavprakash.net/2014/03/21/get-url-parameters-using-javascript/</loc>
         <lastmod>2016-02-05T20:03:23+05:30</lastmod>
     </url>
     <url>
         <loc>
-            http://pranavprakash.net/2014/11/08/migrating-ruby-on-rails-app-from-heroku-to-openshift/
+            https://pranavprakash.net/2014/07/25/update-and-delete-with-table-alias-in-microsoft-sql-server/
         </loc>
         <lastmod>2016-02-05T20:03:23+05:30</lastmod>
     </url>
     <url>
-        <loc>http://pranavprakash.net/2014/12/28/active-admin-and-paperclip-done-right/</loc>
+        <loc>https://pranavprakash.net/2014/08/14/toggle-oracle-home-on-windows/</loc>
+        <lastmod>2016-02-05T20:03:23+05:30</lastmod>
+    </url>
+    <url>
+        <loc>https://pranavprakash.net/2014/09/21/automate-git-workflow-with-grunt/</loc>
+        <lastmod>2016-02-05T20:03:23+05:30</lastmod>
+    </url>
+    <url>
+        <loc>https://pranavprakash.net/2014/09/27/using-libcurl-with-ssl/</loc>
+        <lastmod>2016-02-05T20:03:23+05:30</lastmod>
+    </url>
+    <url>
+        <loc>https://pranavprakash.net/2014/10/25/navigation-menu-in-ruby-on-rails/</loc>
         <lastmod>2016-02-05T20:03:23+05:30</lastmod>
     </url>
     <url>
         <loc>
-            http://pranavprakash.net/2015/02/09/sending-asynchronous-emails-using-sidekiq-on-openshift/
+            https://pranavprakash.net/2014/11/08/migrating-ruby-on-rails-app-from-heroku-to-openshift/
         </loc>
         <lastmod>2016-02-05T20:03:23+05:30</lastmod>
     </url>
     <url>
-        <loc>http://pranavprakash.net/2016/02/05/kill-idle-connections-to-redis/</loc>
+        <loc>https://pranavprakash.net/2014/12/28/active-admin-and-paperclip-done-right/</loc>
         <lastmod>2016-02-05T20:03:23+05:30</lastmod>
     </url>
     <url>
-        <loc>http://pranavprakash.net/404.html</loc>
+        <loc>
+            https://pranavprakash.net/2015/02/09/sending-asynchronous-emails-using-sidekiq-on-openshift/
+        </loc>
+        <lastmod>2016-02-05T20:03:23+05:30</lastmod>
+    </url>
+    <url>
+        <loc>https://pranavprakash.net/2016/02/05/kill-idle-connections-to-redis/</loc>
+        <lastmod>2016-02-05T20:03:23+05:30</lastmod>
+    </url>
+    <url>
+        <loc>https://pranavprakash.net/404.html</loc>
         <lastmod>2015-08-24T14:49:52+05:30</lastmod>
     </url>
     <url>
-        <loc>http://pranavprakash.net/about/</loc>
+        <loc>https://pranavprakash.net/about/</loc>
         <lastmod>2015-08-24T14:49:52+05:30</lastmod>
     </url>
     <url>
-        <loc>http://pranavprakash.net/</loc>
+        <loc>https://pranavprakash.net/</loc>
         <lastmod>2016-02-05T20:18:53+05:30</lastmod>
     </url>
 </urlset>
