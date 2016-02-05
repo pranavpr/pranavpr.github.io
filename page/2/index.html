@@ -12,12 +12,12 @@
     
     </title>
     <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'/>
-    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css"/>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/pure-min.css"/>
     <!--[if lte IE 8]>
     <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/grids-responsive-old-ie-min.css"/>
     <![endif]-->
     <!--[if gt IE 8]><!-->
-    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/grids-responsive-min.css"/>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/grids-responsive-min.css"/>
     <!--<![endif]-->
     <!--[if lte IE 8]>
     <link rel="stylesheet" href="/build/style-old-ie.min.css"/>
@@ -63,6 +63,35 @@
         <div class="posts">
           
 <h1 class="content-subhead">Recent Posts</h1>
+
+  <article class="post" itemscope itemtype="http://schema.org/BlogPosting" >
+    <header class="post-header">
+      <h2 itemprop="name headline" class="post-title">
+      <a href="/2014/09/27/using-libcurl-with-ssl/" itemprop="url">
+        Using LibCurl with SSL
+      </a>
+      </h2>
+      <p class="post-meta">
+      <i class="fa fa-clock-o">&nbsp;</i><a itemprop="datePublished" content="27 Sep 2014" href="#" class="post-author">27 Sep 2014</a>&nbsp;<i class="fa fa-tags"></i>
+       <a itemprop="keywords" href="/tags/c" class="post-category post-category-c">C</a>    <a itemprop="keywords" href="/tags/ssl" class="post-category post-category-s">SSL</a>    <a itemprop="keywords" href="/tags/curl" class="post-category post-category-c">CURL</a>   
+      </p>
+    </header>
+    <div itemprop="articleBody" class="post-description">
+      <p>
+        
+          <p>LibCurl supports URL transfer over <code>HTTPS</code> protocol. In this post we’ll use LibCurl to download a webpage over <code>HTTPS</code> protocol. To get started, make sure that you have setup your system as outlined in one of my previous <a href="/2014/03/20/getting-started-with-libcurl/">posts</a>. Note that LibCurl comes with <code>SSL</code> libraries included and hence you need not to install any extra packages.</p>
+
+<h2 id="getting-started">Getting started</h2>
+
+<p>Let’s first try to download a <code>HTTPS</code> webpage without <code>SSL</code> using following code:</p>
+
+<a href="/2014/09/27/using-libcurl-with-ssl/">Continue Reading »</a>
+        
+      </p>
+    </div>
+    <meta itemprop="wordCount" content="1049">
+    <meta itemprop="author" content="Pranav Prakash">
+  </article>
 
   <article class="post" itemscope itemtype="http://schema.org/BlogPosting" >
     <header class="post-header">
@@ -183,33 +212,6 @@
     <meta itemprop="author" content="Pranav Prakash">
   </article>
 
-  <article class="post" itemscope itemtype="http://schema.org/BlogPosting" >
-    <header class="post-header">
-      <h2 itemprop="name headline" class="post-title">
-      <a href="/2014/03/20/getting-started-with-libcurl/" itemprop="url">
-        Getting started with LibCurl
-      </a>
-      </h2>
-      <p class="post-meta">
-      <i class="fa fa-clock-o">&nbsp;</i><a itemprop="datePublished" content="20 Mar 2014" href="#" class="post-author">20 Mar 2014</a>&nbsp;<i class="fa fa-tags"></i>
-       <a itemprop="keywords" href="/tags/c" class="post-category post-category-c">C</a>    <a itemprop="keywords" href="/tags/curl" class="post-category post-category-c">CURL</a>    <a itemprop="keywords" href="/tags/windows" class="post-category post-category-w">WINDOWS</a>   
-      </p>
-    </header>
-    <div itemprop="articleBody" class="post-description">
-      <p>
-        
-          <p><a href="http://curl.haxx.se/libcurl/">LibCurl</a> is an open-source client-side URL transfer utility supporting multiple protocols. LibCurl is supported by almost every conceivable common platform, making it one of the most versatile libraries of its kind.</p>
-
-<p>In this post, I will show you how to use LibCurl in C to make simple HTTP requests with its built-in cookie processor to programmatically log in to websites and download web pages.</p>
-
-<a href="/2014/03/20/getting-started-with-libcurl/">Continue Reading »</a>
-        
-      </p>
-    </div>
-    <meta itemprop="wordCount" content="903">
-    <meta itemprop="author" content="Pranav Prakash">
-  </article>
-
 
 <div class="footer">
 <div class="pure-menu pure-menu-horizontal pure-menu-open">
@@ -224,7 +226,7 @@
     
   </ul>
   <p>
-  &copy; 2015. All rights reserved.
+  &copy; 2016. All rights reserved.
   </p>
 </div>
 </div>

@@ -12,12 +12,12 @@
     
     </title>
     <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'/>
-    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css"/>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/pure-min.css"/>
     <!--[if lte IE 8]>
     <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/grids-responsive-old-ie-min.css"/>
     <![endif]-->
     <!--[if gt IE 8]><!-->
-    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/grids-responsive-min.css"/>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/grids-responsive-min.css"/>
     <!--<![endif]-->
     <!--[if lte IE 8]>
     <link rel="stylesheet" href="/build/style-old-ie.min.css"/>
@@ -67,17 +67,54 @@
     <article class="post" itemscope itemtype="http://schema.org/BlogPosting" >
       <header class="post-header">
         <h2 itemprop="name headline" class="post-title">
-        <a href="/2015/02/09/sending-asynchronous-emails-using-sidekiq-on-openshift/" itemprop="url">
-          Sending asynchronous emails using Sidekiq on OpenShift
+        <a href="/2016/02/05/kill-idle-connections-to-redis/" itemprop="url">
+          Kill idle connections to Redis
         </a>
         </h2>
         <p class="post-meta">
-        <i class="fa fa-clock-o">&nbsp;</i><a itemprop="datePublished" content="09 Feb 2015" href="#" class="post-author">09 Feb 2015</a>&nbsp;<i class="fa fa-tags"></i>
-         <a itemprop="keywords" href="/tags/sidekiq" class="post-category post-category-s">SIDEKIQ</a>    <a itemprop="keywords" href="/tags/email" class="post-category post-category-e">EMAIL</a>    <a itemprop="keywords" href="/tags/ruby-on-rails" class="post-category post-category-r">RUBY ON RAILS</a>    <a itemprop="keywords" href="/tags/devise" class="post-category post-category-d">DEVISE</a>    <a itemprop="keywords" href="/tags/openshift" class="post-category post-category-o">OPENSHIFT</a>   
+        <i class="fa fa-clock-o">&nbsp;</i><a itemprop="datePublished" content="05 Feb 2016" href="#" class="post-author">05 Feb 2016</a>&nbsp;<i class="fa fa-tags"></i>
+         <a itemprop="keywords" href="/tags/redis" class="post-category post-category-r">REDIS</a>    <a itemprop="keywords" href="/tags/aws" class="post-category post-category-a">AWS</a>    <a itemprop="keywords" href="/tags/python" class="post-category post-category-p">PYTHON</a>    <a itemprop="keywords" href="/tags/elasticache" class="post-category post-category-e">ELASTICACHE</a>   
         </p>
       </header>
       <div itemprop="articleBody" class="post-description">
         <p>
+          
+            <p>I was using a Amazon Elasticache <code>cache.t2.medium</code> Redis instance as a cache store for one of the Rails application. Over the time I observed that connections to Redis instance are increasing day by day and once it hit ~1500, the Rails application started throwing connection timeout exceptions:</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="lineno">1</span> Error connecting to Redis on redis-host:6379 <span class="o">(</span>Redis::TimeoutError<span class="o">)</span></code></pre></div>
+
+<p>On searching over internet, I found that the default parameter group has <code>timeout</code> value set to 0 which means, any connection that has been initialized to redis will be kept by redis even if the connection initialized by the client is down. Well the first thing I did was to create a new parameter group and set its value to a non-zero integer. However I couldn’t apply the parameter group changes to live production application and hence started looking for alternatives.</p>
+
+<a href="/2016/02/05/kill-idle-connections-to-redis/">Continue Reading »</a>
+          
+        </p>
+      </div>
+      <meta itemprop="wordCount" content="632">
+      <meta itemprop="author" content="Pranav Prakash">
+    </article>
+  
+  <h1 class="content-subhead">Recent Posts</h1>
+  
+  
+    
+    
+  
+
+    
+      <article class="post" itemscope itemtype="http://schema.org/BlogPosting" >
+        <header class="post-header">
+          <h2 itemprop="name headline" class="post-title">
+          <a href="/2015/02/09/sending-asynchronous-emails-using-sidekiq-on-openshift/" itemprop="url">
+            Sending asynchronous emails using Sidekiq on OpenShift
+          </a>
+          </h2>
+          <p class="post-meta">
+          <i class="fa fa-clock-o">&nbsp;</i><a itemprop="datePublished" content="09 Feb 2015" href="#" class="post-author">09 Feb 2015</a>&nbsp;<i class="fa fa-tags"></i>
+           <a itemprop="keywords" href="/tags/sidekiq" class="post-category post-category-s">SIDEKIQ</a>    <a itemprop="keywords" href="/tags/email" class="post-category post-category-e">EMAIL</a>    <a itemprop="keywords" href="/tags/ruby-on-rails" class="post-category post-category-r">RUBY ON RAILS</a>    <a itemprop="keywords" href="/tags/devise" class="post-category post-category-d">DEVISE</a>    <a itemprop="keywords" href="/tags/openshift" class="post-category post-category-o">OPENSHIFT</a>   
+          </p>
+        </header>
+        <div itemprop="articleBody" class="post-description">
+          <p>
           
             <p>If you need to send transactional emails from your Rails application, you should always send them asynchronously using a background job. If you send transactional emails synchronously, the user will see a loading page for the time rails connect to SMTP server and delivers your email which is about 2-3 seconds. This will result in a very bad user experience and it’s advisable to send emails using a background job.</p>
 
@@ -96,12 +133,6 @@
       <meta itemprop="wordCount" content="538">
       <meta itemprop="author" content="Pranav Prakash">
     </article>
-  
-  <h1 class="content-subhead">Recent Posts</h1>
-  
-  
-    
-    
   
 
     
@@ -217,37 +248,6 @@
     </article>
   
 
-    
-      <article class="post" itemscope itemtype="http://schema.org/BlogPosting" >
-        <header class="post-header">
-          <h2 itemprop="name headline" class="post-title">
-          <a href="/2014/09/27/using-libcurl-with-ssl/" itemprop="url">
-            Using LibCurl with SSL
-          </a>
-          </h2>
-          <p class="post-meta">
-          <i class="fa fa-clock-o">&nbsp;</i><a itemprop="datePublished" content="27 Sep 2014" href="#" class="post-author">27 Sep 2014</a>&nbsp;<i class="fa fa-tags"></i>
-           <a itemprop="keywords" href="/tags/c" class="post-category post-category-c">C</a>    <a itemprop="keywords" href="/tags/ssl" class="post-category post-category-s">SSL</a>    <a itemprop="keywords" href="/tags/curl" class="post-category post-category-c">CURL</a>   
-          </p>
-        </header>
-        <div itemprop="articleBody" class="post-description">
-          <p>
-          
-            <p>LibCurl supports URL transfer over <code>HTTPS</code> protocol. In this post we’ll use LibCurl to download a webpage over <code>HTTPS</code> protocol. To get started, make sure that you have setup your system as outlined in one of my previous <a href="/2014/03/20/getting-started-with-libcurl/">posts</a>. Note that LibCurl comes with <code>SSL</code> libraries included and hence you need not to install any extra packages.</p>
-
-<h2 id="getting-started">Getting started</h2>
-
-<p>Let’s first try to download a <code>HTTPS</code> webpage without <code>SSL</code> using following code:</p>
-
-<a href="/2014/09/27/using-libcurl-with-ssl/">Continue Reading »</a>
-          
-        </p>
-      </div>
-      <meta itemprop="wordCount" content="1049">
-      <meta itemprop="author" content="Pranav Prakash">
-    </article>
-  
-
 
 <div class="footer">
 <div class="pure-menu pure-menu-horizontal pure-menu-open">
@@ -260,7 +260,7 @@
     
   </ul>
   <p>
-  &copy; 2015. All rights reserved.
+  &copy; 2016. All rights reserved.
   </p>
 </div>
 </div>
