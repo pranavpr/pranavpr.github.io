@@ -79,22 +79,22 @@
 
 <p><strong>toggle_oracle_home.bat</strong></p>
 
-<div class="highlight"><pre><code class="language-bat" data-lang="bat"><span class="lineno"> 1</span> <span class="p">@</span><span class="k">echo</span> <span class="k">off</span>
-<span class="lineno"> 2</span> <span class="k">setlocal</span> enableDelayedExpansion
-<span class="lineno"> 3</span> <span class="k">if</span> <span class="s2">&quot;!ORACLE_HOME:~-8!&quot;</span> <span class="o">==</span> <span class="s2">&quot;dbhome_1&quot;</span> (
-<span class="lineno"> 4</span>   <span class="k">set</span> <span class="s2">&quot;ORCLHOME=C:\oracle\product\11.2.0\client_1&quot;</span>
-<span class="lineno"> 5</span> ) <span class="k">else</span> (
-<span class="lineno"> 6</span>   <span class="k">set</span> <span class="s2">&quot;ORCLHOME=C:\oracle\product\11.2.0\dbhome_1&quot;</span>
-<span class="lineno"> 7</span> )
-<span class="lineno"> 8</span> setx ORACLE_HOME <span class="s2">&quot;!ORCLHOME!&quot;</span> <span class="n">/M</span>
-<span class="lineno"> 9</span> <span class="k">echo</span> Oracle Home was <span class="k">set</span> <span class="nv">as</span> : !ORCLHOME!
-<span class="lineno">10</span> <span class="k">pause</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-bat" data-lang="bat"><span></span><span class="lineno"> 1 </span><span class="p">@</span><span class="k">echo</span> off
+<span class="lineno"> 2 </span><span class="k">setlocal</span> enableDelayedExpansion
+<span class="lineno"> 3 </span><span class="k">if</span> <span class="s2">&quot;</span><span class="nv">!ORACLE_HOME:~-8!</span><span class="s2">&quot;</span> <span class="o">==</span> <span class="s2">&quot;dbhome_1&quot;</span> <span class="p">(</span>
+<span class="lineno"> 4 </span>  <span class="k">set</span> <span class="s2">&quot;ORCLHOME=C:\oracle\product\11.2.0\client_1&quot;</span>
+<span class="lineno"> 5 </span><span class="p">)</span> <span class="k">else</span> <span class="p">(</span>
+<span class="lineno"> 6 </span>  <span class="k">set</span> <span class="s2">&quot;ORCLHOME=C:\oracle\product\11.2.0\dbhome_1&quot;</span>
+<span class="lineno"> 7 </span><span class="p">)</span>
+<span class="lineno"> 8 </span>setx ORACLE_HOME <span class="s2">&quot;</span><span class="nv">!ORCLHOME!</span><span class="s2">&quot;</span> /M
+<span class="lineno"> 9 </span><span class="k">echo</span> Oracle Home was set as : <span class="nv">!ORCLHOME!</span>
+<span class="lineno">10 </span><span class="k">pause</span></code></pre></figure>
 
 <p>You can use this batch file to toggle another environment variable in Windows too by modifying lines 4, 6 and 8.</p>
 
     </p>
   </div>
-  <meta itemprop="wordCount" content="103">
+  <meta itemprop="wordCount" content="153">
   <meta itemprop="author" content="Pranav Prakash">
 </article>
 

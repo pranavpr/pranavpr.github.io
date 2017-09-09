@@ -61,7 +61,7 @@
     <div class="content pure-u-1 pure-u-md-3-4">
       <div>
         <div class="posts">
-          <h1 class="content-subhead">Approx 3 minutes read</h1>
+          <h1 class="content-subhead">Approx 5 minutes read</h1>
 <article class="post" itemscope itemtype="http://schema.org/BlogPosting" >
   <header class="post-header">
   <a href="/2014/10/25/navigation-menu-in-ruby-on-rails/" itemprop="url">
@@ -75,25 +75,25 @@
     <p>
     <p>Recently while working on a Rails project, I came across following markup for navigation:</p>
 
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="lineno"> 1</span> <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;sidebar-menu&quot;</span><span class="nt">&gt;</span>
-<span class="lineno"> 2</span>   <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;treeview active&quot;</span><span class="nt">&gt;</span>
-<span class="lineno"> 3</span>     <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>
-<span class="lineno"> 4</span>       <span class="nt">&lt;span&gt;</span>Category<span class="nt">&lt;/span&gt;</span>
-<span class="lineno"> 5</span>     <span class="nt">&lt;/a&gt;</span>
-<span class="lineno"> 6</span>     <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;treeview-menu&quot;</span><span class="nt">&gt;</span>
-<span class="lineno"> 7</span>       <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;active&quot;</span><span class="nt">&gt;</span>
-<span class="lineno"> 8</span> 	      <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>
-<span class="lineno"> 9</span> 	      	<span class="nt">&lt;span&gt;</span>Add Category<span class="nt">&lt;/span&gt;</span>
-<span class="lineno">10</span> 	      <span class="nt">&lt;/a&gt;</span>
-<span class="lineno">11</span>       <span class="nt">&lt;/li&gt;</span>
-<span class="lineno">12</span>       <span class="nt">&lt;li&gt;</span>
-<span class="lineno">13</span> 	      <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>
-<span class="lineno">14</span> 	      	<span class="nt">&lt;span&gt;</span>Update Category<span class="nt">&lt;/span&gt;</span>
-<span class="lineno">15</span> 	      <span class="nt">&lt;/a&gt;</span>
-<span class="lineno">16</span>       <span class="nt">&lt;/li&gt;</span>
-<span class="lineno">17</span>     <span class="nt">&lt;/ul&gt;</span>
-<span class="lineno">18</span>   <span class="nt">&lt;/li&gt;</span>
-<span class="lineno">19</span> <span class="nt">&lt;/ul&gt;</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span></span><span class="lineno"> 1 </span><span class="p">&lt;</span><span class="nt">ul</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;sidebar-menu&quot;</span><span class="p">&gt;</span>
+<span class="lineno"> 2 </span>  <span class="p">&lt;</span><span class="nt">li</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;treeview active&quot;</span><span class="p">&gt;</span>
+<span class="lineno"> 3 </span>    <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#&quot;</span><span class="p">&gt;</span>
+<span class="lineno"> 4 </span>      <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span>Category<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+<span class="lineno"> 5 </span>    <span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+<span class="lineno"> 6 </span>    <span class="p">&lt;</span><span class="nt">ul</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;treeview-menu&quot;</span><span class="p">&gt;</span>
+<span class="lineno"> 7 </span>      <span class="p">&lt;</span><span class="nt">li</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;active&quot;</span><span class="p">&gt;</span>
+<span class="lineno"> 8 </span>	      <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#&quot;</span><span class="p">&gt;</span>
+<span class="lineno"> 9 </span>	      	<span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span>Add Category<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+<span class="lineno">10 </span>	      <span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+<span class="lineno">11 </span>      <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+<span class="lineno">12 </span>      <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>
+<span class="lineno">13 </span>	      <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#&quot;</span><span class="p">&gt;</span>
+<span class="lineno">14 </span>	      	<span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span>Update Category<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+<span class="lineno">15 </span>	      <span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+<span class="lineno">16 </span>      <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+<span class="lineno">17 </span>    <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+<span class="lineno">18 </span>  <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+<span class="lineno">19 </span><span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span></code></pre></figure>
 
 <!--more-->
 
@@ -101,33 +101,33 @@
 
 <p>To incorporate this in Rails, I decided to make parent element as controller and child elements as actions for that controller. Thus for above markup, I created a categories controller and added action new, create, edit and update to it. Then I created two helper functions as below:</p>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="lineno">1</span> <span class="k">module</span> <span class="nn">ApplicationHelper</span>
-<span class="lineno">2</span> 	<span class="k">def</span> <span class="nf">controller?</span><span class="p">(</span><span class="o">*</span><span class="n">controller</span><span class="p">)</span>
-<span class="lineno">3</span> 		<span class="n">controller</span><span class="o">.</span><span class="n">include?</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:controller</span><span class="o">]</span><span class="p">)</span>
-<span class="lineno">4</span> 	<span class="k">end</span>
-<span class="lineno">5</span> 
-<span class="lineno">6</span> 	<span class="k">def</span> <span class="nf">action?</span><span class="p">(</span><span class="o">*</span><span class="n">action</span><span class="p">)</span>
-<span class="lineno">7</span> 		<span class="n">action</span><span class="o">.</span><span class="n">include?</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:action</span><span class="o">]</span><span class="p">)</span>
-<span class="lineno">8</span> 	<span class="k">end</span>
-<span class="lineno">9</span> <span class="k">end</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span></span><span class="lineno">1 </span><span class="k">module</span> <span class="nn">ApplicationHelper</span>
+<span class="lineno">2 </span>	<span class="k">def</span> <span class="nf">controller?</span><span class="p">(</span><span class="o">*</span><span class="n">controller</span><span class="p">)</span>
+<span class="lineno">3 </span>		<span class="n">controller</span><span class="o">.</span><span class="n">include?</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:controller</span><span class="o">]</span><span class="p">)</span>
+<span class="lineno">4 </span>	<span class="k">end</span>
+<span class="lineno">5 </span>
+<span class="lineno">6 </span>	<span class="k">def</span> <span class="nf">action?</span><span class="p">(</span><span class="o">*</span><span class="n">action</span><span class="p">)</span>
+<span class="lineno">7 </span>		<span class="n">action</span><span class="o">.</span><span class="n">include?</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:action</span><span class="o">]</span><span class="p">)</span>
+<span class="lineno">8 </span>	<span class="k">end</span>
+<span class="lineno">9 </span><span class="k">end</span></code></pre></figure>
 
 <p>Then I created the menu layout as below:</p>
 
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="lineno"> 1</span> <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;sidebar-menu&quot;</span><span class="nt">&gt;</span>
-<span class="lineno"> 2</span>   <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;treeview &lt;%= &#39;active&#39; if controller?(&#39;categories&#39;) %&gt;&quot;</span><span class="nt">&gt;</span>
-<span class="lineno"> 3</span>     <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>
-<span class="lineno"> 4</span>       <span class="nt">&lt;span&gt;</span>Category<span class="nt">&lt;/span&gt;</span>
-<span class="lineno"> 5</span>     <span class="nt">&lt;/a&gt;</span>
-<span class="lineno"> 6</span>     <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;treeview-menu&quot;</span><span class="nt">&gt;</span>
-<span class="lineno"> 7</span>       <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;&lt;%= &#39;active&#39; if controller?(&#39;categories&#39;) &amp;&amp; action?(&#39;new&#39;, &#39;create&#39;) %&gt;&quot;</span><span class="nt">&gt;</span>
-<span class="lineno"> 8</span>       <span class="err">&lt;</span>%= link_to(raw(&#39;<span class="nt">&lt;span&gt;</span>Add category<span class="nt">&lt;/span&gt;</span>&#39;), new_categories_path) %&gt;
-<span class="lineno"> 9</span>       <span class="nt">&lt;/li&gt;</span>
-<span class="lineno">10</span>       <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;&lt;%= &#39;active&#39; if controller?(&#39;categories&#39;) &amp;&amp; action?(&#39;update&#39;, &#39;edit&#39;) %&gt;&quot;</span><span class="nt">&gt;</span>
-<span class="lineno">11</span>       <span class="err">&lt;</span>%= link_to(raw(&#39;<span class="nt">&lt;span&gt;</span>Modify category<span class="nt">&lt;/span&gt;</span>&#39;), edit_categories_path) %&gt;
-<span class="lineno">12</span>       <span class="nt">&lt;/li&gt;</span>
-<span class="lineno">13</span>     <span class="nt">&lt;/ul&gt;</span>
-<span class="lineno">14</span>   <span class="nt">&lt;/li&gt;</span>
-<span class="lineno">15</span> <span class="nt">&lt;/ul&gt;</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span></span><span class="lineno"> 1 </span><span class="p">&lt;</span><span class="nt">ul</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;sidebar-menu&quot;</span><span class="p">&gt;</span>
+<span class="lineno"> 2 </span>  <span class="p">&lt;</span><span class="nt">li</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;treeview &lt;%= &#39;active&#39; if controller?(&#39;categories&#39;) %&gt;&quot;</span><span class="p">&gt;</span>
+<span class="lineno"> 3 </span>    <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#&quot;</span><span class="p">&gt;</span>
+<span class="lineno"> 4 </span>      <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span>Category<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+<span class="lineno"> 5 </span>    <span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+<span class="lineno"> 6 </span>    <span class="p">&lt;</span><span class="nt">ul</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;treeview-menu&quot;</span><span class="p">&gt;</span>
+<span class="lineno"> 7 </span>      <span class="p">&lt;</span><span class="nt">li</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;&lt;%= &#39;active&#39; if controller?(&#39;categories&#39;) &amp;&amp; action?(&#39;new&#39;, &#39;create&#39;) %&gt;&quot;</span><span class="p">&gt;</span>
+<span class="lineno"> 8 </span>      <span class="err">&lt;</span>%= link_to(raw(&#39;<span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span>Add category<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>&#39;), new_categories_path) %&gt;
+<span class="lineno"> 9 </span>      <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+<span class="lineno">10 </span>      <span class="p">&lt;</span><span class="nt">li</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;&lt;%= &#39;active&#39; if controller?(&#39;categories&#39;) &amp;&amp; action?(&#39;update&#39;, &#39;edit&#39;) %&gt;&quot;</span><span class="p">&gt;</span>
+<span class="lineno">11 </span>      <span class="err">&lt;</span>%= link_to(raw(&#39;<span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span>Modify category<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>&#39;), edit_categories_path) %&gt;
+<span class="lineno">12 </span>      <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+<span class="lineno">13 </span>    <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+<span class="lineno">14 </span>  <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+<span class="lineno">15 </span><span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span></code></pre></figure>
 
 <p>This layout perfectly synchronized the navigation links with pages.</p>
 
@@ -135,7 +135,7 @@
 
     </p>
   </div>
-  <meta itemprop="wordCount" content="275">
+  <meta itemprop="wordCount" content="599">
   <meta itemprop="author" content="Pranav Prakash">
 </article>
 

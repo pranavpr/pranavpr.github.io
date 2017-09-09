@@ -61,7 +61,7 @@
     <div class="content pure-u-1 pure-u-md-3-4">
       <div>
         <div class="posts">
-          <h1 class="content-subhead">Approx 5 minutes read</h1>
+          <h1 class="content-subhead">Approx 8 minutes read</h1>
 <article class="post" itemscope itemtype="http://schema.org/BlogPosting" >
   <header class="post-header">
   <a href="/2014/09/27/using-libcurl-with-ssl/" itemprop="url">
@@ -81,34 +81,34 @@
 
 <!--more-->
 
-<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="lineno"> 1</span> <span class="cp">#include &lt;stdio.h&gt;</span>
-<span class="lineno"> 2</span> <span class="cp">#define CURL_STATICLIB</span>
-<span class="lineno"> 3</span> <span class="cp">#include &lt;curl/curl.h&gt;</span>
-<span class="lineno"> 4</span> 
-<span class="lineno"> 5</span> <span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
-<span class="lineno"> 6</span> <span class="p">{</span>
-<span class="lineno"> 7</span>     <span class="n">CURL</span> <span class="o">*</span><span class="n">curl</span><span class="p">;</span>
-<span class="lineno"> 8</span>     <span class="n">CURLcode</span> <span class="n">res</span><span class="p">;</span>
-<span class="lineno"> 9</span> 
-<span class="lineno">10</span>     <span class="n">curl</span> <span class="o">=</span> <span class="n">curl_easy_init</span><span class="p">();</span>
-<span class="lineno">11</span>     <span class="k">if</span> <span class="p">(</span><span class="n">curl</span><span class="p">)</span>
-<span class="lineno">12</span>     <span class="p">{</span>
-<span class="lineno">13</span>         <span class="n">curl_easy_setopt</span><span class="p">(</span><span class="n">curl</span><span class="p">,</span> <span class="n">CURLOPT_URL</span><span class="p">,</span> <span class="s">&quot;https://google.com&quot;</span><span class="p">);</span>
-<span class="lineno">14</span>         <span class="cm">/* google.com is redirected, so we tell LibCurl to follow redirection */</span>
-<span class="lineno">15</span>         <span class="n">curl_easy_setopt</span><span class="p">(</span><span class="n">curl</span><span class="p">,</span> <span class="n">CURLOPT_FOLLOWLOCATION</span><span class="p">,</span> <span class="mi">1L</span><span class="p">);</span>
-<span class="lineno">16</span> 
-<span class="lineno">17</span>         <span class="cm">/* Perform the request, res will get the return code */</span>
-<span class="lineno">18</span>         <span class="n">res</span> <span class="o">=</span> <span class="n">curl_easy_perform</span><span class="p">(</span><span class="n">curl</span><span class="p">);</span>
-<span class="lineno">19</span>         <span class="cm">/* Check for errors */</span>
-<span class="lineno">20</span>         <span class="k">if</span><span class="p">(</span><span class="n">res</span> <span class="o">!=</span> <span class="n">CURLE_OK</span><span class="p">)</span>
-<span class="lineno">21</span>             <span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&quot;curl_easy_perform() failed: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">curl_easy_strerror</span><span class="p">(</span><span class="n">res</span><span class="p">));</span>
-<span class="lineno">22</span> 
-<span class="lineno">23</span>         <span class="cm">/* Always cleanup */</span>
-<span class="lineno">24</span>         <span class="n">curl_easy_cleanup</span><span class="p">(</span><span class="n">curl</span><span class="p">);</span>
-<span class="lineno">25</span>     <span class="p">}</span>
-<span class="lineno">26</span> 
-<span class="lineno">27</span>     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="lineno">28</span> <span class="p">}</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><span></span><span class="lineno"> 1 </span><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="lineno"> 2 </span><span class="cp">#define CURL_STATICLIB</span>
+<span class="lineno"> 3 </span><span class="cp">#include</span> <span class="cpf">&lt;curl/curl.h&gt;</span><span class="cp"></span>
+<span class="lineno"> 4 </span>
+<span class="lineno"> 5 </span><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
+<span class="lineno"> 6 </span><span class="p">{</span>
+<span class="lineno"> 7 </span>    <span class="n">CURL</span> <span class="o">*</span><span class="n">curl</span><span class="p">;</span>
+<span class="lineno"> 8 </span>    <span class="n">CURLcode</span> <span class="n">res</span><span class="p">;</span>
+<span class="lineno"> 9 </span>
+<span class="lineno">10 </span>    <span class="n">curl</span> <span class="o">=</span> <span class="n">curl_easy_init</span><span class="p">();</span>
+<span class="lineno">11 </span>    <span class="k">if</span> <span class="p">(</span><span class="n">curl</span><span class="p">)</span>
+<span class="lineno">12 </span>    <span class="p">{</span>
+<span class="lineno">13 </span>        <span class="n">curl_easy_setopt</span><span class="p">(</span><span class="n">curl</span><span class="p">,</span> <span class="n">CURLOPT_URL</span><span class="p">,</span> <span class="s">&quot;https://google.com&quot;</span><span class="p">);</span>
+<span class="lineno">14 </span>        <span class="cm">/* google.com is redirected, so we tell LibCurl to follow redirection */</span>
+<span class="lineno">15 </span>        <span class="n">curl_easy_setopt</span><span class="p">(</span><span class="n">curl</span><span class="p">,</span> <span class="n">CURLOPT_FOLLOWLOCATION</span><span class="p">,</span> <span class="mi">1L</span><span class="p">);</span>
+<span class="lineno">16 </span>
+<span class="lineno">17 </span>        <span class="cm">/* Perform the request, res will get the return code */</span>
+<span class="lineno">18 </span>        <span class="n">res</span> <span class="o">=</span> <span class="n">curl_easy_perform</span><span class="p">(</span><span class="n">curl</span><span class="p">);</span>
+<span class="lineno">19 </span>        <span class="cm">/* Check for errors */</span>
+<span class="lineno">20 </span>        <span class="k">if</span><span class="p">(</span><span class="n">res</span> <span class="o">!=</span> <span class="n">CURLE_OK</span><span class="p">)</span>
+<span class="lineno">21 </span>            <span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&quot;curl_easy_perform() failed: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">curl_easy_strerror</span><span class="p">(</span><span class="n">res</span><span class="p">));</span>
+<span class="lineno">22 </span>
+<span class="lineno">23 </span>        <span class="cm">/* Always cleanup */</span>
+<span class="lineno">24 </span>        <span class="n">curl_easy_cleanup</span><span class="p">(</span><span class="n">curl</span><span class="p">);</span>
+<span class="lineno">25 </span>    <span class="p">}</span>
+<span class="lineno">26 </span>
+<span class="lineno">27 </span>    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="lineno">28 </span><span class="p">}</span></code></pre></figure>
 
 <p>When we compile and run the above program, we get following error:</p>
 
@@ -116,34 +116,34 @@
 
 <p>Well we can force LibCurl not to verify the authencity of peer’s certificate by modifying the program as below:</p>
 
-<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="lineno"> 1</span> <span class="cp">#include &lt;stdio.h&gt;</span>
-<span class="lineno"> 2</span> <span class="cp">#define CURL_STATICLIB</span>
-<span class="lineno"> 3</span> <span class="cp">#include &lt;curl/curl.h&gt;</span>
-<span class="lineno"> 4</span> 
-<span class="lineno"> 5</span> <span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
-<span class="lineno"> 6</span> <span class="p">{</span>
-<span class="lineno"> 7</span>     <span class="n">CURL</span> <span class="o">*</span><span class="n">curl</span><span class="p">;</span>
-<span class="lineno"> 8</span>     <span class="n">CURLcode</span> <span class="n">res</span><span class="p">;</span>
-<span class="lineno"> 9</span> 
-<span class="lineno">10</span>     <span class="n">curl</span> <span class="o">=</span> <span class="n">curl_easy_init</span><span class="p">();</span>
-<span class="lineno">11</span>     <span class="k">if</span> <span class="p">(</span><span class="n">curl</span><span class="p">)</span>
-<span class="lineno">12</span>     <span class="p">{</span>
-<span class="lineno">13</span>         <span class="n">curl_easy_setopt</span><span class="p">(</span><span class="n">curl</span><span class="p">,</span> <span class="n">CURLOPT_URL</span><span class="p">,</span> <span class="s">&quot;https://google.com&quot;</span><span class="p">);</span>
-<span class="lineno">14</span>         <span class="cm">/* google.com is redirected, so we tell LibCurl to follow redirection */</span>
-<span class="lineno">15</span>         <span class="n">curl_easy_setopt</span><span class="p">(</span><span class="n">curl</span><span class="p">,</span> <span class="n">CURLOPT_FOLLOWLOCATION</span><span class="p">,</span> <span class="mi">1L</span><span class="p">);</span>
-<span class="lineno">16</span>         <span class="n">curl_easy_setopt</span><span class="p">(</span><span class="n">curl</span><span class="p">,</span> <span class="n">CURLOPT_SSL_VERIFYPEER</span><span class="p">,</span> <span class="n">FALSE</span><span class="p">);</span>
-<span class="lineno">17</span>         <span class="cm">/* Perform the request, res will get the return code */</span>
-<span class="lineno">18</span>         <span class="n">res</span> <span class="o">=</span> <span class="n">curl_easy_perform</span><span class="p">(</span><span class="n">curl</span><span class="p">);</span>
-<span class="lineno">19</span>         <span class="cm">/* Check for errors */</span>
-<span class="lineno">20</span>         <span class="k">if</span><span class="p">(</span><span class="n">res</span> <span class="o">!=</span> <span class="n">CURLE_OK</span><span class="p">)</span>
-<span class="lineno">21</span>             <span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&quot;curl_easy_perform() failed: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">curl_easy_strerror</span><span class="p">(</span><span class="n">res</span><span class="p">));</span>
-<span class="lineno">22</span> 
-<span class="lineno">23</span>         <span class="cm">/* Always cleanup */</span>
-<span class="lineno">24</span>         <span class="n">curl_easy_cleanup</span><span class="p">(</span><span class="n">curl</span><span class="p">);</span>
-<span class="lineno">25</span>     <span class="p">}</span>
-<span class="lineno">26</span> 
-<span class="lineno">27</span>     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="lineno">28</span> <span class="p">}</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><span></span><span class="lineno"> 1 </span><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="lineno"> 2 </span><span class="cp">#define CURL_STATICLIB</span>
+<span class="lineno"> 3 </span><span class="cp">#include</span> <span class="cpf">&lt;curl/curl.h&gt;</span><span class="cp"></span>
+<span class="lineno"> 4 </span>
+<span class="lineno"> 5 </span><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
+<span class="lineno"> 6 </span><span class="p">{</span>
+<span class="lineno"> 7 </span>    <span class="n">CURL</span> <span class="o">*</span><span class="n">curl</span><span class="p">;</span>
+<span class="lineno"> 8 </span>    <span class="n">CURLcode</span> <span class="n">res</span><span class="p">;</span>
+<span class="lineno"> 9 </span>
+<span class="lineno">10 </span>    <span class="n">curl</span> <span class="o">=</span> <span class="n">curl_easy_init</span><span class="p">();</span>
+<span class="lineno">11 </span>    <span class="k">if</span> <span class="p">(</span><span class="n">curl</span><span class="p">)</span>
+<span class="lineno">12 </span>    <span class="p">{</span>
+<span class="lineno">13 </span>        <span class="n">curl_easy_setopt</span><span class="p">(</span><span class="n">curl</span><span class="p">,</span> <span class="n">CURLOPT_URL</span><span class="p">,</span> <span class="s">&quot;https://google.com&quot;</span><span class="p">);</span>
+<span class="lineno">14 </span>        <span class="cm">/* google.com is redirected, so we tell LibCurl to follow redirection */</span>
+<span class="lineno">15 </span>        <span class="n">curl_easy_setopt</span><span class="p">(</span><span class="n">curl</span><span class="p">,</span> <span class="n">CURLOPT_FOLLOWLOCATION</span><span class="p">,</span> <span class="mi">1L</span><span class="p">);</span>
+<span class="lineno">16 </span>        <span class="n">curl_easy_setopt</span><span class="p">(</span><span class="n">curl</span><span class="p">,</span> <span class="n">CURLOPT_SSL_VERIFYPEER</span><span class="p">,</span> <span class="n">FALSE</span><span class="p">);</span>
+<span class="lineno">17 </span>        <span class="cm">/* Perform the request, res will get the return code */</span>
+<span class="lineno">18 </span>        <span class="n">res</span> <span class="o">=</span> <span class="n">curl_easy_perform</span><span class="p">(</span><span class="n">curl</span><span class="p">);</span>
+<span class="lineno">19 </span>        <span class="cm">/* Check for errors */</span>
+<span class="lineno">20 </span>        <span class="k">if</span><span class="p">(</span><span class="n">res</span> <span class="o">!=</span> <span class="n">CURLE_OK</span><span class="p">)</span>
+<span class="lineno">21 </span>            <span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&quot;curl_easy_perform() failed: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">curl_easy_strerror</span><span class="p">(</span><span class="n">res</span><span class="p">));</span>
+<span class="lineno">22 </span>
+<span class="lineno">23 </span>        <span class="cm">/* Always cleanup */</span>
+<span class="lineno">24 </span>        <span class="n">curl_easy_cleanup</span><span class="p">(</span><span class="n">curl</span><span class="p">);</span>
+<span class="lineno">25 </span>    <span class="p">}</span>
+<span class="lineno">26 </span>
+<span class="lineno">27 </span>    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="lineno">28 </span><span class="p">}</span></code></pre></figure>
 
 <p>This will resolve the error we were getting earlier but this is not secure as we are bypassing the verification of <code>SSL</code> certificte presented by peer.</p>
 
@@ -151,45 +151,45 @@
 
 <p>Now let’s modify the code as below to enable <code>SSL</code> certificate verification by LibCurl:</p>
 
-<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="lineno"> 1</span> <span class="cp">#include &lt;stdio.h&gt;</span>
-<span class="lineno"> 2</span> <span class="cp">#define CURL_STATICLIB</span>
-<span class="lineno"> 3</span> <span class="cp">#include &lt;curl/curl.h&gt;</span>
-<span class="lineno"> 4</span> 
-<span class="lineno"> 5</span> <span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
-<span class="lineno"> 6</span> <span class="p">{</span>
-<span class="lineno"> 7</span>     <span class="n">CURL</span> <span class="o">*</span><span class="n">curl</span><span class="p">;</span>
-<span class="lineno"> 8</span>     <span class="n">CURLcode</span> <span class="n">res</span><span class="p">;</span>
-<span class="lineno"> 9</span> 
-<span class="lineno">10</span>     <span class="n">curl</span> <span class="o">=</span> <span class="n">curl_easy_init</span><span class="p">();</span>
-<span class="lineno">11</span>     <span class="k">if</span> <span class="p">(</span><span class="n">curl</span><span class="p">)</span>
-<span class="lineno">12</span>     <span class="p">{</span>
-<span class="lineno">13</span>         <span class="n">curl_easy_setopt</span><span class="p">(</span><span class="n">curl</span><span class="p">,</span> <span class="n">CURLOPT_URL</span><span class="p">,</span> <span class="s">&quot;https://google.com&quot;</span><span class="p">);</span>
-<span class="lineno">14</span>         <span class="cm">/* google.com is redirected, so we tell LibCurl to follow redirection */</span>
-<span class="lineno">15</span>         <span class="n">curl_easy_setopt</span><span class="p">(</span><span class="n">curl</span><span class="p">,</span> <span class="n">CURLOPT_FOLLOWLOCATION</span><span class="p">,</span> <span class="mi">1L</span><span class="p">);</span>
-<span class="lineno">16</span>         <span class="cm">/* SSL Options */</span>
-<span class="lineno">17</span>         <span class="n">curl_easy_setopt</span><span class="p">(</span><span class="n">curl</span><span class="p">,</span> <span class="n">CURLOPT_SSL_VERIFYPEER</span> <span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
-<span class="lineno">18</span>         <span class="n">curl_easy_setopt</span><span class="p">(</span><span class="n">curl</span><span class="p">,</span> <span class="n">CURLOPT_SSL_VERIFYHOST</span> <span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
-<span class="lineno">19</span>         <span class="cm">/* Provide CA Certs from http://curl.haxx.se/docs/caextract.html */</span>
-<span class="lineno">20</span>         <span class="n">curl_easy_setopt</span><span class="p">(</span><span class="n">curl</span><span class="p">,</span> <span class="n">CURLOPT_CAINFO</span><span class="p">,</span> <span class="s">&quot;ca-bundle.crt&quot;</span><span class="p">);</span>
-<span class="lineno">21</span> 
-<span class="lineno">22</span>         <span class="cm">/* Perform the request, res will get the return code */</span>
-<span class="lineno">23</span>         <span class="n">res</span> <span class="o">=</span> <span class="n">curl_easy_perform</span><span class="p">(</span><span class="n">curl</span><span class="p">);</span>
-<span class="lineno">24</span>         <span class="cm">/* Check for errors */</span>
-<span class="lineno">25</span>         <span class="k">if</span><span class="p">(</span><span class="n">res</span> <span class="o">!=</span> <span class="n">CURLE_OK</span><span class="p">)</span>
-<span class="lineno">26</span>             <span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&quot;curl_easy_perform() failed: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">curl_easy_strerror</span><span class="p">(</span><span class="n">res</span><span class="p">));</span>
-<span class="lineno">27</span> 
-<span class="lineno">28</span>         <span class="cm">/* Always cleanup */</span>
-<span class="lineno">29</span>         <span class="n">curl_easy_cleanup</span><span class="p">(</span><span class="n">curl</span><span class="p">);</span>
-<span class="lineno">30</span>     <span class="p">}</span>
-<span class="lineno">31</span> 
-<span class="lineno">32</span>     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="lineno">33</span> <span class="p">}</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><span></span><span class="lineno"> 1 </span><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="lineno"> 2 </span><span class="cp">#define CURL_STATICLIB</span>
+<span class="lineno"> 3 </span><span class="cp">#include</span> <span class="cpf">&lt;curl/curl.h&gt;</span><span class="cp"></span>
+<span class="lineno"> 4 </span>
+<span class="lineno"> 5 </span><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
+<span class="lineno"> 6 </span><span class="p">{</span>
+<span class="lineno"> 7 </span>    <span class="n">CURL</span> <span class="o">*</span><span class="n">curl</span><span class="p">;</span>
+<span class="lineno"> 8 </span>    <span class="n">CURLcode</span> <span class="n">res</span><span class="p">;</span>
+<span class="lineno"> 9 </span>
+<span class="lineno">10 </span>    <span class="n">curl</span> <span class="o">=</span> <span class="n">curl_easy_init</span><span class="p">();</span>
+<span class="lineno">11 </span>    <span class="k">if</span> <span class="p">(</span><span class="n">curl</span><span class="p">)</span>
+<span class="lineno">12 </span>    <span class="p">{</span>
+<span class="lineno">13 </span>        <span class="n">curl_easy_setopt</span><span class="p">(</span><span class="n">curl</span><span class="p">,</span> <span class="n">CURLOPT_URL</span><span class="p">,</span> <span class="s">&quot;https://google.com&quot;</span><span class="p">);</span>
+<span class="lineno">14 </span>        <span class="cm">/* google.com is redirected, so we tell LibCurl to follow redirection */</span>
+<span class="lineno">15 </span>        <span class="n">curl_easy_setopt</span><span class="p">(</span><span class="n">curl</span><span class="p">,</span> <span class="n">CURLOPT_FOLLOWLOCATION</span><span class="p">,</span> <span class="mi">1L</span><span class="p">);</span>
+<span class="lineno">16 </span>        <span class="cm">/* SSL Options */</span>
+<span class="lineno">17 </span>        <span class="n">curl_easy_setopt</span><span class="p">(</span><span class="n">curl</span><span class="p">,</span> <span class="n">CURLOPT_SSL_VERIFYPEER</span> <span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="lineno">18 </span>        <span class="n">curl_easy_setopt</span><span class="p">(</span><span class="n">curl</span><span class="p">,</span> <span class="n">CURLOPT_SSL_VERIFYHOST</span> <span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="lineno">19 </span>        <span class="cm">/* Provide CA Certs from http://curl.haxx.se/docs/caextract.html */</span>
+<span class="lineno">20 </span>        <span class="n">curl_easy_setopt</span><span class="p">(</span><span class="n">curl</span><span class="p">,</span> <span class="n">CURLOPT_CAINFO</span><span class="p">,</span> <span class="s">&quot;ca-bundle.crt&quot;</span><span class="p">);</span>
+<span class="lineno">21 </span>
+<span class="lineno">22 </span>        <span class="cm">/* Perform the request, res will get the return code */</span>
+<span class="lineno">23 </span>        <span class="n">res</span> <span class="o">=</span> <span class="n">curl_easy_perform</span><span class="p">(</span><span class="n">curl</span><span class="p">);</span>
+<span class="lineno">24 </span>        <span class="cm">/* Check for errors */</span>
+<span class="lineno">25 </span>        <span class="k">if</span><span class="p">(</span><span class="n">res</span> <span class="o">!=</span> <span class="n">CURLE_OK</span><span class="p">)</span>
+<span class="lineno">26 </span>            <span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&quot;curl_easy_perform() failed: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">curl_easy_strerror</span><span class="p">(</span><span class="n">res</span><span class="p">));</span>
+<span class="lineno">27 </span>
+<span class="lineno">28 </span>        <span class="cm">/* Always cleanup */</span>
+<span class="lineno">29 </span>        <span class="n">curl_easy_cleanup</span><span class="p">(</span><span class="n">curl</span><span class="p">);</span>
+<span class="lineno">30 </span>    <span class="p">}</span>
+<span class="lineno">31 </span>
+<span class="lineno">32 </span>    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="lineno">33 </span><span class="p">}</span></code></pre></figure>
 
 <p>LibCurl depends on <code>ca-bundle.crt</code> to verify server’s certificate. CA bundle extract is provided by LibCurl itself and you can download it from <a href="http://curl.haxx.se/docs/caextract.html">here</a>. We need to place the <code>ca-bundle.crt</code> in same folder as our executable. Also notice that we have enabled <code>CURLOPT_SSL_VERIFYPEER</code> and <code>CURLOPT_SSL_VERIFYHOST</code> in lines 17 and 18. When <code>CURLOPT_SSL_VERIFYPEER</code> is enabled, LibCurl verifes if the ceriticate presented is authentiate or not. If the verification fails to prove that the certificate is authentic, the connection fails. Authenticating the certificate is not enough to be sure about the server. We also want to ensure that the server is the server we mean to be talking to. When <code>CURLOPT_SSL_VERIFYHOST</code> is enabled, LibCurl checks that the host name in the certificate is valid for the host name we’re connecting to. If LibCurl fails to verify this, the connection fails.</p>
 
     </p>
   </div>
-  <meta itemprop="wordCount" content="577">
+  <meta itemprop="wordCount" content="1132">
   <meta itemprop="author" content="Pranav Prakash">
 </article>
 

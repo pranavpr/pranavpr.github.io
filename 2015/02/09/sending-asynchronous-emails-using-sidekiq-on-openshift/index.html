@@ -81,7 +81,7 @@
 
 <p>Redis cartridge for Openshift is available <a href="https://github.com/smarterclayton/openshift-redis-cart">here</a>. To add this cartridge to existing Openshift application, issue following command:</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="lineno">1</span> rhc add-cartridge http://cartreflect-claytondev.rhcloud.com/reflect?github<span class="o">=</span>smarterclayton/openshift-redis-cart</code></pre></div>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span><span class="lineno">1 </span>rhc add-cartridge http://cartreflect-claytondev.rhcloud.com/reflect?github<span class="o">=</span>smarterclayton/openshift-redis-cart</code></pre></figure>
 
 <!--more-->
 
@@ -93,7 +93,7 @@
 
 <p>To add Sidekiq cartridge to application, issue following command:</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="lineno">1</span> rhc add-cartridge http://cartreflect-claytondev.rhcloud.com/github/pranavpr/openshift-origin-cartridge-sidekiq --app myapp</code></pre></div>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span><span class="lineno">1 </span>rhc add-cartridge http://cartreflect-claytondev.rhcloud.com/github/pranavpr/openshift-origin-cartridge-sidekiq --app myapp</code></pre></figure>
 
 <p>Once the installation completes, you can access the monitoring interface at <code>https://YOUR_APP-NAMESPACE.rhcloud.com/sidekiq</code>. Sidekiq will print the full URL with authentication after successful install.</p>
 
@@ -101,7 +101,7 @@
 
 <p>Add following line to your <code>Gemfile</code> to add Sidekiq to your Rails application:</p>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="lineno">1</span> <span class="n">gem</span> <span class="s1">&#39;sidekiq&#39;</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span></span><span class="lineno">1 </span><span class="n">gem</span> <span class="s1">&#39;sidekiq&#39;</span></code></pre></figure>
 
 <p>Then do a <code>bundle install</code> to finish installation of <code>sidekiq</code> gem.</p>
 
@@ -111,27 +111,27 @@
 
 <p>Use <code>delay</code> to deliver emails asynchronously, <code>delay_for(interval)</code> or <code>delay_until(time)</code> to deliver the email at some point in the future.</p>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="lineno">1</span> <span class="no">UserMailer</span><span class="o">.</span><span class="n">delay</span><span class="o">.</span><span class="n">welcome_email</span><span class="p">(</span><span class="vi">@user</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
-<span class="lineno">2</span> <span class="no">UserMailer</span><span class="o">.</span><span class="n">delay_for</span><span class="p">(</span><span class="mi">5</span><span class="o">.</span><span class="n">days</span><span class="p">)</span><span class="o">.</span><span class="n">find_more_friends_email</span><span class="p">(</span><span class="vi">@user</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
-<span class="lineno">3</span> <span class="no">UserMailer</span><span class="o">.</span><span class="n">delay_until</span><span class="p">(</span><span class="mi">5</span><span class="o">.</span><span class="n">days</span><span class="o">.</span><span class="n">from_now</span><span class="p">)</span><span class="o">.</span><span class="n">find_more_friends_email</span><span class="p">(</span><span class="vi">@user</span><span class="o">.</span><span class="n">id</span><span class="p">)</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span></span><span class="lineno">1 </span><span class="no">UserMailer</span><span class="o">.</span><span class="n">delay</span><span class="o">.</span><span class="n">welcome_email</span><span class="p">(</span><span class="vi">@user</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+<span class="lineno">2 </span><span class="no">UserMailer</span><span class="o">.</span><span class="n">delay_for</span><span class="p">(</span><span class="mi">5</span><span class="o">.</span><span class="n">days</span><span class="p">)</span><span class="o">.</span><span class="n">find_more_friends_email</span><span class="p">(</span><span class="vi">@user</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+<span class="lineno">3 </span><span class="no">UserMailer</span><span class="o">.</span><span class="n">delay_until</span><span class="p">(</span><span class="mi">5</span><span class="o">.</span><span class="n">days</span><span class="o">.</span><span class="n">from_now</span><span class="p">)</span><span class="o">.</span><span class="n">find_more_friends_email</span><span class="p">(</span><span class="vi">@user</span><span class="o">.</span><span class="n">id</span><span class="p">)</span></code></pre></figure>
 
 <h2 id="devise-emails">Devise emails</h2>
 
 <p><code>devise-async</code> <a href="https://github.com/mhfs/devise-async">gem</a> provides the ability to send Devise emails using Sidekiq. Add following line to the <code>Gemfile</code>:</p>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="lineno">1</span> <span class="n">gem</span> <span class="s1">&#39;devise-async&#39;</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span></span><span class="lineno">1 </span><span class="n">gem</span> <span class="s1">&#39;devise-async&#39;</span></code></pre></figure>
 
 <p>And then execute <code>bundle install</code> to finish installation of <code>devise-async</code> gem.</p>
 
 <p>Now add <code>:async</code> to the devise call in your model:</p>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="lineno">1</span> <span class="k">class</span> <span class="nc">User</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
-<span class="lineno">2</span>   <span class="n">devise</span> <span class="ss">:database_authenticatable</span><span class="p">,</span> <span class="ss">:async</span><span class="p">,</span> <span class="ss">:confirmable</span> <span class="c1"># etc ...</span>
-<span class="lineno">3</span> <span class="k">end</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span></span><span class="lineno">1 </span><span class="k">class</span> <span class="nc">User</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+<span class="lineno">2 </span>  <span class="n">devise</span> <span class="ss">:database_authenticatable</span><span class="p">,</span> <span class="ss">:async</span><span class="p">,</span> <span class="ss">:confirmable</span> <span class="c1"># etc ...</span>
+<span class="lineno">3 </span><span class="k">end</span></code></pre></figure>
 
 <p>Finally set your queuing backend to Sidekiq by creating <code>config/initializers/devise_async.rb</code>:</p>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="lineno">1</span> <span class="no">Devise</span><span class="o">::</span><span class="no">Async</span><span class="o">.</span><span class="n">backend</span> <span class="o">=</span> <span class="ss">:sidekiq</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span></span><span class="lineno">1 </span><span class="no">Devise</span><span class="o">::</span><span class="no">Async</span><span class="o">.</span><span class="n">backend</span> <span class="o">=</span> <span class="ss">:sidekiq</span></code></pre></figure>
 
 <h2 id="epilogue">Epilogue</h2>
 
@@ -139,7 +139,7 @@
 
     </p>
   </div>
-  <meta itemprop="wordCount" content="474">
+  <meta itemprop="wordCount" content="539">
   <meta itemprop="author" content="Pranav Prakash">
 </article>
 

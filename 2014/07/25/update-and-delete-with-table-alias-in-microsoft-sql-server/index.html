@@ -61,7 +61,7 @@
     <div class="content pure-u-1 pure-u-md-3-4">
       <div>
         <div class="posts">
-          <h1 class="content-subhead">Approx 2 minutes read</h1>
+          <h1 class="content-subhead">Approx 3 minutes read</h1>
 <article class="post" itemscope itemtype="http://schema.org/BlogPosting" >
   <header class="post-header">
   <a href="/2014/07/25/update-and-delete-with-table-alias-in-microsoft-sql-server/" itemprop="url">
@@ -75,14 +75,14 @@
     <p>
     <p>Last week I came across following SQL statement:</p>
 
-<div class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="lineno">1</span> <span class="k">DELETE</span>
-<span class="lineno">2</span> <span class="k">FROM</span> <span class="n">FIRST_TABLE</span> <span class="n">A</span>
-<span class="lineno">3</span> <span class="k">WHERE</span> <span class="n">A</span><span class="p">.</span><span class="n">KEY1</span> <span class="o">=</span> <span class="s1">&#39;1&#39;</span>
-<span class="lineno">4</span>   <span class="k">AND</span> <span class="k">EXISTS</span>
-<span class="lineno">5</span>     <span class="p">(</span><span class="k">SELECT</span> <span class="s1">&#39;X&#39;</span>
-<span class="lineno">6</span>      <span class="k">FROM</span> <span class="n">SECOND_TABLE</span> <span class="n">B</span>
-<span class="lineno">7</span>      <span class="k">WHERE</span> <span class="n">B</span><span class="p">.</span><span class="n">KEY1</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">KEY1</span>
-<span class="lineno">8</span>        <span class="k">AND</span> <span class="n">B</span><span class="p">.</span><span class="n">KEY2</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">KEY2</span><span class="p">);</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-sql" data-lang="sql"><span></span><span class="lineno">1 </span><span class="k">DELETE</span>
+<span class="lineno">2 </span><span class="k">FROM</span> <span class="n">FIRST_TABLE</span> <span class="n">A</span>
+<span class="lineno">3 </span><span class="k">WHERE</span> <span class="n">A</span><span class="p">.</span><span class="n">KEY1</span> <span class="o">=</span> <span class="s1">&#39;1&#39;</span>
+<span class="lineno">4 </span>  <span class="k">AND</span> <span class="k">EXISTS</span>
+<span class="lineno">5 </span>    <span class="p">(</span><span class="k">SELECT</span> <span class="s1">&#39;X&#39;</span>
+<span class="lineno">6 </span>     <span class="k">FROM</span> <span class="n">SECOND_TABLE</span> <span class="n">B</span>
+<span class="lineno">7 </span>     <span class="k">WHERE</span> <span class="n">B</span><span class="p">.</span><span class="n">KEY1</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">KEY1</span>
+<span class="lineno">8 </span>       <span class="k">AND</span> <span class="n">B</span><span class="p">.</span><span class="n">KEY2</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">KEY2</span><span class="p">);</span></code></pre></figure>
 
 <p>This SQL statement was running fine in Oracle but was failing in Microsoft SQL Server (MSS) with followiing error:</p>
 
@@ -92,20 +92,20 @@
 
 <p>I became perplexed but little Googling told me that syntax for using table alias for <code>UPDATE</code> and <code>DELETE</code> in MSS is different. The above SQL statement needs to be modified as below:</p>
 
-<div class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="lineno">1</span> <span class="k">DELETE</span> <span class="n">A</span>
-<span class="lineno">2</span> <span class="k">FROM</span> <span class="n">FIRST_TABLE</span> <span class="n">A</span>
-<span class="lineno">3</span> <span class="k">WHERE</span> <span class="n">A</span><span class="p">.</span><span class="n">KEY1</span> <span class="o">=</span> <span class="s1">&#39;1&#39;</span>
-<span class="lineno">4</span>   <span class="k">AND</span> <span class="k">EXISTS</span>
-<span class="lineno">5</span>     <span class="p">(</span><span class="k">SELECT</span> <span class="s1">&#39;X&#39;</span>
-<span class="lineno">6</span>      <span class="k">FROM</span> <span class="n">SECOND_TABLE</span> <span class="n">B</span>
-<span class="lineno">7</span>      <span class="k">WHERE</span> <span class="n">B</span><span class="p">.</span><span class="n">KEY1</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">KEY1</span>
-<span class="lineno">8</span>        <span class="k">AND</span> <span class="n">B</span><span class="p">.</span><span class="n">KEY2</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">KEY2</span><span class="p">);</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-sql" data-lang="sql"><span></span><span class="lineno">1 </span><span class="k">DELETE</span> <span class="n">A</span>
+<span class="lineno">2 </span><span class="k">FROM</span> <span class="n">FIRST_TABLE</span> <span class="n">A</span>
+<span class="lineno">3 </span><span class="k">WHERE</span> <span class="n">A</span><span class="p">.</span><span class="n">KEY1</span> <span class="o">=</span> <span class="s1">&#39;1&#39;</span>
+<span class="lineno">4 </span>  <span class="k">AND</span> <span class="k">EXISTS</span>
+<span class="lineno">5 </span>    <span class="p">(</span><span class="k">SELECT</span> <span class="s1">&#39;X&#39;</span>
+<span class="lineno">6 </span>     <span class="k">FROM</span> <span class="n">SECOND_TABLE</span> <span class="n">B</span>
+<span class="lineno">7 </span>     <span class="k">WHERE</span> <span class="n">B</span><span class="p">.</span><span class="n">KEY1</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">KEY1</span>
+<span class="lineno">8 </span>       <span class="k">AND</span> <span class="n">B</span><span class="p">.</span><span class="n">KEY2</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">KEY2</span><span class="p">);</span></code></pre></figure>
 
 <p>Observe that the table alias was specified just after <code>DELETE</code> keyword. Similarly, for <code>UPDATE</code> statement, table alias should be specified jut after <code>UPDATE</code> keyword.</p>
 
     </p>
   </div>
-  <meta itemprop="wordCount" content="156">
+  <meta itemprop="wordCount" content="259">
   <meta itemprop="author" content="Pranav Prakash">
 </article>
 

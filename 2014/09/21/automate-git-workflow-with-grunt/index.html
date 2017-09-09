@@ -61,7 +61,7 @@
     <div class="content pure-u-1 pure-u-md-3-4">
       <div>
         <div class="posts">
-          <h1 class="content-subhead">Approx 4 minutes read</h1>
+          <h1 class="content-subhead">Approx 6 minutes read</h1>
 <article class="post" itemscope itemtype="http://schema.org/BlogPosting" >
   <header class="post-header">
   <a href="/2014/09/21/automate-git-workflow-with-grunt/" itemprop="url">
@@ -77,7 +77,7 @@
 
 <h2 id="setup--installation">Setup / Installation</h2>
 
-<p>Grunt <code>0.4.x</code> requires Node.JS version <code>&gt;= 0.8.0</code> and hence make sure you <a href="http://nodejs.org/download/">download</a> and install the same. </p>
+<p>Grunt <code>0.4.x</code> requires Node.JS version <code>&gt;= 0.8.0</code> and hence make sure you <a href="http://nodejs.org/download/">download</a> and install the same.</p>
 
 <!--more-->
 
@@ -85,7 +85,7 @@
 
 <p>First we need to install Grunt CLI globally using npm (Node.JS package manager) using following command:</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="lineno">1</span> npm install -g grunt-cli</code></pre></div>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span><span class="lineno">1 </span>npm install -g grunt-cli</code></pre></figure>
 
 <p>This puts the <code>grunt</code> command in system path so that it can be invoked from any directory.</p>
 
@@ -97,90 +97,90 @@
 
 <p><code>package.json</code> contains the dependencies and is used by npm to install the required dependencies. Create a <code>package.json</code> file with following content in it:</p>
 
-<div class="highlight"><pre><code class="language-json" data-lang="json"><span class="lineno">1</span> <span class="p">{</span>
-<span class="lineno">2</span>   <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;your-project-name&quot;</span><span class="p">,</span>
-<span class="lineno">3</span>   <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span>
-<span class="lineno">4</span>   <span class="nt">&quot;devDependencies&quot;</span><span class="p">:</span> <span class="p">{</span>
-<span class="lineno">5</span>     <span class="nt">&quot;grunt&quot;</span><span class="p">:</span> <span class="s2">&quot;^0.4.5&quot;</span><span class="p">,</span>
-<span class="lineno">6</span>     <span class="nt">&quot;matchdep&quot;</span><span class="p">:</span> <span class="s2">&quot;~0.3.0&quot;</span><span class="p">,</span>
-<span class="lineno">7</span>     <span class="nt">&quot;grunt-git&quot;</span><span class="p">:</span> <span class="s2">&quot;rubenv/grunt-git&quot;</span>
-<span class="lineno">8</span>     <span class="p">}</span>
-<span class="lineno">9</span> <span class="p">}</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-json" data-lang="json"><span></span><span class="lineno">1 </span><span class="p">{</span>
+<span class="lineno">2 </span>  <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;your-project-name&quot;</span><span class="p">,</span>
+<span class="lineno">3 </span>  <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span>
+<span class="lineno">4 </span>  <span class="nt">&quot;devDependencies&quot;</span><span class="p">:</span> <span class="p">{</span>
+<span class="lineno">5 </span>    <span class="nt">&quot;grunt&quot;</span><span class="p">:</span> <span class="s2">&quot;^0.4.5&quot;</span><span class="p">,</span>
+<span class="lineno">6 </span>    <span class="nt">&quot;matchdep&quot;</span><span class="p">:</span> <span class="s2">&quot;~0.3.0&quot;</span><span class="p">,</span>
+<span class="lineno">7 </span>    <span class="nt">&quot;grunt-git&quot;</span><span class="p">:</span> <span class="s2">&quot;rubenv/grunt-git&quot;</span>
+<span class="lineno">8 </span>    <span class="p">}</span>
+<span class="lineno">9 </span><span class="p">}</span></code></pre></figure>
 
 <p>You can also use <code>npm-init</code> command to create a basic <code>package.json</code> file. Now we will install Grunt locally by executing following command:</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="lineno">1</span> npm install</code></pre></div>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span><span class="lineno">1 </span>npm install</code></pre></figure>
 
 <h3 id="gruntfilejs">Gruntfile.js</h3>
 
 <p><code>Gruntfile.js</code> is where we define our tasks. We will define out GIT <code>add</code>, <code>commit</code> and <code>push</code> task as below:</p>
 
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="lineno"> 1</span> <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">grunt</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno"> 2</span>   <span class="c1">// Load all NPM grunt tasks</span>
-<span class="lineno"> 3</span>   <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;matchdep&#39;</span><span class="p">).</span><span class="nx">filterAll</span><span class="p">(</span><span class="s1">&#39;grunt-*&#39;</span><span class="p">).</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">grunt</span><span class="p">.</span><span class="nx">loadNpmTasks</span><span class="p">);</span>
-<span class="lineno"> 4</span> 
-<span class="lineno"> 5</span>   <span class="c1">// Project configuration</span>
-<span class="lineno"> 6</span>   <span class="nx">grunt</span><span class="p">.</span><span class="nx">initConfig</span><span class="p">({</span>
-<span class="lineno"> 7</span> 
-<span class="lineno"> 8</span>     <span class="c1">// git add -A</span>
-<span class="lineno"> 9</span>     <span class="nx">gitadd</span><span class="o">:</span> <span class="p">{</span>
-<span class="lineno">10</span>       <span class="nx">task</span><span class="o">:</span> <span class="p">{</span>
-<span class="lineno">11</span>         <span class="nx">options</span><span class="o">:</span> <span class="p">{</span>
-<span class="lineno">12</span>           <span class="nx">force</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-<span class="lineno">13</span>           <span class="nx">all</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-<span class="lineno">14</span>           <span class="nx">cwd</span><span class="o">:</span> <span class="s1">&#39;MyGitProjectRepo/&#39;</span>
-<span class="lineno">15</span>         <span class="p">}</span>
-<span class="lineno">16</span>       <span class="p">}</span>
-<span class="lineno">17</span>     <span class="p">},</span>
-<span class="lineno">18</span> 
-<span class="lineno">19</span>     <span class="c1">// git commit -m &quot;Repository updated on &lt;current date time&gt;&quot;</span>
-<span class="lineno">20</span>     <span class="nx">gitcommit</span><span class="o">:</span> <span class="p">{</span>
-<span class="lineno">21</span>       <span class="nx">task</span><span class="o">:</span> <span class="p">{</span>
-<span class="lineno">22</span>         <span class="nx">options</span><span class="o">:</span> <span class="p">{</span>
-<span class="lineno">23</span>           <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;Repository updated on &#39;</span> <span class="o">+</span> <span class="nx">grunt</span><span class="p">.</span><span class="nx">template</span><span class="p">.</span><span class="nx">today</span><span class="p">(),</span>
-<span class="lineno">24</span>           <span class="nx">allowEmpty</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-<span class="lineno">25</span>           <span class="nx">cwd</span><span class="o">:</span> <span class="s1">&#39;MyGitProjectRepo/&#39;</span>
-<span class="lineno">26</span>         <span class="p">}</span>
-<span class="lineno">27</span>       <span class="p">}</span>
-<span class="lineno">28</span>     <span class="p">},</span>
-<span class="lineno">29</span> 
-<span class="lineno">30</span>     <span class="c1">// git push origin master</span>
-<span class="lineno">31</span>     <span class="nx">gitpush</span><span class="o">:</span> <span class="p">{</span>
-<span class="lineno">32</span>       <span class="nx">task</span><span class="o">:</span> <span class="p">{</span>
-<span class="lineno">33</span>         <span class="nx">options</span><span class="o">:</span> <span class="p">{</span>
-<span class="lineno">34</span>           <span class="nx">remote</span><span class="o">:</span> <span class="s1">&#39;origin&#39;</span><span class="p">,</span>
-<span class="lineno">35</span>           <span class="nx">branch</span><span class="o">:</span> <span class="s1">&#39;master&#39;</span><span class="p">,</span>
-<span class="lineno">36</span>           <span class="nx">cwd</span><span class="o">:</span> <span class="s1">&#39;MyGitProjectRepo/&#39;</span>
-<span class="lineno">37</span>         <span class="p">}</span>
-<span class="lineno">38</span>       <span class="p">}</span>
-<span class="lineno">39</span>     <span class="p">}</span>
-<span class="lineno">40</span>   <span class="p">});</span>
-<span class="lineno">41</span> 
-<span class="lineno">42</span>   <span class="c1">// Create task</span>
-<span class="lineno">43</span>   <span class="nx">grunt</span><span class="p">.</span><span class="nx">registerTask</span><span class="p">(</span><span class="s1">&#39;git&#39;</span><span class="p">,</span> <span class="p">[</span>
-<span class="lineno">44</span>     <span class="s1">&#39;gitadd&#39;</span><span class="p">,</span>
-<span class="lineno">45</span>     <span class="s1">&#39;gitcommit&#39;</span><span class="p">,</span>
-<span class="lineno">46</span>     <span class="s1">&#39;gitpush&#39;</span>
-<span class="lineno">47</span>   <span class="p">]);</span>
-<span class="lineno">48</span> 
-<span class="lineno">49</span>   <span class="c1">// Register default task</span>
-<span class="lineno">50</span>   <span class="nx">grunt</span><span class="p">.</span><span class="nx">registerTask</span><span class="p">(</span><span class="s1">&#39;default&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;git&#39;</span><span class="p">]);</span>
-<span class="lineno">51</span> 
-<span class="lineno">52</span> <span class="p">};</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span></span><span class="lineno"> 1 </span><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">grunt</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 2 </span>  <span class="c1">// Load all NPM grunt tasks</span>
+<span class="lineno"> 3 </span>  <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;matchdep&#39;</span><span class="p">).</span><span class="nx">filterAll</span><span class="p">(</span><span class="s1">&#39;grunt-*&#39;</span><span class="p">).</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">grunt</span><span class="p">.</span><span class="nx">loadNpmTasks</span><span class="p">);</span>
+<span class="lineno"> 4 </span>
+<span class="lineno"> 5 </span>  <span class="c1">// Project configuration</span>
+<span class="lineno"> 6 </span>  <span class="nx">grunt</span><span class="p">.</span><span class="nx">initConfig</span><span class="p">({</span>
+<span class="lineno"> 7 </span>
+<span class="lineno"> 8 </span>    <span class="c1">// git add -A</span>
+<span class="lineno"> 9 </span>    <span class="nx">gitadd</span><span class="o">:</span> <span class="p">{</span>
+<span class="lineno">10 </span>      <span class="nx">task</span><span class="o">:</span> <span class="p">{</span>
+<span class="lineno">11 </span>        <span class="nx">options</span><span class="o">:</span> <span class="p">{</span>
+<span class="lineno">12 </span>          <span class="nx">force</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+<span class="lineno">13 </span>          <span class="nx">all</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+<span class="lineno">14 </span>          <span class="nx">cwd</span><span class="o">:</span> <span class="s1">&#39;MyGitProjectRepo/&#39;</span>
+<span class="lineno">15 </span>        <span class="p">}</span>
+<span class="lineno">16 </span>      <span class="p">}</span>
+<span class="lineno">17 </span>    <span class="p">},</span>
+<span class="lineno">18 </span>
+<span class="lineno">19 </span>    <span class="c1">// git commit -m &quot;Repository updated on &lt;current date time&gt;&quot;</span>
+<span class="lineno">20 </span>    <span class="nx">gitcommit</span><span class="o">:</span> <span class="p">{</span>
+<span class="lineno">21 </span>      <span class="nx">task</span><span class="o">:</span> <span class="p">{</span>
+<span class="lineno">22 </span>        <span class="nx">options</span><span class="o">:</span> <span class="p">{</span>
+<span class="lineno">23 </span>          <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;Repository updated on &#39;</span> <span class="o">+</span> <span class="nx">grunt</span><span class="p">.</span><span class="nx">template</span><span class="p">.</span><span class="nx">today</span><span class="p">(),</span>
+<span class="lineno">24 </span>          <span class="nx">allowEmpty</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+<span class="lineno">25 </span>          <span class="nx">cwd</span><span class="o">:</span> <span class="s1">&#39;MyGitProjectRepo/&#39;</span>
+<span class="lineno">26 </span>        <span class="p">}</span>
+<span class="lineno">27 </span>      <span class="p">}</span>
+<span class="lineno">28 </span>    <span class="p">},</span>
+<span class="lineno">29 </span>
+<span class="lineno">30 </span>    <span class="c1">// git push origin master</span>
+<span class="lineno">31 </span>    <span class="nx">gitpush</span><span class="o">:</span> <span class="p">{</span>
+<span class="lineno">32 </span>      <span class="nx">task</span><span class="o">:</span> <span class="p">{</span>
+<span class="lineno">33 </span>        <span class="nx">options</span><span class="o">:</span> <span class="p">{</span>
+<span class="lineno">34 </span>          <span class="nx">remote</span><span class="o">:</span> <span class="s1">&#39;origin&#39;</span><span class="p">,</span>
+<span class="lineno">35 </span>          <span class="nx">branch</span><span class="o">:</span> <span class="s1">&#39;master&#39;</span><span class="p">,</span>
+<span class="lineno">36 </span>          <span class="nx">cwd</span><span class="o">:</span> <span class="s1">&#39;MyGitProjectRepo/&#39;</span>
+<span class="lineno">37 </span>        <span class="p">}</span>
+<span class="lineno">38 </span>      <span class="p">}</span>
+<span class="lineno">39 </span>    <span class="p">}</span>
+<span class="lineno">40 </span>  <span class="p">});</span>
+<span class="lineno">41 </span>
+<span class="lineno">42 </span>  <span class="c1">// Create task</span>
+<span class="lineno">43 </span>  <span class="nx">grunt</span><span class="p">.</span><span class="nx">registerTask</span><span class="p">(</span><span class="s1">&#39;git&#39;</span><span class="p">,</span> <span class="p">[</span>
+<span class="lineno">44 </span>    <span class="s1">&#39;gitadd&#39;</span><span class="p">,</span>
+<span class="lineno">45 </span>    <span class="s1">&#39;gitcommit&#39;</span><span class="p">,</span>
+<span class="lineno">46 </span>    <span class="s1">&#39;gitpush&#39;</span>
+<span class="lineno">47 </span>  <span class="p">]);</span>
+<span class="lineno">48 </span>
+<span class="lineno">49 </span>  <span class="c1">// Register default task</span>
+<span class="lineno">50 </span>  <span class="nx">grunt</span><span class="p">.</span><span class="nx">registerTask</span><span class="p">(</span><span class="s1">&#39;default&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;git&#39;</span><span class="p">]);</span>
+<span class="lineno">51 </span>
+<span class="lineno">52 </span><span class="p">};</span></code></pre></figure>
 
-<p>Note that we are dynamically generating the commit message in line <code>23</code>. Also <code>cwd</code> parameter points to the local GIT repository directory. You need to modify this and point to your local GIT project repository. </p>
+<p>Note that we are dynamically generating the commit message in line <code>23</code>. Also <code>cwd</code> parameter points to the local GIT repository directory. You need to modify this and point to your local GIT project repository.</p>
 
 <h2 id="running-grunt-tasks">Running Grunt tasks</h2>
 
 <p>To run the task, we need to simply issue following command:</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="lineno">1</span> grunt git</code></pre></div>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span><span class="lineno">1 </span>grunt git</code></pre></figure>
 
 <p>Grunt will run the tasks defined in <code>Gruntfile.js</code> and once it finishes, you will have your changes commited and pushed to remote GIT branch.</p>
 
     </p>
   </div>
-  <meta itemprop="wordCount" content="446">
+  <meta itemprop="wordCount" content="776">
   <meta itemprop="author" content="Pranav Prakash">
 </article>
 

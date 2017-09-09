@@ -61,7 +61,7 @@
     <div class="content pure-u-1 pure-u-md-3-4">
       <div>
         <div class="posts">
-          <h1 class="content-subhead">Approx 3 minutes read</h1>
+          <h1 class="content-subhead">Approx 4 minutes read</h1>
 <article class="post" itemscope itemtype="http://schema.org/BlogPosting" >
   <header class="post-header">
   <a href="/2009/06/29/how-to-create-custom-ie8-accelerator/" itemprop="url">
@@ -100,21 +100,21 @@
 
 <h2 id="step-1-create-xml-file">Step 1: Create XML File</h2>
 
-<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="lineno"> 1</span> <span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
-<span class="lineno"> 2</span> <span class="nt">&lt;openServiceDescription</span> <span class="na">xmlns=</span><span class="s">&quot;http://www.microsoft.com/schemas/openservicedescription/1.0&quot;</span><span class="nt">&gt;</span>
-<span class="lineno"> 3</span> <span class="nt">&lt;homepageUrl&gt;</span>http://www.imdb.com <span class="nt">&lt;/homepageUrl&gt;</span>
-<span class="lineno"> 4</span> <span class="nt">&lt;display&gt;</span>
-<span class="lineno"> 5</span>  <span class="nt">&lt;name&gt;</span>Search IMDB <span class="nt">&lt;/name&gt;</span>
-<span class="lineno"> 6</span>  <span class="nt">&lt;icon&gt;</span>http://www.imdb.com/favicon.ico <span class="nt">&lt;/icon&gt;</span>
-<span class="lineno"> 7</span> <span class="nt">&lt;/display&gt;</span>
-<span class="lineno"> 8</span> <span class="nt">&lt;activity</span> <span class="na">category=</span><span class="s">&quot;Search&quot;</span><span class="nt">&gt;</span>
-<span class="lineno"> 9</span> <span class="nt">&lt;activityAction</span> <span class="na">context=</span><span class="s">&quot;selection&quot;</span><span class="nt">&gt;</span>
-<span class="lineno">10</span>  <span class="nt">&lt;execute</span> <span class="na">action=</span><span class="s">&quot;http://www.imdb.com/find&quot;</span><span class="nt">&gt;</span>
-<span class="lineno">11</span>   <span class="nt">&lt;parameter</span> <span class="na">name=</span><span class="s">&quot;q&quot;</span> <span class="na">value=</span><span class="s">&quot;{selection}&quot;</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="nt">/&gt;</span>
-<span class="lineno">12</span>  <span class="nt">&lt;/execute&gt;</span>
-<span class="lineno">13</span> <span class="nt">&lt;/activityAction&gt;</span>
-<span class="lineno">14</span> <span class="nt">&lt;/activity&gt;</span>
-<span class="lineno">15</span> <span class="nt">&lt;/openServiceDescription&gt;</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span></span><span class="lineno"> 1 </span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="lineno"> 2 </span><span class="nt">&lt;openServiceDescription</span> <span class="na">xmlns=</span><span class="s">&quot;http://www.microsoft.com/schemas/openservicedescription/1.0&quot;</span><span class="nt">&gt;</span>
+<span class="lineno"> 3 </span><span class="nt">&lt;homepageUrl&gt;</span>http://www.imdb.com <span class="nt">&lt;/homepageUrl&gt;</span>
+<span class="lineno"> 4 </span><span class="nt">&lt;display&gt;</span>
+<span class="lineno"> 5 </span> <span class="nt">&lt;name&gt;</span>Search IMDB <span class="nt">&lt;/name&gt;</span>
+<span class="lineno"> 6 </span> <span class="nt">&lt;icon&gt;</span>http://www.imdb.com/favicon.ico <span class="nt">&lt;/icon&gt;</span>
+<span class="lineno"> 7 </span><span class="nt">&lt;/display&gt;</span>
+<span class="lineno"> 8 </span><span class="nt">&lt;activity</span> <span class="na">category=</span><span class="s">&quot;Search&quot;</span><span class="nt">&gt;</span>
+<span class="lineno"> 9 </span><span class="nt">&lt;activityAction</span> <span class="na">context=</span><span class="s">&quot;selection&quot;</span><span class="nt">&gt;</span>
+<span class="lineno">10 </span> <span class="nt">&lt;execute</span> <span class="na">action=</span><span class="s">&quot;http://www.imdb.com/find&quot;</span><span class="nt">&gt;</span>
+<span class="lineno">11 </span>  <span class="nt">&lt;parameter</span> <span class="na">name=</span><span class="s">&quot;q&quot;</span> <span class="na">value=</span><span class="s">&quot;{selection}&quot;</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="nt">/&gt;</span>
+<span class="lineno">12 </span> <span class="nt">&lt;/execute&gt;</span>
+<span class="lineno">13 </span><span class="nt">&lt;/activityAction&gt;</span>
+<span class="lineno">14 </span><span class="nt">&lt;/activity&gt;</span>
+<span class="lineno">15 </span><span class="nt">&lt;/openServiceDescription&gt;</span></code></pre></figure>
 
 <p>This XML file is called the service description file and it contains specific description about the service provider and type of service it provides. The {selection} value on Line 11 refers to the text that you may highlight on a web page before performing the search. Save this file as search.xml.</p>
 
@@ -122,7 +122,7 @@
 
 <p>To let users use our accelerator, we will create a install button. Users can install the accelerator using this link. Here the code for link:</p>
 
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="lineno">1</span> <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;javascript:window.external.AddService(&#39;http://pranavprakash.net/blog/search.xml&#39;)&quot;</span><span class="nt">&gt;</span>Install Accelerator<span class="nt">&lt;/a&gt;</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span></span><span class="lineno">1 </span><span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;javascript:window.external.AddService(&#39;http://pranavprakash.net/blog/search.xml&#39;)&quot;</span><span class="p">&gt;</span>Install Accelerator<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span></code></pre></figure>
 
 <p>That’s it, you are done. Install the accelerator and start searching.</p>
 
@@ -132,7 +132,7 @@
 
     </p>
   </div>
-  <meta itemprop="wordCount" content="300">
+  <meta itemprop="wordCount" content="382">
   <meta itemprop="author" content="Pranav Prakash">
 </article>
 
