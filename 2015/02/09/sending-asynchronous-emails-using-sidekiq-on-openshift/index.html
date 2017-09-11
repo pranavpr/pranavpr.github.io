@@ -6,9 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Personal blog of Pranav Prakash">
     <meta property="og:site_name" content="Pranav Prakash"/>
-    <meta property="og:image" content="https://pranavprakash.net/assets/img/pranav.jpeg"/>
-    <meta property="og:image:width" content="200" />
-    <meta property="og:image:height" content="200" />
     <title>
     
         Sending asynchronous emails using Sidekiq on OpenShift &middot; Pranav Prakash
@@ -64,7 +61,7 @@
     <div class="content pure-u-1 pure-u-md-3-4">
       <div>
         <div class="posts">
-          <h1 class="content-subhead">Approx 4 minutes read</h1>
+          <h1 class="content-subhead">Approx 5 minutes read</h1>
 <article class="post" itemscope itemtype="http://schema.org/BlogPosting" >
   <header class="post-header">
   <a href="/2015/02/09/sending-asynchronous-emails-using-sidekiq-on-openshift/" itemprop="url">
@@ -78,63 +75,74 @@
     <p>
     <p>If you need to send transactional emails from your Rails application, you should always send them asynchronously using a background job. If you send transactional emails synchronously, the user will see a loading page for the time rails connect to SMTP server and delivers your email which is about 2-3 seconds. This will result in a very bad user experience and it’s advisable to send emails using a background job.</p>
 
-<p><a href="http://sidekiq.org/">Sidekiq</a> advertises it self as simple, efficient background processing engine for Ruby. Sidekiq has dependency on <a href="http://redis.io/">Redis</a> version <code>2.4</code> or greater. Hence to setup Sidekiq on OpenShift, we have to setup Redis first. So let’s get started.</p>
+<p><a href="http://sidekiq.org/">Sidekiq</a> advertises it self as simple, efficient background processing engine for Ruby. Sidekiq has dependency on <a href="http://redis.io/">Redis</a> version <code class="highlighter-rouge">2.4</code> or greater. Hence to setup Sidekiq on OpenShift, we have to setup Redis first. So let’s get started.</p>
 
 <h2 id="setting-up-redis">Setting up Redis</h2>
 
 <p>Redis cartridge for Openshift is available <a href="https://github.com/smarterclayton/openshift-redis-cart">here</a>. To add this cartridge to existing Openshift application, issue following command:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span><span class="lineno">1 </span>rhc add-cartridge http://cartreflect-claytondev.rhcloud.com/reflect?github<span class="o">=</span>smarterclayton/openshift-redis-cart</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>rhc add-cartridge http://cartreflect-claytondev.rhcloud.com/reflect?github<span class="o">=</span>smarterclayton/openshift-redis-cart<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <!--more-->
 
-<p>If this command fails, inspect the log files generated at <code>$OPENSHIFT_REDIS_DIR/logs/redis.log</code>.</p>
+<p>If this command fails, inspect the log files generated at <code class="highlighter-rouge">$OPENSHIFT_REDIS_DIR/logs/redis.log</code>.</p>
 
 <h2 id="setting-up-sidekiq">Setting up Sidekiq</h2>
 
-<p>The Sidekiq community <a href="https://github.com/openshift-cartridges/openshift-origin-cartridge-sidekiq">cartridge</a> hasn’t been updated in a while and it doesn’t work with current OpenShift. Hence I forked the <a href="https://github.com/pranavpr/openshift-origin-cartridge-sidekiq">repository</a> and fixed the issues. I also bumped the Sidekiq version to <code>3.3.1</code> which was latest at that time. You can see the code changes <a href="https://github.com/pranavpr/openshift-origin-cartridge-sidekiq/commit/5e820395e0f53970696d4357ab68d7de5b090d2c">here</a>.</p>
+<p>The Sidekiq community <a href="https://github.com/openshift-cartridges/openshift-origin-cartridge-sidekiq">cartridge</a> hasn’t been updated in a while and it doesn’t work with current OpenShift. Hence I forked the <a href="https://github.com/pranavpr/openshift-origin-cartridge-sidekiq">repository</a> and fixed the issues. I also bumped the Sidekiq version to <code class="highlighter-rouge">3.3.1</code> which was latest at that time. You can see the code changes <a href="https://github.com/pranavpr/openshift-origin-cartridge-sidekiq/commit/5e820395e0f53970696d4357ab68d7de5b090d2c">here</a>.</p>
 
 <p>To add Sidekiq cartridge to application, issue following command:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span><span class="lineno">1 </span>rhc add-cartridge http://cartreflect-claytondev.rhcloud.com/github/pranavpr/openshift-origin-cartridge-sidekiq --app myapp</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>rhc add-cartridge http://cartreflect-claytondev.rhcloud.com/github/pranavpr/openshift-origin-cartridge-sidekiq --app myapp<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
-<p>Once the installation completes, you can access the monitoring interface at <code>https://YOUR_APP-NAMESPACE.rhcloud.com/sidekiq</code>. Sidekiq will print the full URL with authentication after successful install.</p>
+<p>Once the installation completes, you can access the monitoring interface at <code class="highlighter-rouge">https://YOUR_APP-NAMESPACE.rhcloud.com/sidekiq</code>. Sidekiq will print the full URL with authentication after successful install.</p>
 
 <h2 id="updating-gemfile">Updating Gemfile</h2>
 
-<p>Add following line to your <code>Gemfile</code> to add Sidekiq to your Rails application:</p>
+<p>Add following line to your <code class="highlighter-rouge">Gemfile</code> to add Sidekiq to your Rails application:</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span></span><span class="lineno">1 </span><span class="n">gem</span> <span class="s1">&#39;sidekiq&#39;</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="n">gem</span> <span class="s1">'sidekiq'</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
-<p>Then do a <code>bundle install</code> to finish installation of <code>sidekiq</code> gem.</p>
+<p>Then do a <code class="highlighter-rouge">bundle install</code> to finish installation of <code class="highlighter-rouge">sidekiq</code> gem.</p>
 
 <h2 id="send-asynchronous-emails-using-sidekiq">Send asynchronous emails using Sidekiq</h2>
 
-<p>Delayed extensions of Sidekiq allows sending emails asynchronously with Action Mailer out of the box. It provides three methods <em>viz.</em> <code>delay</code>, <code>delay_for(interval)</code> and <code>delay_until(time)</code>, to send email asynchronously.</p>
+<p>Delayed extensions of Sidekiq allows sending emails asynchronously with Action Mailer out of the box. It provides three methods <em>viz.</em> <code class="highlighter-rouge">delay</code>, <code class="highlighter-rouge">delay_for(interval)</code> and <code class="highlighter-rouge">delay_until(time)</code>, to send email asynchronously.</p>
 
-<p>Use <code>delay</code> to deliver emails asynchronously, <code>delay_for(interval)</code> or <code>delay_until(time)</code> to deliver the email at some point in the future.</p>
+<p>Use <code class="highlighter-rouge">delay</code> to deliver emails asynchronously, <code class="highlighter-rouge">delay_for(interval)</code> or <code class="highlighter-rouge">delay_until(time)</code> to deliver the email at some point in the future.</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span></span><span class="lineno">1 </span><span class="no">UserMailer</span><span class="o">.</span><span class="n">delay</span><span class="o">.</span><span class="n">welcome_email</span><span class="p">(</span><span class="vi">@user</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
-<span class="lineno">2 </span><span class="no">UserMailer</span><span class="o">.</span><span class="n">delay_for</span><span class="p">(</span><span class="mi">5</span><span class="o">.</span><span class="n">days</span><span class="p">)</span><span class="o">.</span><span class="n">find_more_friends_email</span><span class="p">(</span><span class="vi">@user</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
-<span class="lineno">3 </span><span class="no">UserMailer</span><span class="o">.</span><span class="n">delay_until</span><span class="p">(</span><span class="mi">5</span><span class="o">.</span><span class="n">days</span><span class="o">.</span><span class="n">from_now</span><span class="p">)</span><span class="o">.</span><span class="n">find_more_friends_email</span><span class="p">(</span><span class="vi">@user</span><span class="o">.</span><span class="n">id</span><span class="p">)</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre><span class="no">UserMailer</span><span class="p">.</span><span class="nf">delay</span><span class="p">.</span><span class="nf">welcome_email</span><span class="p">(</span><span class="vi">@user</span><span class="p">.</span><span class="nf">id</span><span class="p">)</span>
+<span class="no">UserMailer</span><span class="p">.</span><span class="nf">delay_for</span><span class="p">(</span><span class="mi">5</span><span class="p">.</span><span class="nf">days</span><span class="p">).</span><span class="nf">find_more_friends_email</span><span class="p">(</span><span class="vi">@user</span><span class="p">.</span><span class="nf">id</span><span class="p">)</span>
+<span class="no">UserMailer</span><span class="p">.</span><span class="nf">delay_until</span><span class="p">(</span><span class="mi">5</span><span class="p">.</span><span class="nf">days</span><span class="p">.</span><span class="nf">from_now</span><span class="p">).</span><span class="nf">find_more_friends_email</span><span class="p">(</span><span class="vi">@user</span><span class="p">.</span><span class="nf">id</span><span class="p">)</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <h2 id="devise-emails">Devise emails</h2>
 
-<p><code>devise-async</code> <a href="https://github.com/mhfs/devise-async">gem</a> provides the ability to send Devise emails using Sidekiq. Add following line to the <code>Gemfile</code>:</p>
+<p><code class="highlighter-rouge">devise-async</code> <a href="https://github.com/mhfs/devise-async">gem</a> provides the ability to send Devise emails using Sidekiq. Add following line to the <code class="highlighter-rouge">Gemfile</code>:</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span></span><span class="lineno">1 </span><span class="n">gem</span> <span class="s1">&#39;devise-async&#39;</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="n">gem</span> <span class="s1">'devise-async'</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
-<p>And then execute <code>bundle install</code> to finish installation of <code>devise-async</code> gem.</p>
+<p>And then execute <code class="highlighter-rouge">bundle install</code> to finish installation of <code class="highlighter-rouge">devise-async</code> gem.</p>
 
-<p>Now add <code>:async</code> to the devise call in your model:</p>
+<p>Now add <code class="highlighter-rouge">:async</code> to the devise call in your model:</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span></span><span class="lineno">1 </span><span class="k">class</span> <span class="nc">User</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
-<span class="lineno">2 </span>  <span class="n">devise</span> <span class="ss">:database_authenticatable</span><span class="p">,</span> <span class="ss">:async</span><span class="p">,</span> <span class="ss">:confirmable</span> <span class="c1"># etc ...</span>
-<span class="lineno">3 </span><span class="k">end</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre><span class="k">class</span> <span class="nc">User</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+  <span class="n">devise</span> <span class="ss">:database_authenticatable</span><span class="p">,</span> <span class="ss">:async</span><span class="p">,</span> <span class="ss">:confirmable</span> <span class="c1"># etc ...</span>
+<span class="k">end</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
-<p>Finally set your queuing backend to Sidekiq by creating <code>config/initializers/devise_async.rb</code>:</p>
+<p>Finally set your queuing backend to Sidekiq by creating <code class="highlighter-rouge">config/initializers/devise_async.rb</code>:</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span></span><span class="lineno">1 </span><span class="no">Devise</span><span class="o">::</span><span class="no">Async</span><span class="o">.</span><span class="n">backend</span> <span class="o">=</span> <span class="ss">:sidekiq</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="no">Devise</span><span class="o">::</span><span class="no">Async</span><span class="p">.</span><span class="nf">backend</span> <span class="o">=</span> <span class="ss">:sidekiq</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <h2 id="epilogue">Epilogue</h2>
 
@@ -142,7 +150,7 @@
 
     </p>
   </div>
-  <meta itemprop="wordCount" content="539">
+  <meta itemprop="wordCount" content="607">
   <meta itemprop="author" content="Pranav Prakash">
 </article>
 

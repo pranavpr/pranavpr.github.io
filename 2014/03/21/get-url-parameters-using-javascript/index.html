@@ -6,9 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Personal blog of Pranav Prakash">
     <meta property="og:site_name" content="Pranav Prakash"/>
-    <meta property="og:image" content="https://pranavprakash.net/assets/img/pranav.jpeg"/>
-    <meta property="og:image:width" content="200" />
-    <meta property="og:image:height" content="200" />
     <title>
     
         Get URL parameters using JavaScript &middot; Pranav Prakash
@@ -78,31 +75,44 @@
     <p>
     <p>Suppose you want to get the parameters of an URL like below in JavaScript</p>
 
-<p><code>http://example.com?param1=value1&amp;param2=value2</code></p>
+<p><code class="highlighter-rouge">http://example.com?param1=value1&amp;param2=value2</code></p>
 
 <p>Below JavaScript code might come handy in this case</p>
 
 <!--more-->
 
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span></span><span class="lineno"> 1 </span><span class="kd">function</span> <span class="nx">getUrlVars</span><span class="p">()</span> <span class="p">{</span>
-<span class="lineno"> 2 </span>    <span class="kd">var</span> <span class="nx">vars</span> <span class="o">=</span> <span class="p">{};</span>
-<span class="lineno"> 3 </span>    <span class="kd">var</span> <span class="nx">parts</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/[?&amp;]+([^=&amp;]+)=([^&amp;]*)/gi</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">m</span><span class="p">,</span><span class="nx">key</span><span class="p">,</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno"> 4 </span>        <span class="nx">vars</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">=</span> <span class="nx">value</span><span class="p">;</span>
-<span class="lineno"> 5 </span>    <span class="p">});</span>
-<span class="lineno"> 6 </span>    <span class="k">return</span> <span class="nx">vars</span><span class="p">;</span>
-<span class="lineno"> 7 </span><span class="p">}</span>
-<span class="lineno"> 8 </span>
-<span class="lineno"> 9 </span><span class="kd">var</span> <span class="nx">myvar</span> <span class="o">=</span> <span class="nx">getUrlVars</span><span class="p">();</span>
-<span class="lineno">10 </span>
-<span class="lineno">11 </span><span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">key</span> <span class="k">in</span> <span class="nx">myvar</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno">12 </span>	<span class="nx">alert</span><span class="p">(</span><span class="nx">key</span><span class="o">+</span><span class="s2">&quot; = &quot;</span> <span class="o">+</span> <span class="nx">myvar</span><span class="p">[</span><span class="nx">key</span><span class="p">]);</span>
-<span class="lineno">13 </span><span class="p">}</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13</pre></td><td class="code"><pre><span class="kd">function</span> <span class="nx">getUrlVars</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">vars</span> <span class="o">=</span> <span class="p">{};</span>
+    <span class="kd">var</span> <span class="nx">parts</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/</span><span class="se">[</span><span class="sr">?&amp;</span><span class="se">]</span><span class="sr">+</span><span class="se">([^</span><span class="sr">=&amp;</span><span class="se">]</span><span class="sr">+</span><span class="se">)</span><span class="sr">=</span><span class="se">([^</span><span class="sr">&amp;</span><span class="se">]</span><span class="sr">*</span><span class="se">)</span><span class="sr">/gi</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">m</span><span class="p">,</span><span class="nx">key</span><span class="p">,</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">vars</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">=</span> <span class="nx">value</span><span class="p">;</span>
+    <span class="p">});</span>
+    <span class="k">return</span> <span class="nx">vars</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nx">myvar</span> <span class="o">=</span> <span class="nx">getUrlVars</span><span class="p">();</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">key</span> <span class="k">in</span> <span class="nx">myvar</span><span class="p">)</span> <span class="p">{</span>
+	<span class="nx">alert</span><span class="p">(</span><span class="nx">key</span><span class="o">+</span><span class="s2">" = "</span> <span class="o">+</span> <span class="nx">myvar</span><span class="p">[</span><span class="nx">key</span><span class="p">]);</span>
+<span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>It basically reads the current page url, perform some regular expression on the URL then saves the url parameters in an associative array, which we can easily access.</p>
 
     </p>
   </div>
-  <meta itemprop="wordCount" content="201">
+  <meta itemprop="wordCount" content="197">
   <meta itemprop="author" content="Pranav Prakash">
 </article>
 

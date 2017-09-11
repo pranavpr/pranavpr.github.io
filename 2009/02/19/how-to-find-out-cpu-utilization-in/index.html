@@ -6,9 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Personal blog of Pranav Prakash">
     <meta property="og:site_name" content="Pranav Prakash"/>
-    <meta property="og:image" content="https://pranavprakash.net/assets/img/pranav.jpeg"/>
-    <meta property="og:image:width" content="200" />
-    <meta property="og:image:height" content="200" />
     <title>
     
         How to find out CPU utilization in Linux? &middot; Pranav Prakash
@@ -82,37 +79,41 @@
 
 <h2 id="good-old-top-command">Good old “top” command</h2>
 
-<p>The <code>top</code> command provides dynamic view of CPU utilization. It displays system information as well as list of tasks currently managed by kernel. Is also displays uptime, average load,  physcal and swap memory utilization. Syntax of <code>top</code> command is as follows:</p>
+<p>The <code class="highlighter-rouge">top</code> command provides dynamic view of CPU utilization. It displays system information as well as list of tasks currently managed by kernel. Is also displays uptime, average load,  physcal and swap memory utilization. Syntax of <code class="highlighter-rouge">top</code> command is as follows:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ top</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>top</code></pre></figure>
 
 <div style="TEXT-ALIGN: center"><img src="http://1.bp.blogspot.com/__GfZLYkxICU/SZ1EdKuhqvI/AAAAAAAAKaQ/IOyFqTaYkPU/s400/top.jpeg" /></div>
 
-<p>To quit <code>top</code>, you have to press <code>Q</code> key of your keyboard.</p>
+<p>To quit <code class="highlighter-rouge">top</code>, you have to press <code class="highlighter-rouge">Q</code> key of your keyboard.</p>
 
 <h2 id="using-mpstat-command">Using “mpstat” command</h2>
 
-<p>To use this command, you have to install a package called <code>sysstat</code>. For Ubuntu or Debian systems, you can install this package using <code>apt-get</code>.</p>
+<p>To use this command, you have to install a package called <code class="highlighter-rouge">sysstat</code>. For Ubuntu or Debian systems, you can install this package using <code class="highlighter-rouge">apt-get</code>.</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span><span class="lineno">1 </span>$ apt-get install sysstat</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="gp">$ </span>apt-get install sysstat<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>To get CPU utilization information, type in following command:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span><span class="lineno">1 </span>$ mpstat</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="gp">$ </span>mpstat<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <div style="TEXT-ALIGN: center"><img src="http://3.bp.blogspot.com/__GfZLYkxICU/SZ1HYqBN79I/AAAAAAAAKaY/ao4jzWcMSus/s400/mpstat.jpeg" /></div>
 
 <p>To monitor individual processor performance, issue following command:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span><span class="lineno">1 </span>$ mpstat -P ALL</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="gp">$ </span>mpstat -P ALL<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <div style="TEXT-ALIGN: center"><img src="http://1.bp.blogspot.com/__GfZLYkxICU/SZ1JWeK086I/AAAAAAAAKag/R4CJFb-PlnA/s400/mpstat+all.jpeg" /></div>
 
 <h2 id="the-sar-command">The “sar” command</h2>
 
-<p>To display CPU utilization using <code>sar</code>, use following command:</p>
+<p>To display CPU utilization using <code class="highlighter-rouge">sar</code>, use following command:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span><span class="lineno">1 </span>$ sar -u <span class="m">2</span> <span class="m">5</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="gp">$ </span>sar -u 2 5<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>This command will display CPU utilization 2 seconds apart, 5 times as shown below.</p>
 
@@ -120,9 +121,10 @@
 
 <p>##The “iostat” command</p>
 
-<p>The <code>iostat</code> command reports Central Processing Unit (CPU) statistics and input/output statistics for devices and partitions. It can be use to find out your system’s average CPU utilization since the last reboot.</p>
+<p>The <code class="highlighter-rouge">iostat</code> command reports Central Processing Unit (CPU) statistics and input/output statistics for devices and partitions. It can be use to find out your system’s average CPU utilization since the last reboot.</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span><span class="lineno">1 </span>$ iostat</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="gp">$ </span>iostat<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <div style="TEXT-ALIGN: center"><img src="http://4.bp.blogspot.com/__GfZLYkxICU/SZ1LmKj8Z3I/AAAAAAAAKaw/EeBQkTTH7v8/s400/iostat.jpeg" /></div>
 
@@ -140,7 +142,7 @@
 
     </p>
   </div>
-  <meta itemprop="wordCount" content="382">
+  <meta itemprop="wordCount" content="434">
   <meta itemprop="author" content="Pranav Prakash">
 </article>
 

@@ -6,9 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Personal blog of Pranav Prakash">
     <meta property="og:site_name" content="Pranav Prakash"/>
-    <meta property="og:image" content="https://pranavprakash.net/assets/img/pranav.jpeg"/>
-    <meta property="og:image:width" content="200" />
-    <meta property="og:image:height" content="200" />
     <title>
     
         Pranav Prakash &middot; Blog
@@ -88,7 +85,7 @@
           
         </p>
       </div>
-      <meta itemprop="wordCount" content="628">
+      <meta itemprop="wordCount" content="608">
       <meta itemprop="author" content="Pranav Prakash">
     </article>
   
@@ -115,11 +112,12 @@
         <div itemprop="articleBody" class="post-description">
           <p>
           
-            <p>I was using a Amazon Elasticache <code>cache.t2.medium</code> Redis instance as a cache store for one of the Rails application. Over the time I observed that connections to Redis instance are increasing day by day and once it hit ~1500, the Rails application started throwing connection timeout exceptions:</p>
+            <p>I was using a Amazon Elasticache <code class="highlighter-rouge">cache.t2.medium</code> Redis instance as a cache store for one of the Rails application. Over the time I observed that connections to Redis instance are increasing day by day and once it hit ~1500, the Rails application started throwing connection timeout exceptions:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span><span class="lineno">1 </span>Error connecting to Redis on redis-host:6379 <span class="o">(</span>Redis::TimeoutError<span class="o">)</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>Error connecting to Redis on redis-host:6379 <span class="o">(</span>Redis::TimeoutError<span class="o">)</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
-<p>On searching over internet, I found that the default parameter group has <code>timeout</code> value set to 0 which means, any connection that has been initialized to redis will be kept by redis even if the connection initialized by the client is down. Well the first thing I did was to create a new parameter group and set its value to a non-zero integer. However I couldn’t apply the parameter group changes to live production application and hence started looking for alternatives.</p>
+<p>On searching over internet, I found that the default parameter group has <code class="highlighter-rouge">timeout</code> value set to 0 which means, any connection that has been initialized to redis will be kept by redis even if the connection initialized by the client is down. Well the first thing I did was to create a new parameter group and set its value to a non-zero integer. However I couldn’t apply the parameter group changes to live production application and hence started looking for alternatives.</p>
 
 <a href="/2016/02/05/kill-idle-connections-to-redis/">Continue Reading »</a>
           
@@ -148,19 +146,20 @@
           
             <p>If you need to send transactional emails from your Rails application, you should always send them asynchronously using a background job. If you send transactional emails synchronously, the user will see a loading page for the time rails connect to SMTP server and delivers your email which is about 2-3 seconds. This will result in a very bad user experience and it’s advisable to send emails using a background job.</p>
 
-<p><a href="http://sidekiq.org/">Sidekiq</a> advertises it self as simple, efficient background processing engine for Ruby. Sidekiq has dependency on <a href="http://redis.io/">Redis</a> version <code>2.4</code> or greater. Hence to setup Sidekiq on OpenShift, we have to setup Redis first. So let’s get started.</p>
+<p><a href="http://sidekiq.org/">Sidekiq</a> advertises it self as simple, efficient background processing engine for Ruby. Sidekiq has dependency on <a href="http://redis.io/">Redis</a> version <code class="highlighter-rouge">2.4</code> or greater. Hence to setup Sidekiq on OpenShift, we have to setup Redis first. So let’s get started.</p>
 
 <h2 id="setting-up-redis">Setting up Redis</h2>
 
 <p>Redis cartridge for Openshift is available <a href="https://github.com/smarterclayton/openshift-redis-cart">here</a>. To add this cartridge to existing Openshift application, issue following command:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span><span class="lineno">1 </span>rhc add-cartridge http://cartreflect-claytondev.rhcloud.com/reflect?github<span class="o">=</span>smarterclayton/openshift-redis-cart</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>rhc add-cartridge http://cartreflect-claytondev.rhcloud.com/reflect?github<span class="o">=</span>smarterclayton/openshift-redis-cart<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <a href="/2015/02/09/sending-asynchronous-emails-using-sidekiq-on-openshift/">Continue Reading »</a>
           
         </p>
       </div>
-      <meta itemprop="wordCount" content="539">
+      <meta itemprop="wordCount" content="607">
       <meta itemprop="author" content="Pranav Prakash">
     </article>
   
@@ -191,7 +190,7 @@
           
         </p>
       </div>
-      <meta itemprop="wordCount" content="591">
+      <meta itemprop="wordCount" content="558">
       <meta itemprop="author" content="Pranav Prakash">
     </article>
   
@@ -226,7 +225,7 @@
           
         </p>
       </div>
-      <meta itemprop="wordCount" content="1178">
+      <meta itemprop="wordCount" content="1261">
       <meta itemprop="author" content="Pranav Prakash">
     </article>
   

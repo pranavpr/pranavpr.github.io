@@ -6,9 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Personal blog of Pranav Prakash">
     <meta property="og:site_name" content="Pranav Prakash"/>
-    <meta property="og:image" content="https://pranavprakash.net/assets/img/pranav.jpeg"/>
-    <meta property="og:image:width" content="200" />
-    <meta property="og:image:height" content="200" />
     <title>
     
         Automate MongoDB backups using Cron and Shell Script &middot; Pranav Prakash
@@ -80,72 +77,121 @@
 
 <!--more-->
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span><span class="lineno"> 1 </span><span class="ch">#!/bin/sh</span>
-<span class="lineno"> 2 </span>
-<span class="lineno"> 3 </span><span class="c1">#=====================================================================</span>
-<span class="lineno"> 4 </span><span class="c1"># Set the following variables as per your requirement</span>
-<span class="lineno"> 5 </span><span class="c1">#=====================================================================</span>
-<span class="lineno"> 6 </span><span class="c1"># Database Name to backup</span>
-<span class="lineno"> 7 </span><span class="nv">MONGO_DATABASE</span><span class="o">=</span><span class="s2">&quot;mydb&quot;</span>
-<span class="lineno"> 8 </span><span class="c1"># Database host name</span>
-<span class="lineno"> 9 </span><span class="nv">MONGO_HOST</span><span class="o">=</span><span class="s2">&quot;127.0.0.1&quot;</span>
-<span class="lineno">10 </span><span class="c1"># Database port</span>
-<span class="lineno">11 </span><span class="nv">MONGO_PORT</span><span class="o">=</span><span class="s2">&quot;27017&quot;</span>
-<span class="lineno">12 </span><span class="c1"># Backup directory</span>
-<span class="lineno">13 </span><span class="nv">BACKUPS_DIR</span><span class="o">=</span><span class="s2">&quot;/var/backups/</span><span class="nv">$MONGO_DATABASE</span><span class="s2">&quot;</span>
-<span class="lineno">14 </span><span class="c1"># Database user name</span>
-<span class="lineno">15 </span><span class="nv">DBUSERNAME</span><span class="o">=</span><span class="s2">&quot;username&quot;</span>
-<span class="lineno">16 </span><span class="c1"># Database password</span>
-<span class="lineno">17 </span><span class="nv">DBPASSWORD</span><span class="o">=</span><span class="s2">&quot;passw0rd&quot;</span>
-<span class="lineno">18 </span><span class="c1"># Authentication database name</span>
-<span class="lineno">19 </span><span class="nv">DBAUTHDB</span><span class="o">=</span><span class="s2">&quot;admin&quot;</span>
-<span class="lineno">20 </span><span class="c1"># Days to keep the backup</span>
-<span class="lineno">21 </span><span class="nv">DAYSTORETAINBACKUP</span><span class="o">=</span><span class="s2">&quot;14&quot;</span>
-<span class="lineno">22 </span><span class="c1">#=====================================================================</span>
-<span class="lineno">23 </span>
-<span class="lineno">24 </span><span class="nv">TIMESTAMP</span><span class="o">=</span><span class="sb">`</span>date +%F-%H%M<span class="sb">`</span>
-<span class="lineno">25 </span><span class="nv">BACKUP_NAME</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$MONGO_DATABASE</span><span class="s2">-</span><span class="nv">$TIMESTAMP</span><span class="s2">&quot;</span>
-<span class="lineno">26 </span>
-<span class="lineno">27 </span><span class="nb">echo</span> <span class="s2">&quot;Performing backup of </span><span class="nv">$MONGO_DATABASE</span><span class="s2">&quot;</span>
-<span class="lineno">28 </span><span class="nb">echo</span> <span class="s2">&quot;--------------------------------------------&quot;</span>
-<span class="lineno">29 </span><span class="c1"># Create backup directory</span>
-<span class="lineno">30 </span><span class="k">if</span> ! mkdir -p <span class="nv">$BACKUPS_DIR</span><span class="p">;</span> <span class="k">then</span>
-<span class="lineno">31 </span>  <span class="nb">echo</span> <span class="s2">&quot;Can&#39;t create backup directory in </span><span class="nv">$BACKUPS_DIR</span><span class="s2">. Go and fix it!&quot;</span> <span class="m">1</span>&gt;<span class="p">&amp;</span><span class="m">2</span>
-<span class="lineno">32 </span>  <span class="nb">exit</span> <span class="m">1</span><span class="p">;</span>
-<span class="lineno">33 </span><span class="k">fi</span><span class="p">;</span>
-<span class="lineno">34 </span><span class="c1"># Create dump</span>
-<span class="lineno">35 </span>mongodump -d <span class="nv">$MONGO_DATABASE</span> --username <span class="nv">$DBUSERNAME</span> --password <span class="nv">$DBPASSWORD</span> --authenticationDatabase <span class="nv">$DBAUTHDB</span>
-<span class="lineno">36 </span><span class="c1"># Rename dump directory to backup name</span>
-<span class="lineno">37 </span>mv dump <span class="nv">$BACKUP_NAME</span>
-<span class="lineno">38 </span><span class="c1"># Compress backup</span>
-<span class="lineno">39 </span>tar -zcvf <span class="nv">$BACKUPS_DIR</span>/<span class="nv">$BACKUP_NAME</span>.tgz <span class="nv">$BACKUP_NAME</span>
-<span class="lineno">40 </span><span class="c1"># Delete uncompressed backup</span>
-<span class="lineno">41 </span>rm -rf <span class="nv">$BACKUP_NAME</span>
-<span class="lineno">42 </span><span class="c1"># Delete backups older than retention period</span>
-<span class="lineno">43 </span>find <span class="nv">$BACKUPS_DIR</span> -type f -mtime +<span class="nv">$DAYSTORETAINBACKUP</span> -exec rm <span class="o">{}</span> +
-<span class="lineno">44 </span><span class="nb">echo</span> <span class="s2">&quot;--------------------------------------------&quot;</span>
-<span class="lineno">45 </span><span class="nb">echo</span> <span class="s2">&quot;Database backup complete!&quot;</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45</pre></td><td class="code"><pre><span class="c">#!/bin/sh</span>
 
-<p>You need to update the parameters in above shell script as per your environment. Specify the name of database to be backed up, host name, port in <code>MONGO_DATABASE</code>, <code>MONGO_HOST</code> and <code>MONGO_PORT</code> parameters. To specify the backup directory, update the <code>BACKUPS_DIR</code> parameter. You need to update the database credentials in <code>DBUSERNAME</code>, <code>DBPASSWORD</code> and <code>DBAUTHDB</code> parameters if you are using one. Finally you need to specify the number of days you want to retain the backup file in <code>DAYSTORETAINBACKUP</code> parameter. Once you update all the parameters as per your environment, save the file as <code>mongobackup.sh</code>. After that you need to make the file executable by issuing following command:</p>
+<span class="c">#=====================================================================</span>
+<span class="c"># Set the following variables as per your requirement</span>
+<span class="c">#=====================================================================</span>
+<span class="c"># Database Name to backup</span>
+<span class="nv">MONGO_DATABASE</span><span class="o">=</span><span class="s2">"mydb"</span>
+<span class="c"># Database host name</span>
+<span class="nv">MONGO_HOST</span><span class="o">=</span><span class="s2">"127.0.0.1"</span>
+<span class="c"># Database port</span>
+<span class="nv">MONGO_PORT</span><span class="o">=</span><span class="s2">"27017"</span>
+<span class="c"># Backup directory</span>
+<span class="nv">BACKUPS_DIR</span><span class="o">=</span><span class="s2">"/var/backups/</span><span class="nv">$MONGO_DATABASE</span><span class="s2">"</span>
+<span class="c"># Database user name</span>
+<span class="nv">DBUSERNAME</span><span class="o">=</span><span class="s2">"username"</span>
+<span class="c"># Database password</span>
+<span class="nv">DBPASSWORD</span><span class="o">=</span><span class="s2">"passw0rd"</span>
+<span class="c"># Authentication database name</span>
+<span class="nv">DBAUTHDB</span><span class="o">=</span><span class="s2">"admin"</span>
+<span class="c"># Days to keep the backup</span>
+<span class="nv">DAYSTORETAINBACKUP</span><span class="o">=</span><span class="s2">"14"</span>
+<span class="c">#=====================================================================</span>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span><span class="lineno">1 </span>chomd +x mongobackup.sh</code></pre></figure>
+<span class="nv">TIMESTAMP</span><span class="o">=</span><span class="sb">`</span>date +%F-%H%M<span class="sb">`</span>
+<span class="nv">BACKUP_NAME</span><span class="o">=</span><span class="s2">"</span><span class="nv">$MONGO_DATABASE</span><span class="s2">-</span><span class="nv">$TIMESTAMP</span><span class="s2">"</span>
+
+<span class="nb">echo</span> <span class="s2">"Performing backup of </span><span class="nv">$MONGO_DATABASE</span><span class="s2">"</span>
+<span class="nb">echo</span> <span class="s2">"--------------------------------------------"</span>
+<span class="c"># Create backup directory</span>
+<span class="k">if</span> ! mkdir -p <span class="nv">$BACKUPS_DIR</span>; <span class="k">then
+  </span><span class="nb">echo</span> <span class="s2">"Can't create backup directory in </span><span class="nv">$BACKUPS_DIR</span><span class="s2">. Go and fix it!"</span> 1&gt;&amp;2
+  <span class="nb">exit </span>1;
+<span class="k">fi</span>;
+<span class="c"># Create dump</span>
+mongodump -d <span class="nv">$MONGO_DATABASE</span> --username <span class="nv">$DBUSERNAME</span> --password <span class="nv">$DBPASSWORD</span> --authenticationDatabase <span class="nv">$DBAUTHDB</span>
+<span class="c"># Rename dump directory to backup name</span>
+mv dump <span class="nv">$BACKUP_NAME</span>
+<span class="c"># Compress backup</span>
+tar -zcvf <span class="nv">$BACKUPS_DIR</span>/<span class="nv">$BACKUP_NAME</span>.tgz <span class="nv">$BACKUP_NAME</span>
+<span class="c"># Delete uncompressed backup</span>
+rm -rf <span class="nv">$BACKUP_NAME</span>
+<span class="c"># Delete backups older than retention period</span>
+find <span class="nv">$BACKUPS_DIR</span> -type f -mtime +<span class="nv">$DAYSTORETAINBACKUP</span> -exec rm <span class="o">{}</span> +
+<span class="nb">echo</span> <span class="s2">"--------------------------------------------"</span>
+<span class="nb">echo</span> <span class="s2">"Database backup complete!"</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
+<p>You need to update the parameters in above shell script as per your environment. Specify the name of database to be backed up, host name, port in <code class="highlighter-rouge">MONGO_DATABASE</code>, <code class="highlighter-rouge">MONGO_HOST</code> and <code class="highlighter-rouge">MONGO_PORT</code> parameters. To specify the backup directory, update the <code class="highlighter-rouge">BACKUPS_DIR</code> parameter. You need to update the database credentials in <code class="highlighter-rouge">DBUSERNAME</code>, <code class="highlighter-rouge">DBPASSWORD</code> and <code class="highlighter-rouge">DBAUTHDB</code> parameters if you are using one. Finally you need to specify the number of days you want to retain the backup file in <code class="highlighter-rouge">DAYSTORETAINBACKUP</code> parameter. Once you update all the parameters as per your environment, save the file as <code class="highlighter-rouge">mongobackup.sh</code>. After that you need to make the file executable by issuing following command:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>chomd +x mongobackup.sh<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>Now you need to create a cron job to execute this script automatically. Issue following command to create a cron job:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span><span class="lineno">1 </span>crontab -e</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>crontab -e<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>Enter following:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span><span class="lineno">1 </span><span class="c1"># MongoDB Backup</span>
-<span class="lineno">2 </span><span class="m">00</span> <span class="m">00</span> * * * /path/to/script/mongobackup.sh</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="c"># MongoDB Backup</span>
+00 00 <span class="k">*</span> <span class="k">*</span> <span class="k">*</span> /path/to/script/mongobackup.sh<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
-<p>Save the file by pressing <code>Esc</code>and then <code>wq</code> + <code>Enter</code> (similar to vi editor). This cron job will execute the backup script at 12 o’clock every night. You can head over to <a href="https://crontab-generator.org">this site</a> to generate a cron entry of your liking.</p>
+<p>Save the file by pressing <code class="highlighter-rouge">Esc</code>and then <code class="highlighter-rouge">wq</code> + <code class="highlighter-rouge">Enter</code> (similar to vi editor). This cron job will execute the backup script at 12 o’clock every night. You can head over to <a href="https://crontab-generator.org">this site</a> to generate a cron entry of your liking.</p>
 
-<p>That’s it, sit back and relax. The script will execute every midnight, create backup files and will also delete the backup files older than specified in <code>DAYSTORETAINBACKUP</code> parameter.</p>
+<p>That’s it, sit back and relax. The script will execute every midnight, create backup files and will also delete the backup files older than specified in <code class="highlighter-rouge">DAYSTORETAINBACKUP</code> parameter.</p>
 
     </p>
   </div>
-  <meta itemprop="wordCount" content="628">
+  <meta itemprop="wordCount" content="608">
   <meta itemprop="author" content="Pranav Prakash">
 </article>
 

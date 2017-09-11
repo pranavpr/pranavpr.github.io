@@ -6,9 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Personal blog of Pranav Prakash">
     <meta property="og:site_name" content="Pranav Prakash"/>
-    <meta property="og:image" content="https://pranavprakash.net/assets/img/pranav.jpeg"/>
-    <meta property="og:image:width" content="200" />
-    <meta property="og:image:height" content="200" />
     <title>
     
         Switch between different JDK versions in Windows &middot; Pranav Prakash
@@ -76,47 +73,68 @@
   </header>
   <div class="post-description" itemprop="articleBody">
     <p>
-    <p>Being a Java developer, I always compile and test my code on different Java versions. But switching between them is a huge problem. So finally I found an easy method to do this. You have to create following batch files and place them in directory you open your command line in or in <code>SYSTEM PATH</code>. You can use you favorite text editor to create these files.</p>
+    <p>Being a Java developer, I always compile and test my code on different Java versions. But switching between them is a huge problem. So finally I found an easy method to do this. You have to create following batch files and place them in directory you open your command line in or in <code class="highlighter-rouge">SYSTEM PATH</code>. You can use you favorite text editor to create these files.</p>
 
 <!--more-->
 
 <p><strong>jdk14.bat</strong></p>
 
-<figure class="highlight"><pre><code class="language-bat" data-lang="bat"><span></span><span class="lineno">1 </span><span class="p">@</span><span class="k">echo</span> off
-<span class="lineno">2 </span><span class="k">echo</span> Setting JAVA_HOME
-<span class="lineno">3 </span><span class="k">set</span> <span class="nv">JAVA_HOME</span><span class="p">=</span>C:\j2sdk1.4.2_12
-<span class="lineno">4 </span><span class="k">echo</span> setting PATH
-<span class="lineno">5 </span><span class="k">set</span> <span class="nv">PATH</span><span class="p">=</span>C:\j2sdk1.4.2_12\bin;<span class="nv">%PATH%</span>
-<span class="lineno">6 </span><span class="k">echo</span> Display java version
-<span class="lineno">7 </span>java -version</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bat" data-lang="bat"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre>@echo off
+echo Setting JAVA_HOME
+set JAVA_HOME=C:\j2sdk1.4.2_12
+echo setting PATH
+set PATH=C:\j2sdk1.4.2_12\bin;%PATH%
+echo Display java version
+java -version<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p><strong>jdk15.bat</strong></p>
 
-<figure class="highlight"><pre><code class="language-bat" data-lang="bat"><span></span><span class="lineno">1 </span><span class="p">@</span><span class="k">echo</span> off
-<span class="lineno">2 </span><span class="k">echo</span> Setting JAVA_HOME
-<span class="lineno">3 </span><span class="k">set</span> <span class="nv">JAVA_HOME</span><span class="p">=</span>C:\Program Files\Java\jdk1.5.0_12
-<span class="lineno">4 </span><span class="k">echo</span> setting PATH
-<span class="lineno">5 </span><span class="k">set</span> <span class="nv">PATH</span><span class="p">=</span>C:\Program Files\Java\jdk1.5.0_12\bin;<span class="nv">%PATH%</span>
-<span class="lineno">6 </span><span class="k">echo</span> Display java version
-<span class="lineno">7 </span>java -version</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bat" data-lang="bat"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre>@echo off
+echo Setting JAVA_HOME
+set JAVA_HOME=C:\Program Files\Java\jdk1.5.0_12
+echo setting PATH
+set PATH=C:\Program Files\Java\jdk1.5.0_12\bin;%PATH%
+echo Display java version
+java -version<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p><strong>jdk16.bat</strong></p>
 
-<figure class="highlight"><pre><code class="language-bat" data-lang="bat"><span></span><span class="lineno">1 </span><span class="p">@</span><span class="k">echo</span> off
-<span class="lineno">2 </span><span class="k">echo</span> Setting JAVA_HOME
-<span class="lineno">3 </span><span class="k">set</span> <span class="nv">JAVA_HOME</span><span class="p">=</span>C:\Program Files\Java\jdk1.6.0_11
-<span class="lineno">4 </span><span class="k">echo</span> setting PATH
-<span class="lineno">5 </span><span class="k">set</span> <span class="nv">PATH</span><span class="p">=</span>C:\Program Files\Java\jdk1.6.0_11\bin;<span class="nv">%PATH%</span>
-<span class="lineno">6 </span><span class="k">echo</span> Display java version
-<span class="lineno">7 </span>java -version</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bat" data-lang="bat"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre>@echo off
+echo Setting JAVA_HOME
+set JAVA_HOME=C:\Program Files\Java\jdk1.6.0_11
+echo setting PATH
+set PATH=C:\Program Files\Java\jdk1.6.0_11\bin;%PATH%
+echo Display java version
+java -version<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
-<p>Make sure you assign the appropriate <code>JAVA_HOME</code> value in batch files, according to your Java installation. Whenever you want to switch between Java versions, just run the respective batch file and you are done.</p>
+<p>Make sure you assign the appropriate <code class="highlighter-rouge">JAVA_HOME</code> value in batch files, according to your Java installation. Whenever you want to switch between Java versions, just run the respective batch file and you are done.</p>
 
-<p><em>Note- <strong><code>JAVA_HOME</code></strong> and the path to <strong>java</strong> must <strong>always</strong> refer to the exact same version of the JDK. If you mix them up, unpredictable things will happen!</em></p>
+<p><em>Note- <strong><code class="highlighter-rouge">JAVA_HOME</code></strong> and the path to <strong>java</strong> must <strong>always</strong> refer to the exact same version of the JDK. If you mix them up, unpredictable things will happen!</em></p>
 
     </p>
   </div>
-  <meta itemprop="wordCount" content="276">
+  <meta itemprop="wordCount" content="249">
   <meta itemprop="author" content="Pranav Prakash">
 </article>
 
