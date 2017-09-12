@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.5.2">Jekyll</generator><link href="https://pranavprakash.net/feed.xml" rel="self" type="application/atom+xml" /><link href="https://pranavprakash.net/" rel="alternate" type="text/html" /><updated>2017-09-12T01:48:00+05:30</updated><id>https://pranavprakash.net/</id><title type="html">Pranav Prakash</title><author><name>Pranav Prakash</name><email>pranav@pranavprakash.net</email></author><entry><title type="html">Automate MongoDB backups using Cron and Shell Script</title><link href="https://pranavprakash.net/2017/02/04/automate-mongodb-backups-using-cron-and-shell-script/" rel="alternate" type="text/html" title="Automate MongoDB backups using Cron and Shell Script" /><published>2017-02-04T19:07:36+05:30</published><updated>2017-02-04T19:07:36+05:30</updated><id>https://pranavprakash.net/2017/02/04/automate-mongodb-backups-using-cron-and-shell-script</id><content type="html" xml:base="https://pranavprakash.net/2017/02/04/automate-mongodb-backups-using-cron-and-shell-script/">&lt;p&gt;After having a bitter experience of losing data due to execution of wrong command, I decided to backup my database regularly. Hence I wrote a simple shell script which backs up the database and produces gzipped version of backup files. Below is the shell script:&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.5.2">Jekyll</generator><link href="https://pranavprakash.net/feed.xml" rel="self" type="application/atom+xml" /><link href="https://pranavprakash.net/" rel="alternate" type="text/html" /><updated>2017-09-12T21:59:16+05:30</updated><id>https://pranavprakash.net/</id><title type="html">Pranav Prakash</title><author><name>Pranav Prakash</name><email>pranav@pranavprakash.net</email></author><entry><title type="html">Automate MongoDB backups using Cron and Shell Script</title><link href="https://pranavprakash.net/2017/02/04/automate-mongodb-backups-using-cron-and-shell-script/" rel="alternate" type="text/html" title="Automate MongoDB backups using Cron and Shell Script" /><published>2017-02-04T19:07:36+05:30</published><updated>2017-02-04T19:07:36+05:30</updated><id>https://pranavprakash.net/2017/02/04/automate-mongodb-backups-using-cron-and-shell-script</id><content type="html" xml:base="https://pranavprakash.net/2017/02/04/automate-mongodb-backups-using-cron-and-shell-script/">&lt;p&gt;After having a bitter experience of losing data due to execution of wrong command, I decided to backup my database regularly. Hence I wrote a simple shell script which backs up the database and produces gzipped version of backup files. Below is the shell script:&lt;/p&gt;
 
 &lt;!--more--&gt;
 
@@ -416,7 +416,7 @@ gem &lt;span class=&quot;s1&quot;&gt;'rails'&lt;/span&gt;, &lt;span class=&quot;
 
 &lt;p&gt;Add following section in &lt;code class=&quot;highlighter-rouge&quot;&gt;database.yml&lt;/code&gt; file:&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-yml&quot; data-lang=&quot;yml&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
 2
 3
 4
@@ -424,15 +424,15 @@ gem &lt;span class=&quot;s1&quot;&gt;'rails'&lt;/span&gt;, &lt;span class=&quot;
 6
 7
 8
-9&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;production:
-  adapter: postgresql
-  encoding: unicode
-  pool: 5
-  database: &amp;lt;%=ENV['OPENSHIFT_APP_NAME']%&amp;gt;
-  host: &amp;lt;%=ENV['$OPENSHIFT_POSTGRESQL_DB_HOST']%&amp;gt;
-  port: &amp;lt;%=ENV['$OPENSHIFT_POSTGRESQL_DB_PORT']%&amp;gt;
-  username: &amp;lt;%=ENV['OPENSHIFT_POSTGRESQL_DB_USERNAME']%&amp;gt;
-  password: &amp;lt;%=ENV['OPENSHIFT_POSTGRESQL_DB_PASSWORD']%&amp;gt;&lt;span class=&quot;w&quot;&gt;
+9&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;s&quot;&gt;production&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;adapter&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;postgresql&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;encoding&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;unicode&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;pool&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;5&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;database&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;lt;%=ENV['OPENSHIFT_APP_NAME']%&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;host&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;lt;%=ENV['$OPENSHIFT_POSTGRESQL_DB_HOST']%&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;port&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;lt;%=ENV['$OPENSHIFT_POSTGRESQL_DB_PORT']%&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;username&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;lt;%=ENV['OPENSHIFT_POSTGRESQL_DB_USERNAME']%&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;lt;%=ENV['OPENSHIFT_POSTGRESQL_DB_PASSWORD']%&amp;gt;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
 &lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;h3 id=&quot;deployment-hook&quot;&gt;Deployment hook&lt;/h3&gt;
