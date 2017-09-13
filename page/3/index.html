@@ -62,6 +62,50 @@
   <article class="post" itemscope itemtype="http://schema.org/BlogPosting" >
     <header class="post-header">
       <h2 itemprop="name headline" class="post-title">
+      <a href="/2014/07/25/update-and-delete-with-table-alias-in-microsoft-sql-server/" itemprop="url">
+        UPDATE and DELETE with table alias in Microsoft SQL Server
+      </a>
+      </h2>
+      <p class="post-meta">
+      <i class="icon-clock-o">&nbsp;</i><a itemprop="datePublished" content="25 Jul 2014" href="#" class="post-author">25 Jul 2014</a>&nbsp;<i class="icon-tags"></i>
+       <a itemprop="keywords" href="/tags/mss/" class="post-category post-category-m">MSS</a>    <a itemprop="keywords" href="/tags/sql/" class="post-category post-category-s">SQL</a>   
+      </p>
+    </header>
+    <div itemprop="articleBody" class="post-description">
+      <p>
+        
+          <p>Last week I came across following SQL statement:</p>
+
+<figure class="highlight"><pre><code class="language-sql" data-lang="sql"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre><span class="k">DELETE</span>
+<span class="k">FROM</span> <span class="n">FIRST_TABLE</span> <span class="n">A</span>
+<span class="k">WHERE</span> <span class="n">A</span><span class="p">.</span><span class="n">KEY1</span> <span class="o">=</span> <span class="s1">'1'</span>
+  <span class="k">AND</span> <span class="k">EXISTS</span>
+    <span class="p">(</span><span class="k">SELECT</span> <span class="s1">'X'</span>
+     <span class="k">FROM</span> <span class="n">SECOND_TABLE</span> <span class="n">B</span>
+     <span class="k">WHERE</span> <span class="n">B</span><span class="p">.</span><span class="n">KEY1</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">KEY1</span>
+       <span class="k">AND</span> <span class="n">B</span><span class="p">.</span><span class="n">KEY2</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">KEY2</span><span class="p">);</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
+<p>This SQL statement was running fine in Oracle but was failing in Microsoft SQL Server (MSS) with followiing error:</p>
+
+<a href="/2014/07/25/update-and-delete-with-table-alias-in-microsoft-sql-server/">Continue Reading »</a>
+        
+      </p>
+    </div>
+    <meta itemprop="wordCount" content="257">
+    <meta itemprop="author" content="Pranav Prakash">
+  </article>
+
+  <article class="post" itemscope itemtype="http://schema.org/BlogPosting" >
+    <header class="post-header">
+      <h2 itemprop="name headline" class="post-title">
       <a href="/2014/03/21/get-url-parameters-using-javascript/" itemprop="url">
         Get URL parameters using JavaScript
       </a>
@@ -164,34 +208,6 @@ such applications which you can use for free and they do work as good as their c
       </p>
     </div>
     <meta itemprop="wordCount" content="366">
-    <meta itemprop="author" content="Pranav Prakash">
-  </article>
-
-  <article class="post" itemscope itemtype="http://schema.org/BlogPosting" >
-    <header class="post-header">
-      <h2 itemprop="name headline" class="post-title">
-      <a href="/2009/05/07/how-to-send-message-to-users-logged-on/" itemprop="url">
-        How to send message to users logged on to a UNIX terminal?
-      </a>
-      </h2>
-      <p class="post-meta">
-      <i class="icon-clock-o">&nbsp;</i><a itemprop="datePublished" content="07 May 2009" href="#" class="post-author">07 May 2009</a>&nbsp;<i class="icon-tags"></i>
-       <a itemprop="keywords" href="/tags/unix/" class="post-category post-category-u">UNIX</a>    <a itemprop="keywords" href="/tags/messaging/" class="post-category post-category-m">MESSAGING</a>    <a itemprop="keywords" href="/tags/linux/" class="post-category post-category-l">LINUX</a>    <a itemprop="keywords" href="/tags/tricks/" class="post-category post-category-t">TRICKS</a>   
-      </p>
-    </header>
-    <div itemprop="articleBody" class="post-description">
-      <p>
-        
-          <p>One of the cool features of UNIX is that you don’t need to have any software installed to send message to users logged on to that machine. There is a handy command called <code class="highlighter-rouge">write</code> which enables you to do this. Here is the syntax of this command:</p>
-
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="gp">$ </span>write username tty<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
-
-<a href="/2009/05/07/how-to-send-message-to-users-logged-on/">Continue Reading »</a>
-        
-      </p>
-    </div>
-    <meta itemprop="wordCount" content="339">
     <meta itemprop="author" content="Pranav Prakash">
   </article>
 

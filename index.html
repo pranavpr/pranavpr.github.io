@@ -62,17 +62,77 @@
     <article class="post" itemscope itemtype="http://schema.org/BlogPosting" >
       <header class="post-header">
         <h2 itemprop="name headline" class="post-title">
-        <a href="/2017/02/04/automate-mongodb-backups-using-cron-and-shell-script/" itemprop="url">
-          Automate MongoDB backups using Cron and Shell Script
+        <a href="/2017/09/13/case-insensitive-exact-match-search-in-elasticsearch/" itemprop="url">
+          Case insensitive exact match search in ElasticSearch
         </a>
         </h2>
         <p class="post-meta">
-        <i class="icon-clock-o">&nbsp;</i><a itemprop="datePublished" content="04 Feb 2017" href="#" class="post-author">04 Feb 2017</a>&nbsp;<i class="icon-tags"></i>
-         <a itemprop="keywords" href="/tags/devops/" class="post-category post-category-d">DEVOPS</a>    <a itemprop="keywords" href="/tags/mongodb/" class="post-category post-category-m">MONGODB</a>    <a itemprop="keywords" href="/tags/cron/" class="post-category post-category-c">CRON</a>    <a itemprop="keywords" href="/tags/shell/" class="post-category post-category-s">SHELL</a>   
+        <i class="icon-clock-o">&nbsp;</i><a itemprop="datePublished" content="13 Sep 2017" href="#" class="post-author">13 Sep 2017</a>&nbsp;<i class="icon-tags"></i>
+         <a itemprop="keywords" href="/tags/elasticsearch/" class="post-category post-category-e">ELASTICSEARCH</a>   
         </p>
       </header>
       <div itemprop="articleBody" class="post-description">
         <p>
+          
+            <p>I had a requirement where I needed to do exact match search in ElasticSearch. After searching a bit I landed to <a href="https://www.elastic.co/guide/en/elasticsearch/guide/current/_finding_exact_values.html">this</a> page of ElasticSearch documentation. I was thrilled that I got the solution quickly (thanking god and ElasticSearch team in my mind). Hence I started testing by creating an index using request below:</p>
+
+<figure class="highlight"><pre><code class="language-json" data-lang="json"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13</pre></td><td class="code"><pre><span class="err">PUT</span><span class="w"> </span><span class="err">localhost:</span><span class="mi">9200</span><span class="err">/products/</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nt">"mappings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"product"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"productName"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"not_analyzed"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
+<a href="/2017/09/13/case-insensitive-exact-match-search-in-elasticsearch/">Continue Reading »</a>
+          
+        </p>
+      </div>
+      <meta itemprop="wordCount" content="939">
+      <meta itemprop="author" content="Pranav Prakash">
+    </article>
+  
+  <h1 class="content-subhead">Recent Posts</h1>
+  
+  
+    
+    
+  
+
+    
+      <article class="post" itemscope itemtype="http://schema.org/BlogPosting" >
+        <header class="post-header">
+          <h2 itemprop="name headline" class="post-title">
+          <a href="/2017/02/04/automate-mongodb-backups-using-cron-and-shell-script/" itemprop="url">
+            Automate MongoDB backups using Cron and Shell Script
+          </a>
+          </h2>
+          <p class="post-meta">
+          <i class="icon-clock-o">&nbsp;</i><a itemprop="datePublished" content="04 Feb 2017" href="#" class="post-author">04 Feb 2017</a>&nbsp;<i class="icon-tags"></i>
+           <a itemprop="keywords" href="/tags/devops/" class="post-category post-category-d">DEVOPS</a>    <a itemprop="keywords" href="/tags/mongodb/" class="post-category post-category-m">MONGODB</a>    <a itemprop="keywords" href="/tags/cron/" class="post-category post-category-c">CRON</a>    <a itemprop="keywords" href="/tags/shell/" class="post-category post-category-s">SHELL</a>   
+          </p>
+        </header>
+        <div itemprop="articleBody" class="post-description">
+          <p>
           
             <p>After having a bitter experience of losing data due to execution of wrong command, I decided to backup my database regularly. Hence I wrote a simple shell script which backs up the database and produces gzipped version of backup files. Below is the shell script:</p>
 
@@ -83,12 +143,6 @@
       <meta itemprop="wordCount" content="608">
       <meta itemprop="author" content="Pranav Prakash">
     </article>
-  
-  <h1 class="content-subhead">Recent Posts</h1>
-  
-  
-    
-    
   
 
     
@@ -186,41 +240,6 @@
         </p>
       </div>
       <meta itemprop="wordCount" content="558">
-      <meta itemprop="author" content="Pranav Prakash">
-    </article>
-  
-
-    
-      <article class="post" itemscope itemtype="http://schema.org/BlogPosting" >
-        <header class="post-header">
-          <h2 itemprop="name headline" class="post-title">
-          <a href="/2014/11/08/migrating-ruby-on-rails-app-from-heroku-to-openshift/" itemprop="url">
-            Migrating Ruby on Rails app from Heroku to OpenShift
-          </a>
-          </h2>
-          <p class="post-meta">
-          <i class="icon-clock-o">&nbsp;</i><a itemprop="datePublished" content="08 Nov 2014" href="#" class="post-author">08 Nov 2014</a>&nbsp;<i class="icon-tags"></i>
-           <a itemprop="keywords" href="/tags/ruby-on-rails/" class="post-category post-category-r">RUBY ON RAILS</a>    <a itemprop="keywords" href="/tags/heroku/" class="post-category post-category-h">HEROKU</a>    <a itemprop="keywords" href="/tags/openshift/" class="post-category post-category-o">OPENSHIFT</a>   
-          </p>
-        </header>
-        <div itemprop="articleBody" class="post-description">
-          <p>
-          
-            <p><a href="https://www.openshift.com">OpenShift</a> is Red Hat’s Platform-as-a-Service (PaaS) that allows developers to quickly develop, host, and scale applications in a cloud environment similar to <a href="http://heroku.com">Heroku</a>. OpenShift also supports deploying of application with simple git push just like Heroku. OpenShift supports a variety of technologies through use of cartridges, including Java (Wildfly, JBossEAP, Tomcat), PHP, Node.js, Python, Perl, MySQL, PostgreSQL, MongoDB, Jenkins, Cron, and JBoss xPaaS Services (Fuse, BPM Suite, BRMS, Data Virtualization, Aerogear, and more).</p>
-
-<h2 id="why-openshift">Why OpenShift?</h2>
-
-<p>The free version of OpenShift, OpenShift Online, has many advantages over free tier of Heroku:</p>
-
-<ul>
-  <li>If application is not accessed for an hour on Heroku, web dyno goes to sleep mode making the next request take up to 30 seconds to serve leading users to abandon the site visit. OpenShift’s idling time is 24 hours and, as of my personal experience, it takes around 10 seconds for next request to serve.</li>
-</ul>
-
-<a href="/2014/11/08/migrating-ruby-on-rails-app-from-heroku-to-openshift/">Continue Reading »</a>
-          
-        </p>
-      </div>
-      <meta itemprop="wordCount" content="1287">
       <meta itemprop="author" content="Pranav Prakash">
     </article>
   
