@@ -85,6 +85,10 @@
         <lastmod>2017-09-14T14:53:00+05:30</lastmod>
     </url>
     <url>
+        <loc>https://pranavprakash.net/2017/05/16/automated-postgresql-backups/</loc>
+        <lastmod>2017-09-16T12:43:41+05:30</lastmod>
+    </url>
+    <url>
         <loc>
             https://pranavprakash.net/2017/09/13/case-insensitive-exact-match-search-in-elasticsearch/
         </loc>
@@ -100,6 +104,6 @@
     </url>
     <url>
         <loc>https://pranavprakash.net/</loc>
-        <lastmod>2017-09-14T14:53:00+05:30</lastmod>
+        <lastmod>2017-09-16T12:43:41+05:30</lastmod>
     </url>
 </urlset>

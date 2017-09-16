@@ -123,6 +123,38 @@
       <article class="post" itemscope itemtype="http://schema.org/BlogPosting" >
         <header class="post-header">
           <h2 itemprop="name headline" class="post-title">
+          <a href="/2017/05/16/automated-postgresql-backups/" itemprop="url">
+            Automated PostgreSQL backups
+          </a>
+          </h2>
+          <p class="post-meta">
+          <i class="icon-clock-o">&nbsp;</i><a itemprop="datePublished" content="16 May 2017" href="#" class="post-author">16 May 2017</a>&nbsp;<i class="icon-tags"></i>
+           <a itemprop="keywords" href="/tags/postgresql/" class="post-category post-category-p">POSTGRESQL</a>    <a itemprop="keywords" href="/tags/cron/" class="post-category post-category-c">CRON</a>    <a itemprop="keywords" href="/tags/shell/" class="post-category post-category-s">SHELL</a>    <a itemprop="keywords" href="/tags/devops/" class="post-category post-category-d">DEVOPS</a>   
+          </p>
+        </header>
+        <div itemprop="articleBody" class="post-description">
+          <p>
+          
+            <p>Recently we migrated one of our applications from MongoDB to PostgreSQL (which is a story for another time) at work. Similar to the script I developed for MongoDB in my last <a href="/2017/02/04/automate-mongodb-backups-using-cron-and-shell-script/">blog post</a>, I developed one for PostgreSQL. <code class="highlighter-rouge">pg_dump</code> utility of PostgreSQL provides some nifty <a href="https://www.postgresql.org/docs/9.6/static/app-pgdump.html">options</a> to create different formats to create backup files. My script produces two types of backup files:</p>
+
+<ul>
+  <li>Plain bakup - This produces a gzipepd version of SQL script file which you can execute to restore the database.</li>
+  <li>Custom backup - This produces a compressed custom-format archive suitable for input into <code class="highlighter-rouge">pg_restore</code>.</li>
+</ul>
+
+<a href="/2017/05/16/automated-postgresql-backups/">Continue Reading »</a>
+          
+        </p>
+      </div>
+      <meta itemprop="wordCount" content="931">
+      <meta itemprop="author" content="Pranav Prakash">
+    </article>
+  
+
+    
+      <article class="post" itemscope itemtype="http://schema.org/BlogPosting" >
+        <header class="post-header">
+          <h2 itemprop="name headline" class="post-title">
           <a href="/2017/02/04/automate-mongodb-backups-using-cron-and-shell-script/" itemprop="url">
             Automate MongoDB backups using Cron and Shell Script
           </a>
@@ -210,37 +242,6 @@
         </p>
       </div>
       <meta itemprop="wordCount" content="607">
-      <meta itemprop="author" content="Pranav Prakash">
-    </article>
-  
-
-    
-      <article class="post" itemscope itemtype="http://schema.org/BlogPosting" >
-        <header class="post-header">
-          <h2 itemprop="name headline" class="post-title">
-          <a href="/2014/12/28/active-admin-and-paperclip-done-right/" itemprop="url">
-            Active Admin and Paperclip done right
-          </a>
-          </h2>
-          <p class="post-meta">
-          <i class="icon-clock-o">&nbsp;</i><a itemprop="datePublished" content="28 Dec 2014" href="#" class="post-author">28 Dec 2014</a>&nbsp;<i class="icon-tags"></i>
-           <a itemprop="keywords" href="/tags/ruby-on-rails/" class="post-category post-category-r">RUBY ON RAILS</a>    <a itemprop="keywords" href="/tags/active-admin/" class="post-category post-category-a">ACTIVE ADMIN</a>    <a itemprop="keywords" href="/tags/paperclip/" class="post-category post-category-p">PAPERCLIP</a>   
-          </p>
-        </header>
-        <div itemprop="articleBody" class="post-description">
-          <p>
-          
-            <p><a href="https://github.com/activeadmin/activeadmin">Active Admin</a> is an administration framework for Ruby on Rails applications which helps in creating beautiful administration panels. <a href="https://github.com/thoughtbot/paperclip">Paperclip</a> is a file attachment library for Active Record which makes management of files to models really easy.</p>
-
-<p>Recently while creating administration page for a model, in which Paperclip was being used for managing attachments, I oberved that Active Admin was not handling it properly. For example, the view page was showing as below:</p>
-
-<div style="text-align: center"><img src="/assets/img/blog/view.png" /></div>
-
-<a href="/2014/12/28/active-admin-and-paperclip-done-right/">Continue Reading »</a>
-          
-        </p>
-      </div>
-      <meta itemprop="wordCount" content="558">
       <meta itemprop="author" content="Pranav Prakash">
     </article>
   
