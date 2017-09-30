@@ -82,7 +82,7 @@
 
 <p>Without further ado, below is the script:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
 2
 3
 4
@@ -175,7 +175,8 @@
 91
 92
 93
-94</pre></td><td class="code"><pre><span class="c">#!/bin/bash</span>
+94
+</pre></td><td class="code"><pre><span class="c">#!/bin/bash</span>
 
 <span class="c">##############################</span>
 <span class="c">## POSTGRESQL BACKUP CONFIG ##</span>
@@ -210,13 +211,13 @@
 <span class="c">### INITIALISE DEFAULTS ###</span>
 <span class="c">###########################</span>
  
-<span class="k">if</span> <span class="o">[</span> ! <span class="nv">$HOSTNAME</span> <span class="o">]</span>; <span class="k">then
+<span class="k">if</span> <span class="o">[</span> <span class="o">!</span> <span class="nv">$HOSTNAME</span> <span class="o">]</span><span class="p">;</span> <span class="k">then
   </span><span class="nv">HOSTNAME</span><span class="o">=</span><span class="s2">"localhost"</span>
-<span class="k">fi</span>;
+<span class="k">fi</span><span class="p">;</span>
  
-<span class="k">if</span> <span class="o">[</span> ! <span class="nv">$USERNAME</span> <span class="o">]</span>; <span class="k">then
+<span class="k">if</span> <span class="o">[</span> <span class="o">!</span> <span class="nv">$USERNAME</span> <span class="o">]</span><span class="p">;</span> <span class="k">then
   </span><span class="nv">USERNAME</span><span class="o">=</span><span class="s2">"postgres"</span>
-<span class="k">fi</span>;
+<span class="k">fi</span><span class="p">;</span>
  
  
 <span class="c">###########################</span>
@@ -230,19 +231,19 @@
  
   <span class="nb">echo</span> <span class="s2">"Making backup directory in </span><span class="nv">$FINAL_BACKUP_DIR</span><span class="s2">"</span>
  
-  <span class="k">if</span> ! mkdir -p <span class="nv">$FINAL_BACKUP_DIR</span>; <span class="k">then
+  <span class="k">if</span> <span class="o">!</span> mkdir <span class="nt">-p</span> <span class="nv">$FINAL_BACKUP_DIR</span><span class="p">;</span> <span class="k">then
     </span><span class="nb">echo</span> <span class="s2">"Cannot create backup directory in </span><span class="nv">$FINAL_BACKUP_DIR</span><span class="s2">. Go and fix it!"</span> 1&gt;&amp;2
-    <span class="nb">exit </span>1;
-  <span class="k">fi</span>;
+    <span class="nb">exit </span>1<span class="p">;</span>
+  <span class="k">fi</span><span class="p">;</span>
  
-  <span class="nb">echo</span> -e <span class="s2">"</span><span class="se">\n\n</span><span class="s2">Performing full backup of </span><span class="nv">$DATABASE</span><span class="s2">"</span>
-  <span class="nb">echo</span> -e <span class="s2">"--------------------------------------------</span><span class="se">\n</span><span class="s2">"</span>
+  <span class="nb">echo</span> <span class="nt">-e</span> <span class="s2">"</span><span class="se">\n\n</span><span class="s2">Performing full backup of </span><span class="nv">$DATABASE</span><span class="s2">"</span>
+  <span class="nb">echo</span> <span class="nt">-e</span> <span class="s2">"--------------------------------------------</span><span class="se">\n</span><span class="s2">"</span>
  
     <span class="k">if</span> <span class="o">[</span> <span class="nv">$ENABLE_PLAIN_BACKUPS</span> <span class="o">=</span> <span class="s2">"yes"</span> <span class="o">]</span>
     <span class="k">then
       </span><span class="nb">echo</span> <span class="s2">"Plain backup of </span><span class="nv">$DATABASE</span><span class="s2">"</span>
  
-      <span class="k">if</span> ! pg_dump -Fp -h <span class="s2">"</span><span class="nv">$HOSTNAME</span><span class="s2">"</span> -U <span class="s2">"</span><span class="nv">$USERNAME</span><span class="s2">"</span> <span class="s2">"</span><span class="nv">$DATABASE</span><span class="s2">"</span> | gzip &gt; <span class="nv">$FINAL_BACKUP_DIR</span><span class="s2">"</span><span class="nv">$DATABASE</span><span class="s2">"</span>.sql.gz.in_progress; <span class="k">then
+      <span class="k">if</span> <span class="o">!</span> pg_dump <span class="nt">-Fp</span> <span class="nt">-h</span> <span class="s2">"</span><span class="nv">$HOSTNAME</span><span class="s2">"</span> <span class="nt">-U</span> <span class="s2">"</span><span class="nv">$USERNAME</span><span class="s2">"</span> <span class="s2">"</span><span class="nv">$DATABASE</span><span class="s2">"</span> | gzip <span class="o">&gt;</span> <span class="nv">$FINAL_BACKUP_DIR</span><span class="s2">"</span><span class="nv">$DATABASE</span><span class="s2">"</span>.sql.gz.in_progress<span class="p">;</span> <span class="k">then
         </span><span class="nb">echo</span> <span class="s2">"[!!ERROR!!] Failed to produce plain backup database </span><span class="nv">$DATABASE</span><span class="s2">"</span> 1&gt;&amp;2
       <span class="k">else
         </span>mv <span class="nv">$FINAL_BACKUP_DIR</span><span class="s2">"</span><span class="nv">$DATABASE</span><span class="s2">"</span>.sql.gz.in_progress <span class="nv">$FINAL_BACKUP_DIR</span><span class="s2">"</span><span class="nv">$DATABASE</span><span class="s2">"</span>.sql.gz
@@ -253,56 +254,55 @@
     <span class="k">then
       </span><span class="nb">echo</span> <span class="s2">"Custom backup of </span><span class="nv">$DATABASE</span><span class="s2">"</span>
  
-      <span class="k">if</span> ! pg_dump -Fc -h <span class="s2">"</span><span class="nv">$HOSTNAME</span><span class="s2">"</span> -U <span class="s2">"</span><span class="nv">$USERNAME</span><span class="s2">"</span> <span class="s2">"</span><span class="nv">$DATABASE</span><span class="s2">"</span> -f <span class="nv">$FINAL_BACKUP_DIR</span><span class="s2">"</span><span class="nv">$DATABASE</span><span class="s2">"</span>.custom.in_progress; <span class="k">then
+      <span class="k">if</span> <span class="o">!</span> pg_dump <span class="nt">-Fc</span> <span class="nt">-h</span> <span class="s2">"</span><span class="nv">$HOSTNAME</span><span class="s2">"</span> <span class="nt">-U</span> <span class="s2">"</span><span class="nv">$USERNAME</span><span class="s2">"</span> <span class="s2">"</span><span class="nv">$DATABASE</span><span class="s2">"</span> <span class="nt">-f</span> <span class="nv">$FINAL_BACKUP_DIR</span><span class="s2">"</span><span class="nv">$DATABASE</span><span class="s2">"</span>.custom.in_progress<span class="p">;</span> <span class="k">then
         </span><span class="nb">echo</span> <span class="s2">"[!!ERROR!!] Failed to produce custom backup database </span><span class="nv">$DATABASE</span><span class="s2">"</span>
       <span class="k">else
         </span>mv <span class="nv">$FINAL_BACKUP_DIR</span><span class="s2">"</span><span class="nv">$DATABASE</span><span class="s2">"</span>.custom.in_progress <span class="nv">$FINAL_BACKUP_DIR</span><span class="s2">"</span><span class="nv">$DATABASE</span><span class="s2">"</span>.custom
       <span class="k">fi
     fi
  
-  </span><span class="nb">echo</span> -e <span class="s2">"</span><span class="se">\n</span><span class="s2">Database backup complete!"</span>
+  </span><span class="nb">echo</span> <span class="nt">-e</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">Database backup complete!"</span>
 <span class="o">}</span>
  
 <span class="c"># DAILY BACKUPS</span>
  
 <span class="c"># Delete daily backups older than DAYS_TO_KEEP</span>
-find <span class="nv">$BACKUP_DIR</span> -maxdepth 1 -mtime +<span class="nv">$DAYS_TO_KEEP</span> -name <span class="s2">"*-daily"</span> -exec rm -rf <span class="s1">'{}'</span> <span class="s1">';'</span>
+find <span class="nv">$BACKUP_DIR</span> <span class="nt">-maxdepth</span> 1 <span class="nt">-mtime</span> +<span class="nv">$DAYS_TO_KEEP</span> <span class="nt">-name</span> <span class="s2">"*-daily"</span> <span class="nt">-exec</span> rm <span class="nt">-rf</span> <span class="s1">'{}'</span> <span class="s1">';'</span>
 
-perform_backups <span class="s2">"-daily"</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+perform_backups <span class="s2">"-daily"</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>Save this in a file named <code class="highlighter-rouge">pgbackup.sh</code>. After that you need to make the file executable by issuing following command:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>chomd +x pgbackup.sh<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+</pre></td><td class="code"><pre>chomd +x pgbackup.sh</pre></td></tr></tbody></table></code></pre></figure>
 
 <p>You must be wondering about where to specify the database password. Well as per PostgreSQL <a href="https://www.postgresql.org/docs/current/static/libpq-pgpass.html">documentation</a>, you need to create password file <code class="highlighter-rouge">.pgpass</code> in user’s home directory and should contain lines of the following format:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>hostname:port:database:username:password<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+</pre></td><td class="code"><pre>hostname:port:database:username:password</pre></td></tr></tbody></table></code></pre></figure>
 
 <p>Make sure the permissions on <code class="highlighter-rouge">.pgpass</code> must disallow any access to world or group. You can do this my issuing following command:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>chmod 0600 ~/.pgpass<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+</pre></td><td class="code"><pre>chmod 0600 ~/.pgpass</pre></td></tr></tbody></table></code></pre></figure>
 
 <p>This password file is automatically referanced by <code class="highlighter-rouge">pgdump</code> utility whenever invoked. Finally you need to create a cron job to execute the <code class="highlighter-rouge">pgbackup.sh</code> script automatically. Issue following command to create a cron job:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>crontab -e<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+</pre></td><td class="code"><pre>crontab <span class="nt">-e</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>Enter following:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
-2</pre></td><td class="code"><pre><span class="c"># PostgreSQL Backup</span>
-00 00 <span class="k">*</span> <span class="k">*</span> <span class="k">*</span> /path/to/script/pgbackup.sh<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="code"><pre><span class="c"># PostgreSQL Backup</span>
+00 00 <span class="k">*</span> <span class="k">*</span> <span class="k">*</span> /path/to/script/pgbackup.sh</pre></td></tr></tbody></table></code></pre></figure>
 
 <p>Save the file by pressing <code class="highlighter-rouge">Esc</code>and then <code class="highlighter-rouge">wq</code> + <code class="highlighter-rouge">Enter</code> (similar to vi editor). This cron job will execute the backup script at 12 o’clock every night creating your database backups.</p>
 
     </p>
   </div>
-  <meta itemprop="wordCount" content="931">
+  <meta itemprop="wordCount" content="939">
   <meta itemprop="author" content="Pranav Prakash">
 </article>
 

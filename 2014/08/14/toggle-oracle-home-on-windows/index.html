@@ -77,7 +77,7 @@
 
 <p><strong>toggle_oracle_home.bat</strong></p>
 
-<figure class="highlight"><pre><code class="language-bat" data-lang="bat"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<figure class="highlight"><pre><code class="language-bat" data-lang="bat"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
 2
 3
 4
@@ -86,7 +86,8 @@
 7
 8
 9
-10</pre></td><td class="code"><pre>@echo off
+10
+</pre></td><td class="code"><pre>@echo off
 setlocal enableDelayedExpansion
 if "!ORACLE_HOME:~-8!" == "dbhome_1" (
   set "ORCLHOME=C:\oracle\product\11.2.0\client_1"
@@ -95,14 +96,13 @@ if "!ORACLE_HOME:~-8!" == "dbhome_1" (
 )
 setx ORACLE_HOME "!ORCLHOME!" /M
 echo Oracle Home was set as : !ORCLHOME!
-pause<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+pause</pre></td></tr></tbody></table></code></pre></figure>
 
 <p>You can use this batch file to toggle another environment variable in Windows too by modifying lines 4, 6 and 8.</p>
 
     </p>
   </div>
-  <meta itemprop="wordCount" content="119">
+  <meta itemprop="wordCount" content="115">
   <meta itemprop="author" content="Pranav Prakash">
 </article>
 

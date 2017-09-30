@@ -79,8 +79,8 @@
 
 <p>Redis cartridge for Openshift is available <a href="https://github.com/smarterclayton/openshift-redis-cart">here</a>. To add this cartridge to existing Openshift application, issue following command:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>rhc add-cartridge http://cartreflect-claytondev.rhcloud.com/reflect?github<span class="o">=</span>smarterclayton/openshift-redis-cart<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+</pre></td><td class="code"><pre>rhc add-cartridge http://cartreflect-claytondev.rhcloud.com/reflect?github<span class="o">=</span>smarterclayton/openshift-redis-cart</pre></td></tr></tbody></table></code></pre></figure>
 
 <!--more-->
 
@@ -92,8 +92,8 @@
 
 <p>To add Sidekiq cartridge to application, issue following command:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>rhc add-cartridge http://cartreflect-claytondev.rhcloud.com/github/pranavpr/openshift-origin-cartridge-sidekiq --app myapp<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+</pre></td><td class="code"><pre>rhc add-cartridge http://cartreflect-claytondev.rhcloud.com/github/pranavpr/openshift-origin-cartridge-sidekiq <span class="nt">--app</span> myapp</pre></td></tr></tbody></table></code></pre></figure>
 
 <p>Once the installation completes, you can access the monitoring interface at <code class="highlighter-rouge">https://YOUR_APP-NAMESPACE.rhcloud.com/sidekiq</code>. Sidekiq will print the full URL with authentication after successful install.</p>
 
@@ -101,8 +101,8 @@
 
 <p>Add following line to your <code class="highlighter-rouge">Gemfile</code> to add Sidekiq to your Rails application:</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="n">gem</span> <span class="s1">'sidekiq'</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+</pre></td><td class="code"><pre><span class="n">gem</span> <span class="s1">'sidekiq'</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>Then do a <code class="highlighter-rouge">bundle install</code> to finish installation of <code class="highlighter-rouge">sidekiq</code> gem.</p>
 
@@ -112,35 +112,35 @@
 
 <p>Use <code class="highlighter-rouge">delay</code> to deliver emails asynchronously, <code class="highlighter-rouge">delay_for(interval)</code> or <code class="highlighter-rouge">delay_until(time)</code> to deliver the email at some point in the future.</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
 2
-3</pre></td><td class="code"><pre><span class="no">UserMailer</span><span class="p">.</span><span class="nf">delay</span><span class="p">.</span><span class="nf">welcome_email</span><span class="p">(</span><span class="vi">@user</span><span class="p">.</span><span class="nf">id</span><span class="p">)</span>
+3
+</pre></td><td class="code"><pre><span class="no">UserMailer</span><span class="p">.</span><span class="nf">delay</span><span class="p">.</span><span class="nf">welcome_email</span><span class="p">(</span><span class="vi">@user</span><span class="p">.</span><span class="nf">id</span><span class="p">)</span>
 <span class="no">UserMailer</span><span class="p">.</span><span class="nf">delay_for</span><span class="p">(</span><span class="mi">5</span><span class="p">.</span><span class="nf">days</span><span class="p">).</span><span class="nf">find_more_friends_email</span><span class="p">(</span><span class="vi">@user</span><span class="p">.</span><span class="nf">id</span><span class="p">)</span>
-<span class="no">UserMailer</span><span class="p">.</span><span class="nf">delay_until</span><span class="p">(</span><span class="mi">5</span><span class="p">.</span><span class="nf">days</span><span class="p">.</span><span class="nf">from_now</span><span class="p">).</span><span class="nf">find_more_friends_email</span><span class="p">(</span><span class="vi">@user</span><span class="p">.</span><span class="nf">id</span><span class="p">)</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="no">UserMailer</span><span class="p">.</span><span class="nf">delay_until</span><span class="p">(</span><span class="mi">5</span><span class="p">.</span><span class="nf">days</span><span class="p">.</span><span class="nf">from_now</span><span class="p">).</span><span class="nf">find_more_friends_email</span><span class="p">(</span><span class="vi">@user</span><span class="p">.</span><span class="nf">id</span><span class="p">)</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <h2 id="devise-emails">Devise emails</h2>
 
 <p><code class="highlighter-rouge">devise-async</code> <a href="https://github.com/mhfs/devise-async">gem</a> provides the ability to send Devise emails using Sidekiq. Add following line to the <code class="highlighter-rouge">Gemfile</code>:</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="n">gem</span> <span class="s1">'devise-async'</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+</pre></td><td class="code"><pre><span class="n">gem</span> <span class="s1">'devise-async'</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>And then execute <code class="highlighter-rouge">bundle install</code> to finish installation of <code class="highlighter-rouge">devise-async</code> gem.</p>
 
 <p>Now add <code class="highlighter-rouge">:async</code> to the devise call in your model:</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
 2
-3</pre></td><td class="code"><pre><span class="k">class</span> <span class="nc">User</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+3
+</pre></td><td class="code"><pre><span class="k">class</span> <span class="nc">User</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
   <span class="n">devise</span> <span class="ss">:database_authenticatable</span><span class="p">,</span> <span class="ss">:async</span><span class="p">,</span> <span class="ss">:confirmable</span> <span class="c1"># etc ...</span>
-<span class="k">end</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="k">end</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>Finally set your queuing backend to Sidekiq by creating <code class="highlighter-rouge">config/initializers/devise_async.rb</code>:</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="no">Devise</span><span class="o">::</span><span class="no">Async</span><span class="p">.</span><span class="nf">backend</span> <span class="o">=</span> <span class="ss">:sidekiq</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+</pre></td><td class="code"><pre><span class="no">Devise</span><span class="o">::</span><span class="no">Async</span><span class="p">.</span><span class="nf">backend</span> <span class="o">=</span> <span class="ss">:sidekiq</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <h2 id="epilogue">Epilogue</h2>
 
@@ -148,7 +148,7 @@
 
     </p>
   </div>
-  <meta itemprop="wordCount" content="607">
+  <meta itemprop="wordCount" content="580">
   <meta itemprop="author" content="Pranav Prakash">
 </article>
 

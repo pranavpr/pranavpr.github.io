@@ -73,14 +73,14 @@
     <p>
     <p>One of the cool features of UNIX is that you don’t need to have any software installed to send message to users logged on to that machine. There is a handy command called <code class="highlighter-rouge">write</code> which enables you to do this. Here is the syntax of this command:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="gp">$ </span>write username tty<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+</pre></td><td class="code"><pre><span class="nv">$ </span>write username tty</pre></td></tr></tbody></table></code></pre></figure>
 
 <!--more-->
 
 <p>Now the question arises, how to know the tty of a particular user. The <code class="highlighter-rouge">who</code> command of UNIX comes in to play here. Just shoot <code class="highlighter-rouge">who</code> command on your terminal and see the magic. You will receive the list of all users logged on to that machine with their tty. Below is an example.</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
 2
 3
 4
@@ -97,7 +97,8 @@
 15
 16
 17
-18</pre></td><td class="code"><pre><span class="gp">$ </span>who
+18
+</pre></td><td class="code"><pre><span class="nv">$ </span>who
 root     :0           May  7 03:51
 root     pts/1        May  7 03:51 <span class="o">(</span>:0.0<span class="o">)</span>
 root     pts/2        May  7 03:51 <span class="o">(</span>:0.0<span class="o">)</span>
@@ -114,19 +115,18 @@ user2    pts/28       May  7 04:14 <span class="o">(</span>dhcp-dwf1-4-10-176-16
 user7    pts/30       May  7 04:14 <span class="o">(</span>dhcp-dwf1-4-10-176-162-118<span class="o">)</span>
 user4    pts/31       May  7 04:14 <span class="o">(</span>dhcp-dwf1-4-10-176-162-72<span class="o">)</span>
 user10   pts/32       May  7 04:14 <span class="o">(</span>dhcp-dwf1-4-10-176-162-68<span class="o">)</span>
-user14   pts/33       May  7 04:14 <span class="o">(</span>dhcp-dwf1-4-10-176-162-27<span class="o">)</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+user14   pts/33       May  7 04:14 <span class="o">(</span>dhcp-dwf1-4-10-176-162-27<span class="o">)</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>If you want to send message to user8, issue following command at your terminal:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="gp">$ </span>write user8 pts/13<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+</pre></td><td class="code"><pre><span class="nv">$ </span>write user8 pts/13</pre></td></tr></tbody></table></code></pre></figure>
 
 <p>Now write any message you want. To end the message, press <code class="highlighter-rouge">Ctrl+D</code>. Your message would be sent.</p>
 
     </p>
   </div>
-  <meta itemprop="wordCount" content="339">
+  <meta itemprop="wordCount" content="327">
   <meta itemprop="author" content="Pranav Prakash">
 </article>
 

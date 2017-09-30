@@ -89,7 +89,7 @@
 
 <p>Instead of showing attached image properties, I wanted to show the image itself. Also for other attached files types (like pdf and doc), I wanted to give an URL. Below code achieved the same:</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
 2
 3
 4
@@ -101,7 +101,8 @@
 10
 11
 12
-13</pre></td><td class="code"><pre><span class="no">ActiveAdmin</span><span class="p">.</span><span class="nf">register</span> <span class="no">Item</span> <span class="k">do</span>
+13
+</pre></td><td class="code"><pre><span class="no">ActiveAdmin</span><span class="p">.</span><span class="nf">register</span> <span class="no">Item</span> <span class="k">do</span>
   <span class="n">show</span> <span class="k">do</span> <span class="o">|</span><span class="n">recipe</span><span class="o">|</span>
     <span class="n">attributes_table</span> <span class="k">do</span>
       <span class="n">row</span> <span class="ss">:instruction</span> <span class="k">do</span>
@@ -113,8 +114,7 @@
     <span class="k">end</span>
     <span class="n">active_admin_comments</span>
   <span class="k">end</span>
-<span class="k">end</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="k">end</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>This resulted in following:</p>
 
@@ -124,7 +124,7 @@
 
 <p>I wanted to show an upload button to upload files. Also I wanted to show current file attached on Edit page so users can verify the attached content before modifying it. The code below achieved the same:</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
 2
 3
 4
@@ -132,7 +132,8 @@
 6
 7
 8
-9</pre></td><td class="code"><pre><span class="no">ActiveAdmin</span><span class="p">.</span><span class="nf">register</span> <span class="no">Item</span> <span class="k">do</span>
+9
+</pre></td><td class="code"><pre><span class="no">ActiveAdmin</span><span class="p">.</span><span class="nf">register</span> <span class="no">Item</span> <span class="k">do</span>
   <span class="n">form</span> <span class="ss">:html</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">:enctype</span> <span class="o">=&gt;</span> <span class="s2">"multipart/form-data"</span> <span class="p">}</span> <span class="k">do</span> <span class="o">|</span><span class="n">f</span><span class="o">|</span>
     <span class="n">f</span><span class="p">.</span><span class="nf">inputs</span> <span class="k">do</span>
       <span class="n">f</span><span class="p">.</span><span class="nf">input</span> <span class="ss">:instruction</span><span class="p">,</span> <span class="ss">hint: </span><span class="n">f</span><span class="p">.</span><span class="nf">item</span><span class="p">.</span><span class="nf">instruction?</span> <span class="p">?</span> <span class="n">link_to</span><span class="p">(</span><span class="n">f</span><span class="p">.</span><span class="nf">item</span><span class="p">.</span><span class="nf">instruction_file_name</span><span class="p">,</span> <span class="n">f</span><span class="p">.</span><span class="nf">item</span><span class="p">.</span><span class="nf">instruction</span><span class="p">.</span><span class="nf">url</span><span class="p">)</span> <span class="p">:</span> <span class="n">content_tag</span><span class="p">(</span><span class="ss">:span</span><span class="p">,</span> <span class="s2">"Upload PDF file"</span><span class="p">)</span>
@@ -140,8 +141,7 @@
     <span class="k">end</span>
     <span class="n">f</span><span class="p">.</span><span class="nf">actions</span>
   <span class="k">end</span>
-<span class="k">end</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="k">end</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>This resulted in following:</p>
 
@@ -153,7 +153,7 @@
 
     </p>
   </div>
-  <meta itemprop="wordCount" content="558">
+  <meta itemprop="wordCount" content="550">
   <meta itemprop="author" content="Pranav Prakash">
 </article>
 

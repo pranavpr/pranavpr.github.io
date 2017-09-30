@@ -73,38 +73,7 @@
     <p>
     <p>I had a requirement where I needed to do exact match search in ElasticSearch. After searching a bit I landed to <a href="https://www.elastic.co/guide/en/elasticsearch/guide/current/_finding_exact_values.html">this</a> page of ElasticSearch documentation. I was thrilled that I got the solution quickly (thanking god and ElasticSearch team in my mind). Hence I started testing by creating an index using request below:</p>
 
-<figure class="highlight"><pre><code class="language-json" data-lang="json"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13</pre></td><td class="code"><pre><span class="err">PUT</span><span class="w"> </span><span class="err">localhost:</span><span class="mi">9200</span><span class="err">/products/</span><span class="w">
-</span><span class="p">{</span><span class="w">
-  </span><span class="nt">"mappings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"product"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"productName"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"not_analyzed"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
-
-<!--more-->
-
-<p>Then I added some data using request below:</p>
-
-<figure class="highlight"><pre><code class="language-json" data-lang="json"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<figure class="highlight"><pre><code class="language-json" data-lang="json"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
 2
 3
 4
@@ -117,52 +86,25 @@
 11
 12
 13
-14</pre></td><td class="code"><pre><span class="err">POST</span><span class="w"> </span><span class="err">localhost:</span><span class="mi">9200</span><span class="err">/products/</span><span class="w">
+</pre></td><td class="code"><pre><span class="err">PUT</span><span class="w"> </span><span class="err">localhost</span><span class="p">:</span><span class="mi">9200</span><span class="err">/products/</span><span class="w">
 </span><span class="p">{</span><span class="w">
-  </span><span class="nt">"productName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Green Ball"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span><span class="err">POST</span><span class="w"> </span><span class="err">localhost:</span><span class="mi">9200</span><span class="err">/products/</span><span class="w">
-</span><span class="p">{</span><span class="w">
-  </span><span class="nt">"productName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Red Ball"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span><span class="err">POST</span><span class="w"> </span><span class="err">localhost:</span><span class="mi">9200</span><span class="err">/products/</span><span class="w">
-</span><span class="p">{</span><span class="w">
-  </span><span class="nt">"productName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Yellow Ball"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
-
-<p>Now it was time for testing and hence I fired following request:</p>
-
-<figure class="highlight"><pre><code class="language-json" data-lang="json"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12</pre></td><td class="code"><pre><span class="err">POST</span><span class="w"> </span><span class="err">localhost:</span><span class="mi">9200</span><span class="err">/products/product/_search</span><span class="w">
-</span><span class="p">{</span><span class="w">
-  </span><span class="nt">"query"</span><span class="p">:{</span><span class="w">
-    </span><span class="nt">"constant_score"</span><span class="p">:{</span><span class="w">
-      </span><span class="nt">"filter"</span><span class="p">:{</span><span class="w">
-        </span><span class="nt">"term"</span><span class="p">:{</span><span class="w">
-          </span><span class="nt">"productName"</span><span class="p">:</span><span class="s2">"green ball"</span><span class="w">
+  </span><span class="s2">"mappings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"product"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"productName"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"not_analyzed"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+</span><span class="p">}</span></pre></td></tr></tbody></table></code></pre></figure>
 
-<p>And I was presented with following:</p>
+<!--more-->
 
-<figure class="highlight"><pre><code class="language-json" data-lang="json"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<p>Then I added some data using request below:</p>
+
+<figure class="highlight"><pre><code class="language-json" data-lang="json"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
 2
 3
 4
@@ -176,26 +118,84 @@
 12
 13
 14
-15</pre></td><td class="code"><pre><span class="p">{</span><span class="w">
-  </span><span class="nt">"took"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"timed_out"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"_shards"</span><span class="p">:{</span><span class="w">
-    </span><span class="nt">"total"</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"successful"</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"skipped"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"failed"</span><span class="p">:</span><span class="mi">0</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"hits"</span><span class="p">:{</span><span class="w">
-    </span><span class="nt">"total"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"max_score"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"hits"</span><span class="p">:[]</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+</pre></td><td class="code"><pre><span class="err">POST</span><span class="w"> </span><span class="err">localhost</span><span class="p">:</span><span class="mi">9200</span><span class="err">/products/</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"productName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Green Ball"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+
+</span><span class="err">POST</span><span class="w"> </span><span class="err">localhost</span><span class="p">:</span><span class="mi">9200</span><span class="err">/products/</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"productName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Red Ball"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="err">POST</span><span class="w"> </span><span class="err">localhost</span><span class="p">:</span><span class="mi">9200</span><span class="err">/products/</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"productName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Yellow Ball"</span><span class="w">
+</span><span class="p">}</span></pre></td></tr></tbody></table></code></pre></figure>
+
+<p>Now it was time for testing and hence I fired following request:</p>
+
+<figure class="highlight"><pre><code class="language-json" data-lang="json"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="code"><pre><span class="err">POST</span><span class="w"> </span><span class="err">localhost</span><span class="p">:</span><span class="mi">9200</span><span class="err">/products/product/_search</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"query"</span><span class="p">:{</span><span class="w">
+    </span><span class="s2">"constant_score"</span><span class="p">:{</span><span class="w">
+      </span><span class="s2">"filter"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"term"</span><span class="p">:{</span><span class="w">
+          </span><span class="s2">"productName"</span><span class="p">:</span><span class="s2">"green ball"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span></pre></td></tr></tbody></table></code></pre></figure>
+
+<p>And I was presented with following:</p>
+
+<figure class="highlight"><pre><code class="language-json" data-lang="json"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre></td><td class="code"><pre><span class="p">{</span><span class="w">
+  </span><span class="s2">"took"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"timed_out"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"_shards"</span><span class="p">:{</span><span class="w">
+    </span><span class="s2">"total"</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"successful"</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"skipped"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"failed"</span><span class="p">:</span><span class="mi">0</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"hits"</span><span class="p">:{</span><span class="w">
+    </span><span class="s2">"total"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"max_score"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hits"</span><span class="p">:[]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>I was surprised (and frustrated at the same time) as the data was there in ElasticSearch, still it was not returning the data. Soon enough I found that it was because the search was case sensitive and searching with “Green Ball” returned result. This was unacceptable in my use case as I needed case insensitive search. After searching a little bit more, I found that I have to create an analyzer with <code class="highlighter-rouge">lowercase</code> filter and use this to analyze the field on which I want to perform search. Hence I deleted the index and recreated it as below:</p>
 
-<figure class="highlight"><pre><code class="language-json" data-lang="json"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<figure class="highlight"><pre><code class="language-json" data-lang="json"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
 2
 3
 4
@@ -221,57 +221,57 @@
 24
 25
 26
-27</pre></td><td class="code"><pre><span class="err">DELETE</span><span class="w"> </span><span class="err">localhost:</span><span class="mi">9200</span><span class="err">/products/</span><span class="w">
+27
+</pre></td><td class="code"><pre><span class="err">DELETE</span><span class="w"> </span><span class="err">localhost</span><span class="p">:</span><span class="mi">9200</span><span class="err">/products/</span><span class="w">
 
-</span><span class="err">PUT</span><span class="w"> </span><span class="err">localhost:</span><span class="mi">9200</span><span class="err">/products/</span><span class="w">
+</span><span class="err">PUT</span><span class="w"> </span><span class="err">localhost</span><span class="p">:</span><span class="mi">9200</span><span class="err">/products/</span><span class="w">
 </span><span class="p">{</span><span class="w">
-  </span><span class="nt">"settings"</span><span class="p">:{</span><span class="w">
-    </span><span class="nt">"index"</span><span class="p">:{</span><span class="w">
-      </span><span class="nt">"analysis"</span><span class="p">:{</span><span class="w">
-        </span><span class="nt">"analyzer"</span><span class="p">:{</span><span class="w">
-          </span><span class="nt">"analyzer_case_insensitive"</span><span class="p">:{</span><span class="w">
-            </span><span class="nt">"tokenizer"</span><span class="p">:</span><span class="s2">"keyword"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"filter"</span><span class="p">:</span><span class="s2">"lowercase"</span><span class="w">
+  </span><span class="s2">"settings"</span><span class="p">:{</span><span class="w">
+    </span><span class="s2">"index"</span><span class="p">:{</span><span class="w">
+      </span><span class="s2">"analysis"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"analyzer"</span><span class="p">:{</span><span class="w">
+          </span><span class="s2">"analyzer_case_insensitive"</span><span class="p">:{</span><span class="w">
+            </span><span class="s2">"tokenizer"</span><span class="p">:</span><span class="s2">"keyword"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"filter"</span><span class="p">:</span><span class="s2">"lowercase"</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"mappings"</span><span class="p">:{</span><span class="w">
-    </span><span class="nt">"product"</span><span class="p">:{</span><span class="w">
-      </span><span class="nt">"properties"</span><span class="p">:{</span><span class="w">
-        </span><span class="nt">"productName"</span><span class="p">:{</span><span class="w">
-          </span><span class="nt">"type"</span><span class="p">:</span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"analyzer"</span><span class="p">:</span><span class="s2">"analyzer_case_insensitive"</span><span class="w">
+  </span><span class="s2">"mappings"</span><span class="p">:{</span><span class="w">
+    </span><span class="s2">"product"</span><span class="p">:{</span><span class="w">
+      </span><span class="s2">"properties"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"productName"</span><span class="p">:{</span><span class="w">
+          </span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"analyzer"</span><span class="p">:</span><span class="s2">"analyzer_case_insensitive"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+</span><span class="p">}</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>I needed to switch to <code class="highlighter-rouge">match</code> query as <code class="highlighter-rouge">term</code> query would return result with only lower case search text. Below is the modified query:</p>
 
-<figure class="highlight"><pre><code class="language-json" data-lang="json"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<figure class="highlight"><pre><code class="language-json" data-lang="json"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
 2
 3
 4
 5
 6
 7
-8</pre></td><td class="code"><pre><span class="err">POST</span><span class="w"> </span><span class="err">localhost:</span><span class="mi">9200</span><span class="err">/products/product/_search</span><span class="w">
+8
+</pre></td><td class="code"><pre><span class="err">POST</span><span class="w"> </span><span class="err">localhost</span><span class="p">:</span><span class="mi">9200</span><span class="err">/products/product/_search</span><span class="w">
 </span><span class="p">{</span><span class="w">
-  </span><span class="nt">"query"</span><span class="p">:{</span><span class="w">
-    </span><span class="nt">"match"</span><span class="p">:{</span><span class="w">
-      </span><span class="nt">"productName"</span><span class="p">:</span><span class="s2">"greeN ball"</span><span class="w">
+  </span><span class="s2">"query"</span><span class="p">:{</span><span class="w">
+    </span><span class="s2">"match"</span><span class="p">:{</span><span class="w">
+      </span><span class="s2">"productName"</span><span class="p">:</span><span class="s2">"greeN ball"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+</span><span class="p">}</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>And this resulted in following:</p>
 
-<figure class="highlight"><pre><code class="language-json" data-lang="json"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<figure class="highlight"><pre><code class="language-json" data-lang="json"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
 2
 3
 4
@@ -295,38 +295,38 @@
 22
 23
 24
-25</pre></td><td class="code"><pre><span class="p">{</span><span class="w">
-  </span><span class="nt">"took"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"timed_out"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"_shards"</span><span class="p">:{</span><span class="w">
-    </span><span class="nt">"total"</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"successful"</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"skipped"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"failed"</span><span class="p">:</span><span class="mi">0</span><span class="w">
+25
+</pre></td><td class="code"><pre><span class="p">{</span><span class="w">
+  </span><span class="s2">"took"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"timed_out"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"_shards"</span><span class="p">:{</span><span class="w">
+    </span><span class="s2">"total"</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"successful"</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"skipped"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"failed"</span><span class="p">:</span><span class="mi">0</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"hits"</span><span class="p">:{</span><span class="w">
-    </span><span class="nt">"total"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"max_score"</span><span class="p">:</span><span class="mf">0.6931472</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"hits"</span><span class="p">:[</span><span class="w">
+  </span><span class="s2">"hits"</span><span class="p">:{</span><span class="w">
+    </span><span class="s2">"total"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"max_score"</span><span class="p">:</span><span class="mf">0.6931472</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hits"</span><span class="p">:[</span><span class="w">
       </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"_index"</span><span class="p">:</span><span class="s2">"products"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"_type"</span><span class="p">:</span><span class="s2">"product"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"_id"</span><span class="p">:</span><span class="s2">"AV57L6vzqKOq3BnmUAzd"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"_score"</span><span class="p">:</span><span class="mf">0.6931472</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"_source"</span><span class="p">:{</span><span class="w">
-          </span><span class="nt">"productName"</span><span class="p">:</span><span class="s2">"Green Ball"</span><span class="w">
+        </span><span class="s2">"_index"</span><span class="p">:</span><span class="s2">"products"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"_type"</span><span class="p">:</span><span class="s2">"product"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="s2">"AV57L6vzqKOq3BnmUAzd"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"_score"</span><span class="p">:</span><span class="mf">0.6931472</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"_source"</span><span class="p">:{</span><span class="w">
+          </span><span class="s2">"productName"</span><span class="p">:</span><span class="s2">"Green Ball"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+</span><span class="p">}</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>I was happy with the result as it served my purpose. Let me know in comments if there is a better way to achieve this.</p>
 
     </p>
   </div>
-  <meta itemprop="wordCount" content="940">
+  <meta itemprop="wordCount" content="920">
   <meta itemprop="author" content="Pranav Prakash">
 </article>
 

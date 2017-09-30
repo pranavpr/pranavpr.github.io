@@ -59,7 +59,7 @@
     <div class="content pure-u-1 pure-u-md-3-4">
       <div>
         <div class="posts">
-          <h1 class="content-subhead">Approx 4 minutes read</h1>
+          <h1 class="content-subhead">Approx 3 minutes read</h1>
 <article class="post" itemscope itemtype="http://schema.org/BlogPosting" >
   <header class="post-header">
   <a href="/2009/06/29/how-to-create-custom-ie8-accelerator/" itemprop="url">
@@ -98,7 +98,7 @@
 
 <h2 id="step-1-create-xml-file">Step 1: Create XML File</h2>
 
-<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
 2
 3
 4
@@ -112,7 +112,8 @@
 12
 13
 14
-15</pre></td><td class="code"><pre><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+15
+</pre></td><td class="code"><pre><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 <span class="nt">&lt;openServiceDescription</span> <span class="na">xmlns=</span><span class="s">"http://www.microsoft.com/schemas/openservicedescription/1.0"</span><span class="nt">&gt;</span>
 <span class="nt">&lt;homepageUrl&gt;</span>http://www.imdb.com <span class="nt">&lt;/homepageUrl&gt;</span>
 <span class="nt">&lt;display&gt;</span>
@@ -126,8 +127,7 @@
  <span class="nt">&lt;/execute&gt;</span>
 <span class="nt">&lt;/activityAction&gt;</span>
 <span class="nt">&lt;/activity&gt;</span>
-<span class="nt">&lt;/openServiceDescription&gt;</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="nt">&lt;/openServiceDescription&gt;</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>This XML file is called the service description file and it contains specific description about the service provider and type of service it provides. The {selection} value on Line 11 refers to the text that you may highlight on a web page before performing the search. Save this file as search.xml.</p>
 
@@ -135,8 +135,8 @@
 
 <p>To let users use our accelerator, we will create a install button. Users can install the accelerator using this link. Here the code for link:</p>
 
-<figure class="highlight"><pre><code class="language-html" data-lang="html"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"javascript:window.external.AddService('http://pranavprakash.net/blog/search.xml')"</span><span class="nt">&gt;</span>Install Accelerator<span class="nt">&lt;/a&gt;</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+</pre></td><td class="code"><pre><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"javascript:window.external.AddService('http://pranavprakash.net/blog/search.xml')"</span><span class="nt">&gt;</span>Install Accelerator<span class="nt">&lt;/a&gt;</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>That’s it, you are done. Install the accelerator and start searching.</p>
 
@@ -146,7 +146,7 @@
 
     </p>
   </div>
-  <meta itemprop="wordCount" content="366">
+  <meta itemprop="wordCount" content="358">
   <meta itemprop="author" content="Pranav Prakash">
 </article>
 

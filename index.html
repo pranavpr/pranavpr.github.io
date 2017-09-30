@@ -65,21 +65,63 @@
     <article class="post" itemscope itemtype="http://schema.org/BlogPosting" >
       <header class="post-header">
         <h2 itemprop="name headline" class="post-title">
-        <a href="/2017/09/13/case-insensitive-exact-match-search-in-elasticsearch/" itemprop="url">
-          Case insensitive exact match search in ElasticSearch
+        <a href="/2017/09/30/building-a-fast-text-suggester-using-node-js-koa2-and-elasticsearch/" itemprop="url">
+          Building a fast text suggester using Node.js, Koa2 and Elasticsearch
         </a>
         </h2>
         <p class="post-meta">
-        <i class="icon-clock-o">&nbsp;</i><a itemprop="datePublished" content="13 Sep 2017" href="#" class="post-author">13 Sep 2017</a>&nbsp;<i class="icon-tags"></i>
-         <a itemprop="keywords" href="/tags/elasticsearch/" class="post-category post-category-e">ELASTICSEARCH</a>   
+        <i class="icon-clock-o">&nbsp;</i><a itemprop="datePublished" content="30 Sep 2017" href="#" class="post-author">30 Sep 2017</a>&nbsp;<i class="icon-tags"></i>
+         <a itemprop="keywords" href="/tags/node.js/" class="post-category post-category-n">NODE.JS</a>    <a itemprop="keywords" href="/tags/elasticsearch/" class="post-category post-category-e">ELASTICSEARCH</a>    <a itemprop="keywords" href="/tags/koa2/" class="post-category post-category-k">KOA2</a>   
         </p>
       </header>
       <div itemprop="articleBody" class="post-description">
         <p>
           
+            <p>In this blog post, I’ll show you how to create a fast text suggester using Koa2 framework of Node.js backed by Elasticsearch. <a href="http://koajs.com/">Koa2</a> is a minimalist framework developed by team behind <a href="http://expressjs.com/">Express.js</a> and comes with no middlewares inbuilt. <a href="https://www.elastic.co/products/elasticsearch">Elasticsearch</a> is a distributed search engine which comes with handy features for doing full text search.</p>
+
+<p>To start with, I’ll use the <a href="https://www.npmjs.com/package/koa-api-generator">koa-api-generator</a> to bootstrap the application. Start by issuing following commands</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="code"><pre>npm i <span class="nt">-g</span> koa-api-generator
+koa-api node-search-engine <span class="o">&amp;&amp;</span> <span class="nb">cd </span>node-search-engine
+npm install</pre></td></tr></tbody></table></code></pre></figure>
+
+<a href="/2017/09/30/building-a-fast-text-suggester-using-node-js-koa2-and-elasticsearch/">Continue Reading »</a>
+          
+        </p>
+      </div>
+      <meta itemprop="wordCount" content="1397">
+      <meta itemprop="author" content="Pranav Prakash">
+    </article>
+  
+  <h1 class="content-subhead">Recent Posts</h1>
+  
+  
+    
+    
+  
+
+    
+      <article class="post" itemscope itemtype="http://schema.org/BlogPosting" >
+        <header class="post-header">
+          <h2 itemprop="name headline" class="post-title">
+          <a href="/2017/09/13/case-insensitive-exact-match-search-in-elasticsearch/" itemprop="url">
+            Case insensitive exact match search in ElasticSearch
+          </a>
+          </h2>
+          <p class="post-meta">
+          <i class="icon-clock-o">&nbsp;</i><a itemprop="datePublished" content="13 Sep 2017" href="#" class="post-author">13 Sep 2017</a>&nbsp;<i class="icon-tags"></i>
+           <a itemprop="keywords" href="/tags/elasticsearch/" class="post-category post-category-e">ELASTICSEARCH</a>   
+          </p>
+        </header>
+        <div itemprop="articleBody" class="post-description">
+          <p>
+          
             <p>I had a requirement where I needed to do exact match search in ElasticSearch. After searching a bit I landed to <a href="https://www.elastic.co/guide/en/elasticsearch/guide/current/_finding_exact_values.html">this</a> page of ElasticSearch documentation. I was thrilled that I got the solution quickly (thanking god and ElasticSearch team in my mind). Hence I started testing by creating an index using request below:</p>
 
-<figure class="highlight"><pre><code class="language-json" data-lang="json"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<figure class="highlight"><pre><code class="language-json" data-lang="json"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
 2
 3
 4
@@ -91,34 +133,28 @@
 10
 11
 12
-13</pre></td><td class="code"><pre><span class="err">PUT</span><span class="w"> </span><span class="err">localhost:</span><span class="mi">9200</span><span class="err">/products/</span><span class="w">
+13
+</pre></td><td class="code"><pre><span class="err">PUT</span><span class="w"> </span><span class="err">localhost</span><span class="p">:</span><span class="mi">9200</span><span class="err">/products/</span><span class="w">
 </span><span class="p">{</span><span class="w">
-  </span><span class="nt">"mappings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"product"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"productName"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"not_analyzed"</span><span class="w">
+  </span><span class="s2">"mappings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"product"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"productName"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"not_analyzed"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+</span><span class="p">}</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <a href="/2017/09/13/case-insensitive-exact-match-search-in-elasticsearch/">Continue Reading »</a>
           
         </p>
       </div>
-      <meta itemprop="wordCount" content="940">
+      <meta itemprop="wordCount" content="920">
       <meta itemprop="author" content="Pranav Prakash">
     </article>
-  
-  <h1 class="content-subhead">Recent Posts</h1>
-  
-  
-    
-    
   
 
     
@@ -148,7 +184,7 @@
           
         </p>
       </div>
-      <meta itemprop="wordCount" content="931">
+      <meta itemprop="wordCount" content="939">
       <meta itemprop="author" content="Pranav Prakash">
     </article>
   
@@ -198,8 +234,8 @@
           
             <p>I was using a Amazon Elasticache <code class="highlighter-rouge">cache.t2.medium</code> Redis instance as a cache store for one of the Rails application. Over the time I observed that connections to Redis instance are increasing day by day and once it hit ~1500, the Rails application started throwing connection timeout exceptions:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>Error connecting to Redis on redis-host:6379 <span class="o">(</span>Redis::TimeoutError<span class="o">)</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+</pre></td><td class="code"><pre>Error connecting to Redis on redis-host:6379 <span class="o">(</span>Redis::TimeoutError<span class="o">)</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>On searching over internet, I found that the default parameter group has <code class="highlighter-rouge">timeout</code> value set to 0 which means, any connection that has been initialized to redis will be kept by redis even if the connection initialized by the client is down. Well the first thing I did was to create a new parameter group and set its value to a non-zero integer. However I couldn’t apply the parameter group changes to live production application and hence started looking for alternatives.</p>
 
@@ -207,43 +243,7 @@
           
         </p>
       </div>
-      <meta itemprop="wordCount" content="642">
-      <meta itemprop="author" content="Pranav Prakash">
-    </article>
-  
-
-    
-      <article class="post" itemscope itemtype="http://schema.org/BlogPosting" >
-        <header class="post-header">
-          <h2 itemprop="name headline" class="post-title">
-          <a href="/2015/02/09/sending-asynchronous-emails-using-sidekiq-on-openshift/" itemprop="url">
-            Sending asynchronous emails using Sidekiq on OpenShift
-          </a>
-          </h2>
-          <p class="post-meta">
-          <i class="icon-clock-o">&nbsp;</i><a itemprop="datePublished" content="09 Feb 2015" href="#" class="post-author">09 Feb 2015</a>&nbsp;<i class="icon-tags"></i>
-           <a itemprop="keywords" href="/tags/sidekiq/" class="post-category post-category-s">SIDEKIQ</a>    <a itemprop="keywords" href="/tags/email/" class="post-category post-category-e">EMAIL</a>    <a itemprop="keywords" href="/tags/ruby-on-rails/" class="post-category post-category-r">RUBY ON RAILS</a>    <a itemprop="keywords" href="/tags/devise/" class="post-category post-category-d">DEVISE</a>    <a itemprop="keywords" href="/tags/openshift/" class="post-category post-category-o">OPENSHIFT</a>   
-          </p>
-        </header>
-        <div itemprop="articleBody" class="post-description">
-          <p>
-          
-            <p>If you need to send transactional emails from your Rails application, you should always send them asynchronously using a background job. If you send transactional emails synchronously, the user will see a loading page for the time rails connect to SMTP server and delivers your email which is about 2-3 seconds. This will result in a very bad user experience and it’s advisable to send emails using a background job.</p>
-
-<p><a href="http://sidekiq.org/">Sidekiq</a> advertises it self as simple, efficient background processing engine for Ruby. Sidekiq has dependency on <a href="http://redis.io/">Redis</a> version <code class="highlighter-rouge">2.4</code> or greater. Hence to setup Sidekiq on OpenShift, we have to setup Redis first. So let’s get started.</p>
-
-<h2 id="setting-up-redis">Setting up Redis</h2>
-
-<p>Redis cartridge for Openshift is available <a href="https://github.com/smarterclayton/openshift-redis-cart">here</a>. To add this cartridge to existing Openshift application, issue following command:</p>
-
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>rhc add-cartridge http://cartreflect-claytondev.rhcloud.com/reflect?github<span class="o">=</span>smarterclayton/openshift-redis-cart<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
-
-<a href="/2015/02/09/sending-asynchronous-emails-using-sidekiq-on-openshift/">Continue Reading »</a>
-          
-        </p>
-      </div>
-      <meta itemprop="wordCount" content="607">
+      <meta itemprop="wordCount" content="619">
       <meta itemprop="author" content="Pranav Prakash">
     </article>
   

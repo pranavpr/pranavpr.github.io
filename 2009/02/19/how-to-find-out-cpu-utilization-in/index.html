@@ -79,7 +79,7 @@
 
 <p>The <code class="highlighter-rouge">top</code> command provides dynamic view of CPU utilization. It displays system information as well as list of tasks currently managed by kernel. Is also displays uptime, average load,  physcal and swap memory utilization. Syntax of <code class="highlighter-rouge">top</code> command is as follows:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>top</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>top</code></pre></figure>
 
 <div style="TEXT-ALIGN: center"><img src="http://1.bp.blogspot.com/__GfZLYkxICU/SZ1EdKuhqvI/AAAAAAAAKaQ/IOyFqTaYkPU/s400/top.jpeg" /></div>
 
@@ -89,20 +89,20 @@
 
 <p>To use this command, you have to install a package called <code class="highlighter-rouge">sysstat</code>. For Ubuntu or Debian systems, you can install this package using <code class="highlighter-rouge">apt-get</code>.</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="gp">$ </span>apt-get install sysstat<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+</pre></td><td class="code"><pre><span class="nv">$ </span>apt-get install sysstat</pre></td></tr></tbody></table></code></pre></figure>
 
 <p>To get CPU utilization information, type in following command:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="gp">$ </span>mpstat<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+</pre></td><td class="code"><pre><span class="nv">$ </span>mpstat</pre></td></tr></tbody></table></code></pre></figure>
 
 <div style="TEXT-ALIGN: center"><img src="http://3.bp.blogspot.com/__GfZLYkxICU/SZ1HYqBN79I/AAAAAAAAKaY/ao4jzWcMSus/s400/mpstat.jpeg" /></div>
 
 <p>To monitor individual processor performance, issue following command:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="gp">$ </span>mpstat -P ALL<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+</pre></td><td class="code"><pre><span class="nv">$ </span>mpstat <span class="nt">-P</span> ALL</pre></td></tr></tbody></table></code></pre></figure>
 
 <div style="TEXT-ALIGN: center"><img src="http://1.bp.blogspot.com/__GfZLYkxICU/SZ1JWeK086I/AAAAAAAAKag/R4CJFb-PlnA/s400/mpstat+all.jpeg" /></div>
 
@@ -110,8 +110,8 @@
 
 <p>To display CPU utilization using <code class="highlighter-rouge">sar</code>, use following command:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="gp">$ </span>sar -u 2 5<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+</pre></td><td class="code"><pre><span class="nv">$ </span>sar <span class="nt">-u</span> 2 5</pre></td></tr></tbody></table></code></pre></figure>
 
 <p>This command will display CPU utilization 2 seconds apart, 5 times as shown below.</p>
 
@@ -121,8 +121,8 @@
 
 <p>The <code class="highlighter-rouge">iostat</code> command reports Central Processing Unit (CPU) statistics and input/output statistics for devices and partitions. It can be use to find out your system’s average CPU utilization since the last reboot.</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="gp">$ </span>iostat<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+</pre></td><td class="code"><pre><span class="nv">$ </span>iostat</pre></td></tr></tbody></table></code></pre></figure>
 
 <div style="TEXT-ALIGN: center"><img src="http://4.bp.blogspot.com/__GfZLYkxICU/SZ1LmKj8Z3I/AAAAAAAAKaw/EeBQkTTH7v8/s400/iostat.jpeg" /></div>
 
@@ -140,7 +140,7 @@
 
     </p>
   </div>
-  <meta itemprop="wordCount" content="434">
+  <meta itemprop="wordCount" content="416">
   <meta itemprop="author" content="Pranav Prakash">
 </article>
 

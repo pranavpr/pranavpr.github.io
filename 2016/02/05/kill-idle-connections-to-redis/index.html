@@ -73,8 +73,8 @@
     <p>
     <p>I was using a Amazon Elasticache <code class="highlighter-rouge">cache.t2.medium</code> Redis instance as a cache store for one of the Rails application. Over the time I observed that connections to Redis instance are increasing day by day and once it hit ~1500, the Rails application started throwing connection timeout exceptions:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>Error connecting to Redis on redis-host:6379 <span class="o">(</span>Redis::TimeoutError<span class="o">)</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+</pre></td><td class="code"><pre>Error connecting to Redis on redis-host:6379 <span class="o">(</span>Redis::TimeoutError<span class="o">)</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>On searching over internet, I found that the default parameter group has <code class="highlighter-rouge">timeout</code> value set to 0 which means, any connection that has been initialized to redis will be kept by redis even if the connection initialized by the client is down. Well the first thing I did was to create a new parameter group and set its value to a non-zero integer. However I couldn’t apply the parameter group changes to live production application and hence started looking for alternatives.</p>
 
@@ -82,23 +82,23 @@
 
 <p>On further investigation, I found that Redis provides <code class="highlighter-rouge">CLIENT KILL</code> command to kill the client connections. To see all client connections to your Redis instance, you can use <code class="highlighter-rouge">CLIENT LIST</code> command:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
 2
-3</pre></td><td class="code"><pre>redis 127.0.0.1:6379&gt; CLIENT LIST
-<span class="nv">id</span><span class="o">=</span>9115408 <span class="nv">addr</span><span class="o">=</span>10.0.1.252:56348 <span class="nv">fd</span><span class="o">=</span>95 <span class="nv">name</span><span class="o">=</span> <span class="nv">age</span><span class="o">=</span>23 <span class="nv">idle</span><span class="o">=</span>23 <span class="nv">flags</span><span class="o">=</span>N <span class="nv">db</span><span class="o">=</span>14 <span class="nv">sub</span><span class="o">=</span>0 <span class="nv">psub</span><span class="o">=</span>0 <span class="nv">multi</span><span class="o">=</span>-1 <span class="nv">qbuf</span><span class="o">=</span>0 qbuf-free<span class="o">=</span>0 <span class="nv">obl</span><span class="o">=</span>0 <span class="nv">oll</span><span class="o">=</span>0 <span class="nv">omem</span><span class="o">=</span>0 <span class="nv">events</span><span class="o">=</span>r <span class="nv">cmd</span><span class="o">=</span>get
-<span class="nv">id</span><span class="o">=</span>9115336 <span class="nv">addr</span><span class="o">=</span>10.0.2.151:52018 <span class="nv">fd</span><span class="o">=</span>37 <span class="nv">name</span><span class="o">=</span> <span class="nv">age</span><span class="o">=</span>107 <span class="nv">idle</span><span class="o">=</span>107 <span class="nv">flags</span><span class="o">=</span>N <span class="nv">db</span><span class="o">=</span>14 <span class="nv">sub</span><span class="o">=</span>0 <span class="nv">psub</span><span class="o">=</span>0 <span class="nv">multi</span><span class="o">=</span>-1 <span class="nv">qbuf</span><span class="o">=</span>0 qbuf-free<span class="o">=</span>0 <span class="nv">obl</span><span class="o">=</span>0 <span class="nv">oll</span><span class="o">=</span>0 <span class="nv">omem</span><span class="o">=</span>0 <span class="nv">events</span><span class="o">=</span>r <span class="nv">cmd</span><span class="o">=</span>get<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+3
+</pre></td><td class="code"><pre>redis 127.0.0.1:6379&gt; CLIENT LIST
+<span class="nv">id</span><span class="o">=</span>9115408 <span class="nv">addr</span><span class="o">=</span>10.0.1.252:56348 <span class="nv">fd</span><span class="o">=</span>95 <span class="nv">name</span><span class="o">=</span> <span class="nv">age</span><span class="o">=</span>23 <span class="nv">idle</span><span class="o">=</span>23 <span class="nv">flags</span><span class="o">=</span>N <span class="nv">db</span><span class="o">=</span>14 <span class="nv">sub</span><span class="o">=</span>0 <span class="nv">psub</span><span class="o">=</span>0 <span class="nv">multi</span><span class="o">=</span><span class="nt">-1</span> <span class="nv">qbuf</span><span class="o">=</span>0 qbuf-free<span class="o">=</span>0 <span class="nv">obl</span><span class="o">=</span>0 <span class="nv">oll</span><span class="o">=</span>0 <span class="nv">omem</span><span class="o">=</span>0 <span class="nv">events</span><span class="o">=</span>r <span class="nv">cmd</span><span class="o">=</span>get
+<span class="nv">id</span><span class="o">=</span>9115336 <span class="nv">addr</span><span class="o">=</span>10.0.2.151:52018 <span class="nv">fd</span><span class="o">=</span>37 <span class="nv">name</span><span class="o">=</span> <span class="nv">age</span><span class="o">=</span>107 <span class="nv">idle</span><span class="o">=</span>107 <span class="nv">flags</span><span class="o">=</span>N <span class="nv">db</span><span class="o">=</span>14 <span class="nv">sub</span><span class="o">=</span>0 <span class="nv">psub</span><span class="o">=</span>0 <span class="nv">multi</span><span class="o">=</span><span class="nt">-1</span> <span class="nv">qbuf</span><span class="o">=</span>0 qbuf-free<span class="o">=</span>0 <span class="nv">obl</span><span class="o">=</span>0 <span class="nv">oll</span><span class="o">=</span>0 <span class="nv">omem</span><span class="o">=</span>0 <span class="nv">events</span><span class="o">=</span>r <span class="nv">cmd</span><span class="o">=</span>get</pre></td></tr></tbody></table></code></pre></figure>
 
 <p>To kill a connection, you can use <code class="highlighter-rouge">CLIENT KILL</code> command as below:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
-2</pre></td><td class="code"><pre>redis 127.0.0.1:6379&gt; CLIENT KILL 10.0.1.252:56348
-<span class="o">(</span>integer<span class="o">)</span> 1<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="code"><pre>redis 127.0.0.1:6379&gt; CLIENT KILL 10.0.1.252:56348
+<span class="o">(</span>integer<span class="o">)</span> 1</pre></td></tr></tbody></table></code></pre></figure>
 
 <p>On successful completion, the command will return number of client connections killed. Well this was all good but I can’t kill ~1500 connections one by one. Hence I wrote a little python script to achieve this task.</p>
 
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
 2
 3
 4
@@ -110,7 +110,8 @@
 10
 11
 12
-13</pre></td><td class="code"><pre><span class="kn">import</span> <span class="nn">redis</span>
+13
+</pre></td><td class="code"><pre><span class="kn">import</span> <span class="nn">redis</span>
 <span class="kn">import</span> <span class="nn">re</span>
 
 <span class="n">idle_max</span> <span class="o">=</span> <span class="mi">300</span>
@@ -118,28 +119,27 @@
 <span class="n">r</span> <span class="o">=</span> <span class="n">redis</span><span class="o">.</span><span class="n">Redis</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s">"localhost"</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">6379</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
 <span class="n">cl</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">execute_command</span><span class="p">(</span><span class="s">"client"</span><span class="p">,</span> <span class="s">"list"</span><span class="p">)</span>
 
-<span class="n">pattern</span> <span class="o">=</span> <span class="s">r"addr=(.*?) .*? idle=(</span><span class="err">\</span><span class="s">d*)"</span>
+<span class="n">pattern</span> <span class="o">=</span> <span class="s">r"addr=(.*?) .*? idle=(\d*)"</span>
 <span class="n">regex</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="nb">compile</span><span class="p">(</span><span class="n">pattern</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">match</span> <span class="ow">in</span> <span class="n">regex</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span><span class="n">cl</span><span class="p">):</span>
     <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="o">&gt;</span> <span class="n">idle_max</span><span class="p">:</span>
-        <span class="n">r</span><span class="o">.</span><span class="n">execute_command</span><span class="p">(</span><span class="s">"client"</span><span class="p">,</span> <span class="s">"kill"</span><span class="p">,</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+        <span class="n">r</span><span class="o">.</span><span class="n">execute_command</span><span class="p">(</span><span class="s">"client"</span><span class="p">,</span> <span class="s">"kill"</span><span class="p">,</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>Above script will kill all redis client connections which have been idle for 300 seconds. You can adjust the value of <code class="highlighter-rouge">idle_max</code> variable as per your need. Save this script as <code class="highlighter-rouge">killredisconn.py</code> and execute as below:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="gp">$ </span>python killredisconn.py<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+</pre></td><td class="code"><pre><span class="nv">$ </span>python killredisconn.py</pre></td></tr></tbody></table></code></pre></figure>
 
 <p>You need to install <code class="highlighter-rouge">redis</code> python package before executing this command. You can install the same by issuing following command:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="gp">$ </span>sudo pip install redis<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+</pre></td><td class="code"><pre><span class="nv">$ </span><span class="nb">sudo </span>pip install redis</pre></td></tr></tbody></table></code></pre></figure>
 
 <p>Once I executed above script, number of client connection decreased dramatically and connection timeout exceptions from our Rails application disappeared.</p>
 
     </p>
   </div>
-  <meta itemprop="wordCount" content="642">
+  <meta itemprop="wordCount" content="619">
   <meta itemprop="author" content="Pranav Prakash">
 </article>
 

@@ -79,7 +79,7 @@
 
 <!--more-->
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
 2
 3
 4
@@ -106,7 +106,8 @@
 25
 26
 27
-28</pre></td><td class="code"><pre><span class="cp">#include &lt;stdio.h&gt;
+28
+</pre></td><td class="code"><pre><span class="cp">#include &lt;stdio.h&gt;
 #define CURL_STATICLIB
 #include &lt;curl/curl.h&gt;
 </span>
@@ -133,8 +134,7 @@
     <span class="p">}</span>
 
     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="p">}</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>When we compile and run the above program, we get following error:</p>
 
@@ -142,7 +142,7 @@
 
 <p>Well we can force LibCurl not to verify the authencity of peer’s certificate by modifying the program as below:</p>
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
 2
 3
 4
@@ -169,7 +169,8 @@
 25
 26
 27
-28</pre></td><td class="code"><pre><span class="cp">#include &lt;stdio.h&gt;
+28
+</pre></td><td class="code"><pre><span class="cp">#include &lt;stdio.h&gt;
 #define CURL_STATICLIB
 #include &lt;curl/curl.h&gt;
 </span>
@@ -196,8 +197,7 @@
     <span class="p">}</span>
 
     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="p">}</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>This will resolve the error we were getting earlier but this is not secure as we are bypassing the verification of <code class="highlighter-rouge">SSL</code> certificte presented by peer.</p>
 
@@ -205,7 +205,7 @@
 
 <p>Now let’s modify the code as below to enable <code class="highlighter-rouge">SSL</code> certificate verification by LibCurl:</p>
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
 2
 3
 4
@@ -237,7 +237,8 @@
 30
 31
 32
-33</pre></td><td class="code"><pre><span class="cp">#include &lt;stdio.h&gt;
+33
+</pre></td><td class="code"><pre><span class="cp">#include &lt;stdio.h&gt;
 #define CURL_STATICLIB
 #include &lt;curl/curl.h&gt;
 </span>
@@ -269,14 +270,13 @@
     <span class="p">}</span>
 
     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="p">}</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>LibCurl depends on <code class="highlighter-rouge">ca-bundle.crt</code> to verify server’s certificate. CA bundle extract is provided by LibCurl itself and you can download it from <a href="http://curl.haxx.se/docs/caextract.html">here</a>. We need to place the <code class="highlighter-rouge">ca-bundle.crt</code> in same folder as our executable. Also notice that we have enabled <code class="highlighter-rouge">CURLOPT_SSL_VERIFYPEER</code> and <code class="highlighter-rouge">CURLOPT_SSL_VERIFYHOST</code> in lines 17 and 18. When <code class="highlighter-rouge">CURLOPT_SSL_VERIFYPEER</code> is enabled, LibCurl verifes if the ceriticate presented is authentiate or not. If the verification fails to prove that the certificate is authentic, the connection fails. Authenticating the certificate is not enough to be sure about the server. We also want to ensure that the server is the server we mean to be talking to. When <code class="highlighter-rouge">CURLOPT_SSL_VERIFYHOST</code> is enabled, LibCurl checks that the host name in the certificate is valid for the host name we’re connecting to. If LibCurl fails to verify this, the connection fails.</p>
 
     </p>
   </div>
-  <meta itemprop="wordCount" content="971">
+  <meta itemprop="wordCount" content="959">
   <meta itemprop="author" content="Pranav Prakash">
 </article>
 

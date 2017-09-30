@@ -73,7 +73,7 @@
     <p>
     <p>Recently while working on a Rails project, I came across following markup for navigation:</p>
 
-<figure class="highlight"><pre><code class="language-html" data-lang="html"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
 2
 3
 4
@@ -91,7 +91,8 @@
 16
 17
 18
-19</pre></td><td class="code"><pre><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"sidebar-menu"</span><span class="nt">&gt;</span>
+19
+</pre></td><td class="code"><pre><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"sidebar-menu"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"treeview active"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>
       <span class="nt">&lt;span&gt;</span>Category<span class="nt">&lt;/span&gt;</span>
@@ -109,8 +110,7 @@
       <span class="nt">&lt;/li&gt;</span>
     <span class="nt">&lt;/ul&gt;</span>
   <span class="nt">&lt;/li&gt;</span>
-<span class="nt">&lt;/ul&gt;</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="nt">&lt;/ul&gt;</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <!--more-->
 
@@ -118,7 +118,7 @@
 
 <p>To incorporate this in Rails, I decided to make parent element as controller and child elements as actions for that controller. Thus for above markup, I created a categories controller and added action new, create, edit and update to it. Then I created two helper functions as below:</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
 2
 3
 4
@@ -126,7 +126,8 @@
 6
 7
 8
-9</pre></td><td class="code"><pre><span class="k">module</span> <span class="nn">ApplicationHelper</span>
+9
+</pre></td><td class="code"><pre><span class="k">module</span> <span class="nn">ApplicationHelper</span>
 	<span class="k">def</span> <span class="nf">controller?</span><span class="p">(</span><span class="o">*</span><span class="n">controller</span><span class="p">)</span>
 		<span class="n">controller</span><span class="p">.</span><span class="nf">include?</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="ss">:controller</span><span class="p">])</span>
 	<span class="k">end</span>
@@ -134,12 +135,11 @@
 	<span class="k">def</span> <span class="nf">action?</span><span class="p">(</span><span class="o">*</span><span class="n">action</span><span class="p">)</span>
 		<span class="n">action</span><span class="p">.</span><span class="nf">include?</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="ss">:action</span><span class="p">])</span>
 	<span class="k">end</span>
-<span class="k">end</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="k">end</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>Then I created the menu layout as below:</p>
 
-<figure class="highlight"><pre><code class="language-html" data-lang="html"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
 2
 3
 4
@@ -153,22 +153,22 @@
 12
 13
 14
-15</pre></td><td class="code"><pre><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"sidebar-menu"</span><span class="nt">&gt;</span>
+15
+</pre></td><td class="code"><pre><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"sidebar-menu"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"treeview &lt;%= 'active' if controller?('categories') %&gt;"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>
       <span class="nt">&lt;span&gt;</span>Category<span class="nt">&lt;/span&gt;</span>
     <span class="nt">&lt;/a&gt;</span>
     <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"treeview-menu"</span><span class="nt">&gt;</span>
       <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"&lt;%= 'active' if controller?('categories') &amp;&amp; action?('new', 'create') %&gt;"</span><span class="nt">&gt;</span>
-      <span class="err">&lt;</span>%= link_to(raw('<span class="nt">&lt;span&gt;</span>Add category<span class="nt">&lt;/span&gt;</span>'), new_categories_path) %&gt;
+      <span class="nt">&lt;</span><span class="err">%=</span> <span class="na">link_to</span><span class="err">(</span><span class="na">raw</span><span class="err">('&lt;</span><span class="na">span</span><span class="nt">&gt;</span>Add category<span class="nt">&lt;/span&gt;</span>'), new_categories_path) %&gt;
       <span class="nt">&lt;/li&gt;</span>
       <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"&lt;%= 'active' if controller?('categories') &amp;&amp; action?('update', 'edit') %&gt;"</span><span class="nt">&gt;</span>
-      <span class="err">&lt;</span>%= link_to(raw('<span class="nt">&lt;span&gt;</span>Modify category<span class="nt">&lt;/span&gt;</span>'), edit_categories_path) %&gt;
+      <span class="nt">&lt;</span><span class="err">%=</span> <span class="na">link_to</span><span class="err">(</span><span class="na">raw</span><span class="err">('&lt;</span><span class="na">span</span><span class="nt">&gt;</span>Modify category<span class="nt">&lt;/span&gt;</span>'), edit_categories_path) %&gt;
       <span class="nt">&lt;/li&gt;</span>
     <span class="nt">&lt;/ul&gt;</span>
   <span class="nt">&lt;/li&gt;</span>
-<span class="nt">&lt;/ul&gt;</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="nt">&lt;/ul&gt;</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>This layout perfectly synchronized the navigation links with pages.</p>
 
