@@ -48,7 +48,7 @@
     </url>
     <url>
         <loc>https://pranavprakash.net/2014/09/21/automate-git-workflow-with-grunt/</loc>
-        <lastmod>2017-09-28T21:59:24+05:30</lastmod>
+        <lastmod>2017-09-30T19:00:24+05:30</lastmod>
     </url>
     <url>
         <loc>https://pranavprakash.net/2014/09/27/using-libcurl-with-ssl/</loc>
@@ -92,13 +92,13 @@
         <loc>
             https://pranavprakash.net/2017/09/13/case-insensitive-exact-match-search-in-elasticsearch/
         </loc>
-        <lastmod>2017-09-28T21:59:24+05:30</lastmod>
+        <lastmod>2017-09-30T18:42:18+05:30</lastmod>
     </url>
     <url>
         <loc>
             https://pranavprakash.net/2017/09/30/building-a-fast-text-suggester-using-node-js-koa2-and-elasticsearch/
         </loc>
-        <lastmod>2017-09-30T18:30:02+05:30</lastmod>
+        <lastmod>2017-09-30T19:00:31+05:30</lastmod>
     </url>
     <url>
         <loc>https://pranavprakash.net/404.html</loc>
@@ -110,6 +110,6 @@
     </url>
     <url>
         <loc>https://pranavprakash.net/</loc>
-        <lastmod>2017-09-30T18:30:02+05:30</lastmod>
+        <lastmod>2017-09-30T19:00:31+05:30</lastmod>
     </url>
 </urlset>
