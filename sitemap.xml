@@ -101,6 +101,12 @@
         <lastmod>2017-09-30T19:05:44+05:30</lastmod>
     </url>
     <url>
+        <loc>
+            https://pranavprakash.net/2017/10/18/debugging-es2017-async-await-in-vs-code-using-source-maps/
+        </loc>
+        <lastmod>2017-10-18T15:44:08+05:30</lastmod>
+    </url>
+    <url>
         <loc>https://pranavprakash.net/404.html</loc>
         <lastmod>2017-09-28T21:59:24+05:30</lastmod>
     </url>
@@ -110,6 +116,6 @@
     </url>
     <url>
         <loc>https://pranavprakash.net/</loc>
-        <lastmod>2017-09-30T19:05:47+05:30</lastmod>
+        <lastmod>2017-10-18T15:44:08+05:30</lastmod>
     </url>
 </urlset>

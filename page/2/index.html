@@ -65,6 +65,36 @@
   <article class="post" itemscope itemtype="http://schema.org/BlogPosting" >
     <header class="post-header">
       <h2 itemprop="name headline" class="post-title">
+      <a href="/2016/02/05/kill-idle-connections-to-redis/" itemprop="url">
+        Kill idle connections to Redis
+      </a>
+      </h2>
+      <p class="post-meta">
+      <i class="icon-clock-o">&nbsp;</i><a itemprop="datePublished" content="05 Feb 2016" href="#" class="post-author">05 Feb 2016</a>&nbsp;<i class="icon-tags"></i>
+       <a itemprop="keywords" href="/tags/redis/" class="post-category post-category-r">REDIS</a>    <a itemprop="keywords" href="/tags/aws/" class="post-category post-category-a">AWS</a>    <a itemprop="keywords" href="/tags/python/" class="post-category post-category-p">PYTHON</a>    <a itemprop="keywords" href="/tags/elasticache/" class="post-category post-category-e">ELASTICACHE</a>   
+      </p>
+    </header>
+    <div itemprop="articleBody" class="post-description">
+      <p>
+        
+          <p>I was using a Amazon Elasticache <code class="highlighter-rouge">cache.t2.medium</code> Redis instance as a cache store for one of the Rails application. Over the time I observed that connections to Redis instance are increasing day by day and once it hit ~1500, the Rails application started throwing connection timeout exceptions:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+</pre></td><td class="code"><pre>Error connecting to Redis on redis-host:6379 <span class="o">(</span>Redis::TimeoutError<span class="o">)</span></pre></td></tr></tbody></table></code></pre></figure>
+
+<p>On searching over internet, I found that the default parameter group has <code class="highlighter-rouge">timeout</code> value set to 0 which means, any connection that has been initialized to redis will be kept by redis even if the connection initialized by the client is down. Well the first thing I did was to create a new parameter group and set its value to a non-zero integer. However I couldn’t apply the parameter group changes to live production application and hence started looking for alternatives.</p>
+
+<a href="/2016/02/05/kill-idle-connections-to-redis/">Continue Reading »</a>
+        
+      </p>
+    </div>
+    <meta itemprop="wordCount" content="619">
+    <meta itemprop="author" content="Pranav Prakash">
+  </article>
+
+  <article class="post" itemscope itemtype="http://schema.org/BlogPosting" >
+    <header class="post-header">
+      <h2 itemprop="name headline" class="post-title">
       <a href="/2015/02/09/sending-asynchronous-emails-using-sidekiq-on-openshift/" itemprop="url">
         Sending asynchronous emails using Sidekiq on OpenShift
       </a>
@@ -219,35 +249,6 @@
       </p>
     </div>
     <meta itemprop="wordCount" content="447">
-    <meta itemprop="author" content="Pranav Prakash">
-  </article>
-
-  <article class="post" itemscope itemtype="http://schema.org/BlogPosting" >
-    <header class="post-header">
-      <h2 itemprop="name headline" class="post-title">
-      <a href="/2014/09/27/using-libcurl-with-ssl/" itemprop="url">
-        Using LibCurl with SSL
-      </a>
-      </h2>
-      <p class="post-meta">
-      <i class="icon-clock-o">&nbsp;</i><a itemprop="datePublished" content="27 Sep 2014" href="#" class="post-author">27 Sep 2014</a>&nbsp;<i class="icon-tags"></i>
-       <a itemprop="keywords" href="/tags/c/" class="post-category post-category-c">C</a>    <a itemprop="keywords" href="/tags/ssl/" class="post-category post-category-s">SSL</a>    <a itemprop="keywords" href="/tags/curl/" class="post-category post-category-c">CURL</a>   
-      </p>
-    </header>
-    <div itemprop="articleBody" class="post-description">
-      <p>
-        
-          <p>LibCurl supports URL transfer over <code class="highlighter-rouge">HTTPS</code> protocol. In this post we’ll use LibCurl to download a webpage over <code class="highlighter-rouge">HTTPS</code> protocol. To get started, make sure that you have setup your system as outlined in one of my previous <a href="/2014/03/20/getting-started-with-libcurl/">posts</a>. Note that LibCurl comes with <code class="highlighter-rouge">SSL</code> libraries included and hence you need not to install any extra packages.</p>
-
-<h2 id="getting-started">Getting started</h2>
-
-<p>Let’s first try to download a <code class="highlighter-rouge">HTTPS</code> webpage without <code class="highlighter-rouge">SSL</code> using following code:</p>
-
-<a href="/2014/09/27/using-libcurl-with-ssl/">Continue Reading »</a>
-        
-      </p>
-    </div>
-    <meta itemprop="wordCount" content="959">
     <meta itemprop="author" content="Pranav Prakash">
   </article>
 
