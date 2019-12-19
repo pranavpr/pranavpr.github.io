@@ -169,7 +169,7 @@ find <span class="nv">$BACKUPS_DIR</span> <span class="nt">-type</span> f <span 
 <p>You need to update the parameters in above shell script as per your environment. Specify the name of database to be backed up, host name, port in <code class="highlighter-rouge">MONGO_DATABASE</code>, <code class="highlighter-rouge">MONGO_HOST</code> and <code class="highlighter-rouge">MONGO_PORT</code> parameters. To specify the backup directory, update the <code class="highlighter-rouge">BACKUPS_DIR</code> parameter. You need to update the database credentials in <code class="highlighter-rouge">DBUSERNAME</code>, <code class="highlighter-rouge">DBPASSWORD</code> and <code class="highlighter-rouge">DBAUTHDB</code> parameters if you are using one. Finally you need to specify the number of days you want to retain the backup file in <code class="highlighter-rouge">DAYSTORETAINBACKUP</code> parameter. Once you update all the parameters as per your environment, save the file as <code class="highlighter-rouge">mongobackup.sh</code>. After that you need to make the file executable by issuing following command:</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
-</pre></td><td class="code"><pre>chomd +x mongobackup.sh</pre></td></tr></tbody></table></code></pre></figure>
+</pre></td><td class="code"><pre>chmod +x mongobackup.sh</pre></td></tr></tbody></table></code></pre></figure>
 
 <p>Now you need to create a cron job to execute this script automatically. Issue following command to create a cron job:</p>
 
